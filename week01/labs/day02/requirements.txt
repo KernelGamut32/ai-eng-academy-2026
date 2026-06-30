@@ -1,0 +1,18 @@
+# Week 1 · Day 2 — NumPy Labs
+# Target: Python 3.13 (curriculum standard)
+#
+# Create and activate a clean environment, then:  pip install -r requirements.txt
+#
+# Python version is enforced by your interpreter, not pip. Use Python 3.13.x.
+
+numpy>=2.4,<3        # NumPy 2.x line (developed/validated on 2.4; deck targets 2.x)
+jupyterlab>=4.2      # to open and run the .ipynb labs
+
+# Notes:
+# * The labs use only NumPy + the standard library (pathlib). No pandas today —
+#   pandas is covered on a later day.
+# * The data generator (data/generate_lab_data.py) needs only NumPy.
+# * If you build/rebuild the notebooks from the builder scripts, you also need:
+#       nbformat>=5.10
+#       nbclient>=0.10
+#   (these are NOT required just to run the labs in Jupyter).
