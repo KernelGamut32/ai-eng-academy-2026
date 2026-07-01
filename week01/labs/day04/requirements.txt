@@ -1,0 +1,27 @@
+# Week 1 · Day 4 — Data Acquisition & Exploratory Analysis
+# Target: Python 3.13
+
+# --- HTTP + the local practice API ---
+requests>=2.32
+fastapi>=0.115
+uvicorn>=0.30
+pydantic>=2.0
+
+# --- Exploratory analysis (Lab 2) ---
+pandas>=3.0
+numpy>=2.0
+matplotlib>=3.8
+seaborn>=0.13          # optional (correlation heatmap)
+pyarrow>=17.0          # Parquet hand-off (Lab 3)
+
+# --- Testing without a network (Lab 3) ---
+responses>=0.25
+pytest>=8.0            # to run test_client.py in a real project
+
+# --- Notebook tooling ---
+jupyterlab>=4.0
+python-dotenv>=1.0     # load a local .env (referenced in Lab 1 setup)
+
+# --- Build-only (needed only to REBUILD the notebooks) ---
+# nbformat>=5.10
+# nbclient>=0.10
