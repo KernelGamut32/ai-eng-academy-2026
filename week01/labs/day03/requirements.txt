@@ -1,0 +1,12 @@
+# Week 1 · Day 3 — Tabular Data with pandas 3.x
+# Target: Python 3.13
+
+# --- Runtime (needed to run the labs) ---
+pandas>=3.0        # str dtype, pd.col(), always-on Copy-on-Write, datetime64[us]
+numpy>=2.0
+pyarrow>=17.0      # REQUIRED for the Parquet exercises (Labs 2 and 5)
+jupyterlab>=4.0    # or: notebook
+
+# --- Build-only (needed only to REBUILD notebooks from build_labN.py) ---
+# nbformat>=5.10
+# nbclient>=0.10
