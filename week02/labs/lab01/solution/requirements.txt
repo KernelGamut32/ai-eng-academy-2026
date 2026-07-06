@@ -1,0 +1,13 @@
+# Week 2 · Lab 01 — Local API (requests) + SQL Extraction to pandas
+# Target: Python 3.13. Plain pip.
+
+requests>=2.32
+pandas>=3.0
+numpy>=2.0
+pyarrow>=17.0          # Parquet read/write (chunked streaming)
+fastapi>=0.115         # the local practice API
+uvicorn>=0.30          # ASGI server for the local API
+
+# stdlib (no install needed): sqlite3, json, pathlib
+# Notebook tooling:
+jupyterlab>=4.0

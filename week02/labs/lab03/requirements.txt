@@ -1,0 +1,10 @@
+# Week 2 · Lab 03 — Pandas Selection & Filtering
+# Target: Python 3.13. Plain pip.
+#
+# pandas 3.0 is REQUIRED — Part B (chained assignment / Copy-on-Write) teaches
+# behavior specific to pandas >= 3.0. On older pandas the lesson differs.
+
+pandas>=3.0
+numpy>=2.0
+pyarrow>=17.0          # partitioned Parquet (Part E)
+jupyterlab>=4.0

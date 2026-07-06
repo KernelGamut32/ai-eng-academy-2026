@@ -1,0 +1,13 @@
+# Week 2 · Lab 02 — Resilient API Harvester + SQL Extractor with Provenance
+# Target: Python 3.13. Plain pip.
+
+requests>=2.32
+pandas>=3.0
+numpy>=2.0
+pyarrow>=17.0          # Parquet read/write (partitioned + chunked streaming)
+pandera>=0.20          # data contract (stretch C1); use: import pandera.pandas as pa
+fastapi>=0.115         # the local auth API
+uvicorn>=0.30          # ASGI server for the local API
+
+# stdlib (no install): sqlite3, json, hashlib, datetime, shutil, pathlib
+jupyterlab>=4.0
