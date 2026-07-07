@@ -1,0 +1,18 @@
+# AI Engineering Academy — Week 2, Lab 09
+# From Tables/Text to JSONL for LLM Workloads
+# Python 3.13.x, plain pip + requirements.txt.
+#
+#   python -m venv .venv && source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
+#   pip install -r requirements.txt
+#
+# Verified against this pinned set at build time. No external network needed —
+# the API runs locally (background uvicorn on 127.0.0.1:8009).
+
+pandas==3.0.2
+numpy==2.4.1
+fastapi==0.139.0        # modern lifespan startup (NOT the deprecated @app.on_event)
+uvicorn==0.50.2         # ASGI server for the local corpus API
+requests==2.33.1        # ingests the API the production way (vs TestClient)
+orjson==3.11.9          # fast JSONL serialization (bytes -> one object per line)
+pydantic==2.13.4        # pulled in by FastAPI; pinned for reproducibility
+jupyterlab>=4.2         # or: notebook>=7.2  — to run the .ipynb files

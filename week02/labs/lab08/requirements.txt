@@ -1,0 +1,21 @@
+# AI Engineering Academy — Week 2, Lab 08
+# Authoring Schemas & CI Hooks (Pandera + Pydantic)
+# Cohort stack (pinned). Python 3.13.x, plain pip + requirements.txt.
+#
+#   python -m venv .venv && source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
+#   pip install -r requirements.txt
+#
+# Verified against pandas 3.0.2 / numpy 2.4.1 / pandera 0.32.1 / pydantic 2.13.4
+# / pyarrow 24.0.0 / pytest 9.1.1 at build time.
+
+pandas==3.0.2
+numpy==2.4.1
+pandera==0.32.1        # DataFrame schema authoring (Part A)
+pydantic==2.13.4       # row contracts + field validators (Part B)
+pyarrow>=18.0          # parquet + the pandas 3.0 string backend
+pytest>=8.0            # CI smoke test (Part C2)
+jupyterlab>=4.2        # or: notebook>=7.2  — to run the .ipynb files
+
+# Optional: pydantic's production-grade EmailStr type needs the email-validator extra.
+# The lab uses a regex email check to stay self-contained; enable this to swap in EmailStr.
+# pydantic[email]==2.13.4

@@ -1,0 +1,14 @@
+# AI Engineering Academy — Week 2, Lab 10
+# Instruction-Tuning Schemas
+# Python 3.13.x, plain pip + requirements.txt.
+#
+#   python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
+#   pip install -r requirements.txt
+#
+# Self-contained: the notebook regenerates its Lab 09 inputs (same seed). No network needed.
+
+pandas==3.0.2
+numpy==2.4.1
+orjson==3.11.9          # fast JSONL serialization (bytes -> one object per line)
+pydantic==2.13.4        # schema validation (Trio / PC / ChatRow models)
+jupyterlab>=4.2         # or: notebook>=7.2  — to run the .ipynb files

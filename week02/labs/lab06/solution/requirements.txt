@@ -1,0 +1,13 @@
+# AI Engineering Academy — Week 2, Lab 06
+# Clean & Standardize · Join & Aggregate
+# Cohort stack (pinned). Python 3.13.x, plain pip + requirements.txt.
+#
+#   python -m venv .venv && source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
+#   pip install -r requirements.txt
+#
+# Verified against pandas 3.0.2 / numpy 2.4.1 / pyarrow 24.0.0 at build time.
+
+pandas==3.0.2
+numpy==2.4.1
+pyarrow>=18.0          # parquet engine (A5, B5, and the partitioned-output stretch)
+jupyterlab>=4.2        # or: notebook>=7.2  — to run the .ipynb files

@@ -1,0 +1,20 @@
+# AI Engineering Academy — Week 2, Lab 11
+# Loading JSONL with 🤗 Datasets
+# Python 3.13.x, plain pip + requirements.txt.
+#
+#   python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
+#   pip install -r requirements.txt
+#
+# Self-contained + offline: the notebook regenerates its Lab 10 input (same seed) and
+# trains a tiny tokenizer locally. No network needed; HF offline env is set in-notebook.
+
+pandas==3.0.2
+numpy==2.4.1
+datasets==5.0.0         # Arrow-backed Dataset/DatasetDict, map/filter, splits, save/load
+tokenizers==0.23.1      # offline Byte-Level BPE (no downloads)
+orjson==3.11.9          # fast JSONL writing in the bootstrap
+jupyterlab>=4.2         # or: notebook>=7.2
+
+# Production-only (NOT required for this lab; see the torch/DataCollatorWithPadding flag):
+#   torch
+#   transformers

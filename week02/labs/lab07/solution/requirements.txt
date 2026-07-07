@@ -1,0 +1,18 @@
+# AI Engineering Academy — Week 2, Lab 07
+# Why Schema Validation in ML/LLM Pipelines
+# Cohort stack (pinned). Python 3.13.x, plain pip + requirements.txt.
+#
+#   python -m venv .venv && source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
+#   pip install -r requirements.txt
+#
+# Verified against pandas 3.0.2 / numpy 2.4.1 / pandera 0.32.1 / pydantic 2.13.4
+# / pyarrow 24.0.0 at build time.
+#
+# NOTE: no in-notebook `%pip install` — dependencies are installed once, here.
+
+pandas==3.0.2
+numpy==2.4.1
+pandera==0.32.1        # DataFrame schema gate (Parts B & D)
+pydantic==2.13.4       # row-level validation (Part C)
+pyarrow>=18.0          # parquet + the pandas 3.0 string backend
+jupyterlab>=4.2        # or: notebook>=7.2  — to run the .ipynb files

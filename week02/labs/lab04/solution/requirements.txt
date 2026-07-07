@@ -1,0 +1,12 @@
+# Week 2 · Lab 04 — Missing Data, Duplicates & Type Normalization
+# Cohort stack. Developed and verified against these exact versions.
+# Plain pip: `python -m pip install -r requirements.txt`  (Python 3.13)
+
+pandas==3.0.2
+numpy==2.4.1
+pyarrow>=18,<25           # Parquet I/O (to_parquet / read_parquet)
+pandera==0.32.1          # DataFrame schema / contract check (Part F)
+
+# Notebook front-end (any one is fine; JupyterLab shown)
+jupyterlab>=4.2
+ipykernel>=6.29
