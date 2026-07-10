@@ -27,6 +27,8 @@ writes it out as `messages`-format JSONL with a train and validation split.
 ## Setup (once, together)
 
 ```
+# From the cordwell_support_capstone folder
+# Include 3.13 on the end of python/pip calls if needed
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-capstone.txt
 pip install -e .
