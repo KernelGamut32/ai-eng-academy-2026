@@ -1,0 +1,18 @@
+Here are the classifications:
+```json
+{
+  "records": [
+    {"id": "E01", "label": "bug_report", "reasons": ["freezing on render"]},
+    {"id": "E02", "label": "feature_request", "reasons": ["asks to add duplicate"]},
+    {"id": "E03", "label": "praise", "reasons": ["thanks, works now"]},
+    {"id": "E04", "label": "question", "reasons": ["where can I find"]},
+    {"id": "E05", "label": "other", "reasons": ["intermittent, unclear"]},
+    {"id": "E06", "label": "feature_request", "reasons": ["please support markers"]},
+    {"id": "E07", "label": "praise", "reasons": ["amazing performance"]},
+    {"id": "E08", "label": "question", "reasons": ["phrased as why question"]},
+    {"id": "E09", "label": "feature_request", "reasons": ["could you add templates"]},
+    {"id": "E10", "label": "praise", "reasons": ["overall fine"]}
+  ],
+  "stats": {"count": 10}
+}
+```

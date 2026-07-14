@@ -1,0 +1,11 @@
+{
+  "records": [
+    {"id": "M01", "final_answer": 113, "rationale": "113 liters"},
+    {"id": "M02", "final_answer": 1.6, "rationale": "1.6 km total"},
+    {"id": "M03", "final_answer": 28, "rationale": "30 - 7 + 5 = 28"},
+    {"id": "P01", "final_answer": "reimburse_meal_only", "rationale": "meal only"},
+    {"id": "P02", "final_answer": "approve", "rationale": "amount within cap"},
+    {"id": "P03", "final_answer": "approve", "rationale": "approved peripheral"}
+  ],
+  "stats": {"count": 6}
+}

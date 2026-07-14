@@ -1,0 +1,58 @@
+{
+  "mwp": [
+    {
+      "id": "M01",
+      "text": "A jar has 18 red marbles and 12 blue marbles. If you remove 7 red and 3 blue, how many marbles remain?"
+    },
+    {
+      "id": "M02",
+      "text": "A train travels 120 km in 2 hours, then 150 km in 3 hours. What is its average speed in km per hour for the whole trip?"
+    },
+    {
+      "id": "M03",
+      "text": "There are 5 boxes with 8 pens each. You give away 9 pens, then buy 7 more. How many pens do you have?"
+    },
+    {
+      "id": "M04",
+      "text": "A baker made 48 cookies. She sells three quarters of them in the morning and 8 more in the afternoon. How many cookies are left?"
+    },
+    {
+      "id": "M05",
+      "text": "Two numbers sum to 30. One is 8 more than the other. What is the larger number?"
+    }
+  ],
+  "pol": [
+    {
+      "id": "P01",
+      "text": "Policy: Reimburse taxi rides only if the receipt timestamp is between 06:00 and 22:00 local and the total is at most 50 dollars. Claim: 47 dollars at 21:40 with a valid receipt. Should it be reimbursed?"
+    },
+    {
+      "id": "P02",
+      "text": "Policy: The travel meal stipend is 20 dollars per day and alcohol is never reimbursable. Claim: one receipt showing lunch 14 dollars and beer 6 dollars. What is reimbursable?"
+    },
+    {
+      "id": "P03",
+      "text": "Policy: Laptops must be approved by IT before purchase. Claim: an employee bought a 900 dollar laptop without prior approval. Is it eligible?"
+    },
+    {
+      "id": "P04",
+      "text": "Policy: Conference fees are reimbursable only if the manager pre-approves by email before the purchase. Claim: the manager approved by email the day after the purchase. Is it eligible?"
+    },
+    {
+      "id": "P05",
+      "text": "Policy: Rideshare tips are reimbursable only when the combined total of fare plus tip is at most 40 dollars. Claim: fare 32 dollars and tip 9 dollars. Is it eligible?"
+    }
+  ],
+  "gold": {
+    "M01": 20,
+    "M02": 54,
+    "M03": 38,
+    "M04": 4,
+    "M05": 19,
+    "P01": "approve",
+    "P02": "reimburse_meal_only",
+    "P03": "deny",
+    "P04": "deny",
+    "P05": "deny"
+  }
+}

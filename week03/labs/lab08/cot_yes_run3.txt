@@ -1,0 +1,11 @@
+{
+  "records": [
+    {"id": "M01", "final_answer": 113, "rationale": "95 then 113"},
+    {"id": "M02", "final_answer": 1.6, "rationale": "1600 m is 1.6 km"},
+    {"id": "M03", "final_answer": 33, "rationale": "30 plus 5 minus 2 miscount"},
+    {"id": "P01", "final_answer": "reimburse_meal_only", "rationale": "only the meal qualifies"},
+    {"id": "P02", "final_answer": "deny", "rationale": "outside the time window"},
+    {"id": "P03", "final_answer": "approve", "rationale": "under the peripheral cap"}
+  ],
+  "stats": {"count": 6}
+}

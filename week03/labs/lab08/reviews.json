@@ -1,0 +1,29 @@
+{
+  "labels": ["bug_report", "feature_request", "praise", "question", "other"],
+  "example_pool": [
+    {"id": "S01", "text": "Crashes when importing a ProRes file", "label": "bug_report", "kind": "typical"},
+    {"id": "S02", "text": "Please add multi-track editing", "label": "feature_request", "kind": "typical"},
+    {"id": "S03", "text": "Love the new color grading tools", "label": "praise", "kind": "typical"},
+    {"id": "S04", "text": "How do I undo a clip split?", "label": "question", "kind": "typical"},
+    {"id": "S05", "text": "Laggy sometimes but still usable", "label": "other", "kind": "edge"},
+    {"id": "S06", "text": "Only crashes when I connect an external monitor", "label": "bug_report", "kind": "edge"},
+    {"id": "S07", "text": "Any chance of LUT export support?", "label": "feature_request", "kind": "edge"},
+    {"id": "S08", "text": "Thanks for the fast support reply yesterday", "label": "praise", "kind": "edge"},
+    {"id": "S09", "text": "Where do the autosave backups get stored?", "label": "question", "kind": "edge"},
+    {"id": "S10", "text": "Why does the timeline reset every time I reopen a project?", "label": "bug_report", "kind": "adversarial"},
+    {"id": "S11", "text": "Add cloud sync. Actually never mind, I use a NAS", "label": "other", "kind": "adversarial"},
+    {"id": "S12", "text": "Decent app but the banner ads are distracting", "label": "other", "kind": "adversarial"}
+  ],
+  "eval": [
+    {"id": "E01", "text": "It keeps freezing when I tap render", "gold": "bug_report"},
+    {"id": "E02", "text": "Add a way to duplicate projects", "gold": "feature_request"},
+    {"id": "E03", "text": "Thanks for the quick bugfix, works now", "gold": "praise"},
+    {"id": "E04", "text": "Where can I find the autosave files?", "gold": "question"},
+    {"id": "E05", "text": "Sometimes it logs me out randomly", "gold": "bug_report"},
+    {"id": "E06", "text": "Please support markers on the timeline", "gold": "feature_request"},
+    {"id": "E07", "text": "Amazing performance on my old laptop", "gold": "praise"},
+    {"id": "E08", "text": "Why is audio muted after export?", "gold": "bug_report"},
+    {"id": "E09", "text": "Could you add templates for shorts?", "gold": "feature_request"},
+    {"id": "E10", "text": "The pricing page is a bit confusing but overall fine", "gold": "other"}
+  ]
+}

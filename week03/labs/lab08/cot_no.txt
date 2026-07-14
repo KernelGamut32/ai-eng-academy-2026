@@ -1,0 +1,11 @@
+{
+  "records": [
+    {"id": "M01", "final_answer": 113},
+    {"id": "M02", "final_answer": 1600},
+    {"id": "M03", "final_answer": 23},
+    {"id": "P01", "final_answer": "deny"},
+    {"id": "P02", "final_answer": "deny"},
+    {"id": "P03", "final_answer": "approve"}
+  ],
+  "stats": {"count": 6}
+}

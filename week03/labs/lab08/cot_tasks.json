@@ -1,0 +1,20 @@
+{
+  "mwp": [
+    {"id": "M01", "text": "A tank contains 120 liters of water. 25 liters are used, then 18 liters are added. How many liters are in the tank now? Answer in liters as a number."},
+    {"id": "M02", "text": "A runner completes 3 laps of 400 m and then 2 laps of 200 m. What is the total distance in kilometers? Answer as a number in km."},
+    {"id": "M03", "text": "Muffins come in boxes of 6. You buy 5 boxes, give away 7 muffins, then bake 5 more. How many muffins do you have? Answer as a number."}
+  ],
+  "pol": [
+    {"id": "P01", "text": "Policy: meals are reimbursable up to 20 dollars per day and alcohol is never reimbursable. Claim: one receipt with a 13 dollar sandwich and a 6 dollar beer. Return reimburse_meal_only, approve, or deny."},
+    {"id": "P02", "text": "Policy: a taxi is reimbursable only if the receipt time is between 05:30 and 22:30 and the total is 45 dollars or less. Claim: 41 dollars at 22:40. Return approve or deny."},
+    {"id": "P03", "text": "Policy: peripherals up to 80 dollars are approved without IT sign off, laptops always need prior IT approval. Claim: a 59 dollar mouse. Return approve or deny."}
+  ],
+  "gold": {
+    "M01": 113,
+    "M02": 1.6,
+    "M03": 28,
+    "P01": "reimburse_meal_only",
+    "P02": "deny",
+    "P03": "approve"
+  }
+}
