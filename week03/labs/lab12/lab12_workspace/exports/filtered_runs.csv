@@ -1,0 +1,12 @@
+ts,project,run_type,name,latency_s,approx_tokens,prompt_version,record_id,valid,tags
+2026-07-16T20:13:09Z,lab12,chain,extract_lead,0.0001,123,v1,S01,True,"baseline,extract"
+2026-07-16T20:13:09Z,lab12,chain,summarize_md,0.0,112,v1,S01,,"baseline,extract"
+2026-07-16T20:13:09Z,lab12,chain,extract_lead,0.0,124,v1,S02,True,"baseline,extract"
+2026-07-16T20:13:09Z,lab12,chain,summarize_md,0.0,105,v1,S02,,"baseline,extract"
+2026-07-16T20:13:09Z,lab12,chain,extract_lead,0.0,132,v1,S03,False,"baseline,extract"
+2026-07-16T20:13:09Z,lab12,chain,extract_lead,0.0001,212,v2,S01,True,"fewshot,extract"
+2026-07-16T20:13:09Z,lab12,chain,summarize_md,0.0,112,v2,S01,,"fewshot,extract"
+2026-07-16T20:13:09Z,lab12,chain,extract_lead,0.0001,214,v2,S02,True,"fewshot,extract"
+2026-07-16T20:13:09Z,lab12,chain,summarize_md,0.0,106,v2,S02,,"fewshot,extract"
+2026-07-16T20:13:09Z,lab12,chain,extract_lead,0.0,219,v2,S03,True,"fewshot,extract"
+2026-07-16T20:13:09Z,lab12,chain,summarize_md,0.0,121,v2,S03,,"fewshot,extract"

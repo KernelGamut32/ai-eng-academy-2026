@@ -1,0 +1,11 @@
+{
+  "records": [
+    {"id": "M01", "final_answer": 113, "rationale": "120 - 25 = 95, 95 + 18 = 113"},
+    {"id": "M02", "final_answer": 1.6, "rationale": "1600 meters to km"},
+    {"id": "M03", "final_answer": 28, "rationale": "23 then plus 5 is 28"},
+    {"id": "P01", "final_answer": "reimburse_meal_only", "rationale": "beer not reimbursable"},
+    {"id": "P02", "final_answer": "deny", "rationale": "time is 22:40, past cutoff"},
+    {"id": "P03", "final_answer": "approve", "rationale": "peripheral under 80"}
+  ],
+  "stats": {"count": 6}
+}

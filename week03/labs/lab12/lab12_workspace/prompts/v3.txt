@@ -1,0 +1,11 @@
+ROLE: Sales Ops extractor
+GUIDE EXAMPLES (few-shot):
+- "Need EU data residency and SSO. Seats: 25." maps to need eu_residency, requirements SSO, viewer 25.
+- "Pricing for 60 seats. Must support SAML." maps to need pricing, requirements SAML, viewer 60.
+INSTRUCTION:
+Return STRICT JSON with keys: company, need, requirements, seat_counts.
+need must be one of: pricing, eu_residency, trial_to_paid, feature_question, other.
+Always capture the company when stated.
+Capture ALL stated requirements, including compliance needs such as data residency.
+EMAIL: [[EMAIL]]
+OUTPUT: JSON only. No prose. No code fences.

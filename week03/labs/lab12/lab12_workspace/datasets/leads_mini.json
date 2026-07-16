@@ -1,0 +1,16 @@
+{
+  "records": [
+    {
+      "id": "S01",
+      "email": "Body: I am Priya at CloudWave. Need EU data residency and SSO. Seats: 25."
+    },
+    {
+      "id": "S02",
+      "email": "Body: Hello from Pine and Co. We need pricing for 60 seats. Must support SAML."
+    },
+    {
+      "id": "S03",
+      "email": "Body: Hi, our trial ends next week. We want to convert to 10 editor and 40 viewer. Annual billing?"
+    }
+  ]
+}

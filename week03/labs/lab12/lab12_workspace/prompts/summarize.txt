@@ -1,0 +1,9 @@
+ROLE: Executive summarizer
+INSTRUCTION:
+Given a validated lead JSON, produce a short Markdown brief with:
+- Company and Need
+- Requirements (up to 3)
+- Seats if known
+Keep it concise. No code fences.
+LEAD_JSON: [[LEAD_JSON]]
+OUTPUT: Markdown only.

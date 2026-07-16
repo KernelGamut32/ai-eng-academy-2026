@@ -1,0 +1,14 @@
+# Lab 10 Memory Patterns (pinned to the cohort stack, verified 2026-07)
+# Python 3.13
+langchain==1.3.13
+langchain-core==1.4.9
+langchain-openai==1.3.5
+rapidfuzz==3.14.5
+python-dotenv==1.0.1
+# Notebook execution
+jupyterlab
+ipykernel
+# Optional: only if you prefer Ollama's native client over its OpenAI-compatible
+# endpoint. The lab does not require it; MODE="ollama" works through langchain-openai.
+# Latest on PyPI is 1.1.0; confirm it resolves against the pins above before adding.
+# langchain-ollama==1.1.0

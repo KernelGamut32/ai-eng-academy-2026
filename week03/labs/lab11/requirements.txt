@@ -1,0 +1,23 @@
+# Week 3, Lab 11: Guided Chains and Conversational Memory
+# Verified by running the solution notebook end to end (July 2026).
+#
+# The lab imports only version-stable LangChain primitives: message types,
+# ChatPromptTemplate, MessagesPlaceholder (via the "placeholder" tuple form),
+# RunnableLambda, and a BaseChatModel subclass. That subset behaves the same on
+# the 0.3.x and 1.x LangChain lines, so the lab is robust to the exact pin.
+#
+# CURRENCY FLAG: the master cohort stack does not pin a LangChain version.
+# This lab was verified against langchain-core 1.4.9. Please align the pin below
+# to the cohort image. If the cohort is on 1.x, note that the legacy
+# langchain.memory classes (ConversationBufferMemory, ConversationSummaryMemory)
+# were removed and moved to langchain-classic; this lab does not use them, which
+# is why memory is built explicitly.
+
+langchain-core==1.4.9
+jsonschema==4.26.0
+rapidfuzz==3.14.5
+ipykernel
+
+# Optional. Only needed for the inert "real model" appendix, which the lab does
+# not execute. Uncomment if you want to point the chain at a live endpoint.
+# langchain-openai==1.3.5

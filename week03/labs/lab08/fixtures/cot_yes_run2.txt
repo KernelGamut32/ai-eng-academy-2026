@@ -1,0 +1,11 @@
+{
+  "records": [
+    {"id": "M01", "final_answer": 113, "rationale": "120 - 25 + 18 = 113"},
+    {"id": "M02", "final_answer": 1.6, "rationale": "total 1600 m equals 1.6 km"},
+    {"id": "M03", "final_answer": 28, "rationale": "5 boxes of 6 is 30, minus 7 plus 5 is 28"},
+    {"id": "P01", "final_answer": "reimburse_meal_only", "rationale": "meal ok, alcohol excluded"},
+    {"id": "P02", "final_answer": "deny", "rationale": "22:40 is after the 22:30 cutoff"},
+    {"id": "P03", "final_answer": "approve", "rationale": "mouse is a peripheral under 80"}
+  ],
+  "stats": {"count": 6}
+}

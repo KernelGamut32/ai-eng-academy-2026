@@ -1,0 +1,20 @@
+{
+  "turns": [
+    {"role": "user", "text": "Hi, I'm Jordan. I use your video editor on a MacBook Pro."},
+    {"role": "assistant", "text": "Hi Jordan! How can I help with the video editor today?"},
+    {"role": "user", "text": "My export keeps failing for 4K timelines. I'm on app v2.3 with an M1 Pro."},
+    {"role": "assistant", "text": "Got it. Do you see any error code or crash report?"},
+    {"role": "user", "text": "No code, but the app quits near the end. Also, I prefer H.265 exports with 20 Mbps."},
+    {"role": "assistant", "text": "Thanks. I'll keep that preference in mind."},
+    {"role": "user", "text": "My last support ticket was #A-8821 if that helps."},
+    {"role": "assistant", "text": "Thanks, I'll reference ticket A-8821."},
+    {"role": "user", "text": "What export settings did I prefer again? And what was my last ticket ID?"}
+  ],
+  "eval": {
+    "user": "Jordan",
+    "device": "MacBook Pro",
+    "prefs_tokens": ["H.265", "20 Mbps"],
+    "ticket": "A-8821",
+    "expected_answer_contains": ["H.265", "20 Mbps", "A-8821"]
+  }
+}
