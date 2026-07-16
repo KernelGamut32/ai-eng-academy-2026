@@ -1,0 +1,9 @@
+# Lab 04 - Frame It Three Ways, Then Guard the Contract
+# Cohort target: Python 3.13.x  (verified compatible on 3.12.x as well)
+# Install: pip install -r requirements.txt
+jsonschema==4.26.0
+
+# Optional - only needed to run the live Part F path against a local model.
+# Without it, Part F falls back to the deterministic stub and still runs clean.
+# Requires a running Ollama server with the model pulled:  ollama pull gemma4
+ollama
