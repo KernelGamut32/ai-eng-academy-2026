@@ -1,0 +1,61 @@
+# Week 4 Demo 03: Verify and Repair
+# The whole demo runs offline by default with a deterministic scripted model.
+# No GPU, no model download, no network for the default path. It starts instantly.
+#
+# Verified by running the instructor notebook end to end in the build environment,
+# entirely offline, on:
+#   Python 3.12.3 (materials target 3.13, runs unchanged)
+#   pydantic 2.13.4, pandas 3.0.2, matplotlib 3.10.8
+# On the cohort stack (pydantic 2.13.4, pandas 3.0.2) the behavior is identical.
+#
+# Install with plain pip into a fresh virtual environment:
+#   python -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# ---------------------------------------------------------------------------
+# Core dependencies (required for the full offline demo)
+# ---------------------------------------------------------------------------
+pydantic
+pandas
+matplotlib
+
+# ---------------------------------------------------------------------------
+# Optional dependency (only for a live backend)
+# ---------------------------------------------------------------------------
+# The generation step runs offline by default against a deterministic scripted
+# model. Set BACKEND_MODE to lmstudio or ollama to call a real local model, which
+# needs the OpenAI client (both local backends speak the OpenAI compatible API).
+#   openai            verified against 2.46.0
+#
+# Not required: the original notebook used tiktoken for token counting. It is
+# dropped here. The demo uses a transparent character-based token estimate, which
+# is the right call for a local Gemma model anyway, since tiktoken does not know
+# that tokenizer.
+#
+# ---------------------------------------------------------------------------
+# Exact pins for reproducing the printed numbers
+# ---------------------------------------------------------------------------
+#   pydantic==2.13.4
+#   pandas==3.0.2
+#   matplotlib==3.10.8
+#   openai==2.46.0
+# The schema, verifier, and repair loop use stable Pydantic v2 and stdlib
+# interfaces, so any recent pydantic 2.x reproduces the behavior.
+#
+# ---------------------------------------------------------------------------
+# CURRENCY FLAGS. Confirm at build time on the actual cohort machines.
+# ---------------------------------------------------------------------------
+# 1. Local model tag. A live backend defaults to LOCAL_MODEL=gemma4. Confirm the
+#    exact tag the cohort machines pulled, for BOTH LM Studio and Ollama, and set
+#    the LOCAL_MODEL environment variable if it differs.
+#
+# 2. Backend ports. LM Studio serves on 1234 and Ollama on 11434 by default. If a
+#    machine remaps a port, update the base url in the BACKENDS dict in Part 4.
+#
+# 3. Cost figures are illustrative. The cloud per-token rate in Part 7 is a
+#    teaching placeholder to make the reliability-versus-cost trade-off visible.
+#    Confirm real provider pricing before quoting any dollar figure. Local models
+#    on the cohort machines are free.
+#
+# 4. Pin refresh. Before the next cohort, re-run the instructor notebook top to
+#    bottom and confirm the pre-flight self-check passes.

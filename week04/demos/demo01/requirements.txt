@@ -1,0 +1,48 @@
+# Week 4 Demo 01: Catching a Model in the Act
+# Verified against transformer-lens 3.5.1 on Python 3.12.3, runs unchanged on 3.13.
+#
+# Install with plain pip into a fresh virtual environment:
+#   python -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# ---------------------------------------------------------------------------
+# Direct dependencies
+# ---------------------------------------------------------------------------
+transformer-lens==3.5.1
+matplotlib
+pandas
+
+# ---------------------------------------------------------------------------
+# Pulled in transitively by transformer-lens. Listed for visibility only.
+# Do not pin these by hand unless a machine hits a conflict; let transformer-lens
+# resolve them.
+# ---------------------------------------------------------------------------
+#   torch          the tensor backend
+#   transformers   the Hugging Face model that TransformerBridge wraps
+#   numpy          array handling
+#
+# ---------------------------------------------------------------------------
+# CURRENCY FLAGS. Confirm at build time on the actual cohort machines.
+# ---------------------------------------------------------------------------
+# 1. Load path. This demo loads GPT-2 through
+#    transformer_lens.model_bridge.TransformerBridge.boot_transformers, then
+#    calls enable_compatibility_mode(). The older HookedTransformer.from_pretrained
+#    entry point is deprecated as of TransformerLens 3.0 and is being removed in
+#    the next major version. Do not reintroduce it.
+#
+# 2. torch build. GPT-2 small runs fine on CPU on any recent torch (2.6 or later
+#    is what transformer-lens 3.5.1 resolves to). Pick the wheel that matches each
+#    machine. On the cohort's no-GPU Macs, the default CPU wheel is correct.
+#    - CPU only (cohort Macs, default): the standard `pip install torch` wheel.
+#    - CUDA machines: install the CUDA-matched torch wheel from the PyTorch index.
+#
+# 3. Apple MPS. This demo defaults to CPU on Macs on purpose. TransformerLens does
+#    not auto-select MPS because MPS can return silently wrong attention on some
+#    torch builds, which would quietly corrupt exactly what this demo measures.
+#    If someone wants MPS anyway, they opt in with the environment variable
+#    TRANSFORMERLENS_ALLOW_MPS=1, and they should be on torch 2.9.0 or later,
+#    since earlier torch has a known MPS bug that produces incorrect attention.
+#    For teaching, stay on CPU.
+#
+# 4. Pin refresh. Before the next cohort, re-run a clean install and confirm
+#    transformer-lens is still on 3.5.1 or bump the pin and re-verify the notebook.

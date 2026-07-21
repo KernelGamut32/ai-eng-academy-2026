@@ -1,0 +1,64 @@
+# Week 4 Demo 02: Grounded Answers You Can Trust
+# The core demo (Parts 0 through 7) runs on scikit-learn and numpy only.
+# No GPU, no model download, no network. It starts instantly on the cohort Macs.
+#
+# Verified by running the instructor notebook end to end in the build environment on:
+#   Python 3.12.3 (materials target 3.13, runs unchanged)
+#   numpy 2.4.4, pandas 3.0.2, scikit-learn 1.8.0, matplotlib 3.10.8
+# On the cohort stack (numpy 2.4.x, pandas 3.0.2) the behavior is the same. Exact
+# similarity decimals can shift a little on a different scikit-learn build, but the
+# pattern holds: covered questions score well above the abstain threshold and off
+# topic questions score 0.0.
+#
+# Install with plain pip into a fresh virtual environment:
+#   python -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# ---------------------------------------------------------------------------
+# Core dependencies (required for Parts 0 through 7)
+# ---------------------------------------------------------------------------
+scikit-learn
+numpy
+pandas
+matplotlib
+
+# ---------------------------------------------------------------------------
+# Optional dependency (only for Part 8, the generative section)
+# ---------------------------------------------------------------------------
+# Part 8 is off by default. It runs only when you set BACKEND_MODE to lmstudio or
+# ollama. In that case you also need the OpenAI client, which both local backends
+# speak. Leave it installed or add it when you go live.
+#   openai            verified against 2.46.0
+#
+# ---------------------------------------------------------------------------
+# Version pins
+# ---------------------------------------------------------------------------
+# These are intentionally left unpinned above because the demo uses only stable,
+# long-standing scikit-learn interfaces (TfidfVectorizer, cosine_similarity) that
+# have not changed across recent releases. If you want exact reproducibility of the
+# printed numbers, pin to what was verified:
+#   scikit-learn==1.8.0
+#   numpy==2.4.4
+#   pandas==3.0.2
+#   matplotlib==3.10.8
+#   openai==2.46.0
+# Any recent scikit-learn 1.x reproduces the teaching pattern.
+#
+# ---------------------------------------------------------------------------
+# CURRENCY FLAGS. Confirm at build time on the actual cohort machines.
+# ---------------------------------------------------------------------------
+# 1. Local model tag. Part 8 defaults to LOCAL_MODEL=gemma4. Confirm the exact tag
+#    the cohort machines have actually pulled, for BOTH LM Studio and Ollama, and
+#    set the LOCAL_MODEL environment variable if it differs. The two tools can use
+#    different tag strings for the same weights.
+#
+# 2. Backend ports. LM Studio serves on 1234 and Ollama on 11434 by default. If a
+#    machine remaps a port, update the base url in the BACKENDS dict in Part 8.
+#
+# 3. Backend policy. The generative section is opt-in. It reads BACKEND_MODE from
+#    the environment: offline (default), lmstudio, or ollama. Both live backends
+#    share one OpenAI compatible code path and differ only by port and model tag.
+#    A down server raises a clear error rather than silently falling back.
+#
+# 4. Pin refresh. Before the next cohort, re-run the instructor notebook top to
+#    bottom and confirm the pre-flight self-check passes.
