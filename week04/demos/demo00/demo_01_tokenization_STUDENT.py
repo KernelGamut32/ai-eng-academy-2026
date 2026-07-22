@@ -29,10 +29,12 @@ print("=" * 70)
 words = SENTENCE.split()
 vocab = sorted(set(words))
 
+print(vocab)
+
 # FILL 1: build the word-to-ID mapping.
 # Contract: a dict mapping each word in `vocab` to its index in `vocab`.
 #           Example entry: 'because' -> 0 (it sorts first).
-word_to_id = ...  # FILL 1
+word_to_id = {w: i for i, w in enumerate(vocab)}
 word_to_id = require(word_to_id, 1, "dict of word -> its index in vocab")
 
 print(f"\nSentence: {SENTENCE!r}")
@@ -44,7 +46,7 @@ for w, i in word_to_id.items():
 # Contract: a list of integer IDs, one per word in `words`, in order,
 #           looked up from word_to_id.
 # Target output for this sentence: [7, 2, 6, 7, 1, 4, 0, 5, 8, 3]
-ids = ...  # FILL 2
+ids = [word_to_id[w] for w in words]
 ids = require(ids, 2, "list of word_to_id[w] for each w in words")
 
 print(f"\nToken IDs: {ids}")

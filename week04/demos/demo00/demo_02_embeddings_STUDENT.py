@@ -37,10 +37,10 @@ for i, tok in enumerate(VOCAB):
 ids = [5, 0, 6]  # "the drill was"
 print(f"\nLooking up IDs {ids} ('the drill was'):")
 
-# FILL 1: look up the embeddings for `ids`.
-# Contract: index the table with the list of IDs to get shape (3, 4),
-#           one row per token, in order. Numpy indexes with a list directly.
-looked_up = ...  # FILL 1
+# # FILL 1: look up the embeddings for `ids`.
+# # Contract: index the table with the list of IDs to get shape (3, 4),
+# #           one row per token, in order. Numpy indexes with a list directly.
+looked_up = embedding_table[ids]  # FILL 1
 looked_up = require(looked_up, 1, "index embedding_table with the ids list")
 
 print(looked_up)
@@ -66,7 +66,7 @@ def cosine(a, b):
     # Contract: dot product of a and b, divided by the product of their
     #           L2 norms (np.linalg.norm). Returns a scalar near 1.0 for
     #           same-direction vectors, near 0.0 for unrelated ones.
-    sim = ...  # FILL 2
+    sim = float(a @ b / (np.linalg.norm(a) * np.linalg.norm(b)))
     return require(sim, 2, "a dot b over the product of the two norms")
 
 print("\nCosine similarity (1.0 = same direction, 0.0 = unrelated):\n")
@@ -98,10 +98,12 @@ own vector, added to the token vector before the first layer.
 pos_table = np.round(np.random.randn(3, D_MODEL) * 0.1, 2)
 tok_vecs = embedding_table[ids]
 
+print("position table", pos_table)
+
 # FILL 3: combine token vectors with position vectors.
 # Contract: element-wise sum of tok_vecs and pos_table (both shape (3, 4)),
 #           rounded to 2 decimals with np.round for readable printing.
-combined = ...  # FILL 3
+combined = np.round(tok_vecs + pos_table, 2)  # FILL 3
 combined = require(combined, 3, "np.round of tok_vecs plus pos_table")
 
 for p, tok_id in enumerate(ids):

@@ -47,6 +47,8 @@ E = {
 }
 X = np.array([E[t] for t in TOKENS], dtype=float)  # shape (7, 4)
 
+print("X", X)
+
 print("=" * 70)
 print("STEP 1: Q, K, V are three learned projections of the same input")
 print("=" * 70)
@@ -67,16 +69,20 @@ W_V = np.eye(4)      # values: hand over your own features unchanged
 # FILL 1, 2, 3: project the input into queries, keys, and values.
 # Contract: matrix-multiply X (shape (7, 4)) by the matching projection.
 #           All three results have shape (7, 4): one Q, K, V row per token.
-Q = ...  # FILL 1
+Q = X @ W_Q  # FILL 1
 Q = require(Q, 1, "X matrix-multiplied by W_Q")
-K = ...  # FILL 2
+K = X @ W_K  # FILL 2
 K = require(K, 2, "X matrix-multiplied by W_K")
-V = ...  # FILL 3
+V = X @ W_V  # FILL 3
 V = require(V, 3, "X matrix-multiplied by W_V")
 
 print(f"\nInput X: {X.shape}   Q: {Q.shape}   K: {K.shape}   V: {V.shape}")
 print("\nIn a trained model, W_Q, W_K, W_V are learned. We hand-wrote W_Q so")
 print("that a pronoun's query points in the same direction as object keys.")
+
+print("Q", Q)
+print("K", K)
+print("V", V)
 
 print()
 print("=" * 70)
@@ -89,8 +95,10 @@ d_k = K.shape[1]
 # Contract: multiply Q by the transpose of K, then divide by the square
 #           root of d_k (the scale keeps softmax gradients healthy).
 #           Result shape (7, 7): row = query token, column = key token.
-scores = ...  # FILL 4
+scores = Q @ K.T / np.sqrt(d_k)  # FILL 4
 scores = require(scores, 4, "Q times K-transpose, scaled by sqrt(d_k)")
+
+print("scores", scores)
 
 print(f"\nscores = Q @ K.T / sqrt(d_k), shape {scores.shape} (query row, key column)\n")
 header = "          " + "".join(f"{t:>10s}" for t in TOKENS)
@@ -112,8 +120,10 @@ def softmax(x, axis=-1):
 # FILL 5: convert scores to attention weights.
 # Contract: apply the provided softmax to `scores`. Each ROW of the result
 #           sums to 1.0: it is one token's attention budget over the sentence.
-weights = ...  # FILL 5
+weights = softmax(scores)  # FILL 5
 weights = require(weights, 5, "softmax applied to the scores matrix")
+
+print("weights", weights)
 
 print("\nAttention weights (each row sums to 1.0):\n")
 print(header)
@@ -141,8 +151,10 @@ print("=" * 70)
 # FILL 6: produce the attention output.
 # Contract: matrix-multiply the weights (7, 7) by V (7, 4). Each output
 #           row is that token's attention-weighted blend of all values.
-out = ...  # FILL 6
+out = weights @ V  # FILL 6
 out = require(out, 6, "weights matrix-multiplied by V")
+
+print("out", out)
 
 print(f"\noutput = weights @ V, shape {out.shape}\n")
 print(f"Vector for 'it' BEFORE attention: {X[TOKENS.index('it')]}")

@@ -55,8 +55,10 @@ print("=" * 70)
 #           result with .astype(bool).
 # Target output: the printed grid below shows X only to the right of the
 #           diagonal, '.' on and below it.
-mask = ...  # FILL 1
+mask = np.triu(np.ones((T, T)), k=1).astype(bool)  # FILL 1
 mask = require(mask, 1, "boolean strict upper triangle, shape (T, T)")
+
+print("mask", mask)
 
 print("\nMasked positions (X = blocked, . = visible):\n")
 print("          " + "".join(f"{t:>9s}" for t in TOKENS))
@@ -90,6 +92,9 @@ for h in range(N_HEAD):
     head_weights.append(w)
     print(f"  head {h}: output shape {out.shape}")
 
+print("head_outs", head_outs)
+print("head_weights", head_weights)
+
 print(f"\nHead 0 attention weights (note the 0.00 upper triangle, the mask at work):\n")
 print(head_weights[0])
 
@@ -115,7 +120,7 @@ def layer_norm(x, eps=1e-5):
 # FILL 2: apply the residual connection and normalize.
 # Contract: ADD attn_out to the original input X (do not replace X), then
 #           pass the sum through layer_norm. Shape stays (5, 8).
-X1 = ...  # FILL 2
+X1 = layer_norm(X + attn_out)  # FILL 2
 X1 = require(X1, 2, "layer_norm of X plus attn_out")
 
 print(f"\nAfter attention + residual + norm: {X1.shape}")
@@ -128,13 +133,17 @@ W2 = np.random.randn(4 * D_MODEL, D_MODEL) * 0.3
 # Contract: multiply X1 by W1, apply ReLU (np.maximum of 0 and the
 #           product), then multiply by W2. Same weights hit every token
 #           independently. Shape returns to (5, 8).
-mlp_out = ...  # FILL 3
+mlp_out = np.maximum(0, X1 @ W1) @ W2  # FILL 3
 mlp_out = require(mlp_out, 3, "ReLU(X1 @ W1) @ W2")
+
+print("mlp_out", mlp_out)
 
 # FILL 4: second residual + norm, same rhythm as FILL 2.
 # Contract: layer_norm of X1 plus mlp_out.
-X2 = ...  # FILL 4
+X2 = layer_norm(X1 + mlp_out)  # FILL 4
 X2 = require(X2, 4, "layer_norm of X1 plus mlp_out")
+
+print("X2", X2)
 
 print(f"MLP expands {D_MODEL} -> {4 * D_MODEL} -> {D_MODEL}; after residual + norm: {X2.shape}")
 
@@ -173,8 +182,10 @@ W_unembed = np.random.randn(D_MODEL, VOCAB_SIZE) * 0.3
 # FILL 5: project the final hidden states to vocabulary scores.
 # Contract: matrix-multiply H (5, 8) by W_unembed (8, 12) to get logits
 #           of shape (5, 12): a score for every vocab token at every position.
-logits = ...  # FILL 5
+logits = H @ W_unembed  # FILL 5
 logits = require(logits, 5, "H matrix-multiplied by W_unembed")
+
+print("logits", logits)
 
 print(f"\nFinal projection to vocabulary: {H.shape} @ {W_unembed.shape} -> logits {logits.shape}")
 print(f"Last row = scores over the vocab for the NEXT token after {TOKENS[-1]!r}:")
