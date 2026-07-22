@@ -1,0 +1,4 @@
+# Verified in a clean environment on Python 3.12.3.
+# Cohort machines run Python 3.13; both work unchanged.
+numpy==2.4.4
+torch==2.13.0
