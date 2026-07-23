@@ -42,12 +42,12 @@ def require(value, fill_num, hint):
 # ---------------------------------------------------------------------------
 # Config. Small on purpose: fast on CPU, big enough to visibly learn.
 # ---------------------------------------------------------------------------
-BLOCK_SIZE = 64     # context window in characters
-N_EMBD     = 64     # d_model
-N_HEAD     = 4
-N_LAYER    = 3
+BLOCK_SIZE = 128     # context window in characters
+N_EMBD     = 256     # d_model
+N_HEAD     = 16
+N_LAYER    = 10
 BATCH_SIZE = 32
-TRAIN_STEPS = 600
+TRAIN_STEPS = 2400
 LR = 3e-3
 
 # Provided. Device: prefer CUDA, then Apple MPS, then CPU. Never hard-code cuda.
@@ -69,11 +69,11 @@ import random
 random.seed(1337)
 
 PRODUCTS = ["cordless drill", "orbital sander", "impact driver",
-            "circular saw", "shop vacuum", "tile cutter"]
+            "circular saw", "shop vacuum", "tile cutter", "jigsaw", "router", "planer", "belt sander"]
 ISSUES = ["arrived damaged", "was defective", "stopped charging",
-          "was missing parts", "never arrived"]
+          "was missing parts", "never arrived", "was the wrong color", "was the wrong size", "wasn't what I ordered"]
 ACTIONS = ["issued a refund", "shipped a replacement",
-           "escalated the ticket", "applied store credit"]
+           "escalated the ticket", "applied store credit", "sent a technician", "offered a discount", "provided a coupon"]
 
 lines = []
 for _ in range(400):
@@ -145,7 +145,7 @@ class TinyGPT(nn.Module):
         # Contract: token embeddings of idx PLUS position embeddings of
         #           pos. Both come from the tables defined in __init__;
         #           call them like functions and add the results.
-        x = ...  # FILL 1
+        x = self.tok_emb(idx) + self.pos_emb(pos)  # FILL 1
         x = require(x, 1, "tok_emb of idx plus pos_emb of pos")
         x = self.blocks(x)
         return self.head(self.ln_f(x))                    # logits (B, T, vocab)
@@ -168,18 +168,18 @@ def generate(prompt: str, n_tokens: int = 120, temperature: float = 0.8) -> str:
         # FILL 2: distribution. (Callback: demo 05, step 1.)
         # Contract: softmax over the logits (F.softmax, last dim) so each
         #           row is a probability distribution over the vocab.
-        probs = ...  # FILL 2
+        probs = F.softmax(logits, dim=-1)  # FILL 2
         probs = require(probs, 2, "softmax of logits over the last dim")
         # FILL 3: pick. (Callback: demo 05, step 3.)
         # Contract: sample ONE token id from probs. torch.multinomial with
         #           num_samples 1 draws from a probability row.
-        nxt = ...  # FILL 3
+        nxt = torch.multinomial(probs, 1)  # FILL 3
         nxt = require(nxt, 3, "one sample drawn from probs")
         # FILL 4: append. (Callback: demo 05, step 2.)
         # Contract: concatenate nxt onto idx along dim 1 (the sequence
         #           dim) with torch.cat, so the loop feeds its own output
         #           back in as context.
-        idx = ...  # FILL 4
+        idx = torch.cat([idx, nxt], dim=1)  # FILL 4
         idx = require(idx, 4, "idx with nxt concatenated on the sequence dim")
     model.train()
     return decode(idx[0].tolist())
@@ -212,7 +212,7 @@ for step in range(TRAIN_STEPS + 1):
     #           position is one prediction: logits become
     #           (B*T, VOCAB_SIZE) via .view(-1, VOCAB_SIZE), yb becomes
     #           (B*T,) via .view(-1).
-    loss = ...  # FILL 5
+    loss = F.cross_entropy(logits.view(-1, VOCAB_SIZE), yb.view(-1))  # FILL 5
     loss = require(loss, 5, "cross-entropy of flattened logits vs flattened yb")
     opt.zero_grad()
     loss.backward()
@@ -235,7 +235,7 @@ print()
 print("=" * 70)
 print("SAME MODEL, TEMPERATURE KNOB (demo 05, step 3, now for real)")
 print("=" * 70)
-for temp in (0.5, 1.3):
+for temp in (0.5, 1.3, 0.001):
     print(f"\n--- temperature {temp} ---")
     print(generate(PROMPT, n_tokens=90, temperature=temp))
 

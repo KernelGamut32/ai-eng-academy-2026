@@ -63,7 +63,7 @@ def next_token_probs(context: list[str]) -> tuple[list[str], np.ndarray]:
     # FILL 1: turn raw counts into probabilities.
     # Contract: divide the count array by its own sum so the result is
     #           non-negative and sums to 1.0.
-    probs = ...  # FILL 1
+    probs = p / p.sum()  # FILL 1
     return toks, require(probs, 1, "counts divided by their sum")
 
 toks, p = next_token_probs(["the"])
@@ -88,7 +88,7 @@ def generate(prompt, n_tokens, pick_fn, label):
         # FILL 2: pick and append.
         # Contract: call pick_fn with toks and p to choose one token,
         #           store it in nxt. The append below adds it to context.
-        nxt = ...  # FILL 2
+        nxt = pick_fn(toks, p)  # FILL 2
         context.append(require(nxt, 2, "the token pick_fn chooses from toks and p"))
         if context[-1] == ".":
             break
@@ -98,7 +98,7 @@ def greedy(toks, p):
     # FILL 3: greedy policy.
     # Contract: return the token whose probability is largest. np.argmax
     #           on p gives the winning index into toks.
-    pick = ...  # FILL 3
+    pick = toks[int(np.argmax(p))]  # FILL 3
     return require(pick, 3, "the token at the argmax index of p")
 
 print("\nGreedy decoding (always take the argmax), run 3 times:\n")
@@ -118,7 +118,7 @@ def make_sampler(temperature):
         #           temperature. Low temperature stretches the gaps
         #           between logits (sharper), high temperature shrinks
         #           them (flatter). Store the result in logits.
-        logits = ...  # FILL 4
+        logits = np.log(p) / temperature  # FILL 4
         logits = require(logits, 4, "log of p, divided by temperature")
         # Provided: softmax back to probabilities, then sample.
         q = np.exp(logits - logits.max())
@@ -126,7 +126,7 @@ def make_sampler(temperature):
         return toks[int(rng.choice(len(toks), p=q))]
     return sample
 
-for temp in (0.7, 1.0, 1.5):
+for temp in (0.7, 1.0, 1.5, 0.001):
     print(f"\nTemperature {temp}, run 3 times:")
     for _ in range(3):
         generate("the customer", 12, make_sampler(temp), f"sample T={temp}")
@@ -144,6 +144,8 @@ print("=" * 70)
 print("\nSame loop, different prompts:\n")
 for prompt in ("the agent", "the drill", "the customer asked"):
     generate(prompt, 12, greedy, "greedy")
+    generate(prompt, 12, make_sampler(1.0), "sample T=1.0")
+    generate(prompt, 12, make_sampler(0.001), "sample T=0.01")
 
 print("""
 The output is a pure function of context plus the picking rule. "Prompt
