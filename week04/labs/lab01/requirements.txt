@@ -1,0 +1,9 @@
+# Week 04 Lab 01. Install into a fresh venv, not the main course environment.
+# transformer_lens pulls its own recent transformers (5.x) which conflicts with
+# the pinned course stack. Verified working combination below.
+transformer_lens==3.5.1
+torch>=2.4,<3.0
+matplotlib>=3.8
+numpy>=1.26
+ipykernel>=6.29
+jupyter>=1.0
