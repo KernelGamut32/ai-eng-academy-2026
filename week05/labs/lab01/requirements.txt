@@ -1,0 +1,11 @@
+# Week 5, Lab 01: LoRA Catalog Normalization
+# Every version below was executed against during lab verification.
+# Verified on Python 3.12.3, runs unchanged on 3.13.
+torch==2.13.0
+transformers==5.14.1
+tokenizers==0.22.2
+peft==0.19.1
+trl==1.9.1
+accelerate==1.14.0
+datasets==5.0.0
+matplotlib==3.10.8
