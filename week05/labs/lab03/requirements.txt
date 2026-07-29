@@ -1,0 +1,22 @@
+# Week 5 Lab 03: Cordwell Support Assistant (RAG)
+# Cohort standard: Python 3.13. Verified in build sandbox on Python 3.12.3.
+
+# Core (offline backend needs only these)
+pandas
+langchain
+langchain-core
+# CURRENCY FLAG: on langchain 1.x, create_retrieval_chain and
+# create_stuff_documents_chain live in langchain-classic, not langchain.
+# "from langchain.chains import ..." no longer works.
+langchain-classic
+langchain-openai
+
+# Local mode only (real model + Pinecone Local). Safe to skip for offline.
+torch
+transformers
+peft
+accelerate
+langchain-huggingface
+langchain-pinecone
+pinecone
+sentence-transformers

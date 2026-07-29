@@ -1,0 +1,30 @@
+# Week 5, Lab 02: Cordwell Support-Doc Retrieval
+# Pinned and empirically verified. Plain pip, no uv, no pyproject.
+#
+# Python 3.13 on cohort machines.
+# Verified on Python 3.12.3; runs unchanged on 3.13.
+#
+#   python3 -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+
+# --- always required -------------------------------------------------------
+numpy==2.4.4
+matplotlib==3.10.8
+jupyterlab==4.4.5
+ipykernel==6.30.1
+
+# --- required for the pinecone_local and pinecone_cloud backends -----------
+# 9.1.0 is a ground-up rewrite. It is NOT API compatible with the code printed
+# on the Module 02 slides. See Module02_Slide_Corrections.md before teaching.
+# The base install is pure HTTP over httpx. Do NOT add the [grpc] extra: it is
+# unnecessary here and pulls a compiled extension you do not need.
+pinecone==9.1.0
+
+# --- optional: only if you run EMBED_BACKEND=sentence_transformers ---------
+# Cohort machines do not download models at lab time. Stage the model directory
+# locally first and point CORDWELL_ST_MODEL_PATH at it. See README.md.
+# Uncomment both lines only if you are using that path.
+sentence-transformers==5.1.2
+torch==2.9.1
+transformers

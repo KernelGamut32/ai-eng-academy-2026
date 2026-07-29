@@ -1,0 +1,16 @@
+{
+  "answerable": [
+    {"question": "What size circuit breaker does the TH-40 thermostat need?", "gold_source": "install_manual_th40.md#7"},
+    {"question": "How do I pair the TH-40 with wifi?", "gold_source": "troubleshooting_wifi.md#2"},
+    {"question": "How many square feet does a gallon of DS-12 deck stain cover?", "gold_source": "deck_stain_ds12.md#1"},
+    {"question": "What is the return window for online orders?", "gold_source": "returns_policy.md#1"},
+    {"question": "What is the maximum load for the SP-10 smart plug?", "gold_source": "smart_plug_sp10.md#1"},
+    {"question": "What is the flow rate of the FX-55 kitchen faucet?", "gold_source": "faucet_fx55.md#2"}
+  ],
+  "unanswerable": [
+    {"question": "What is the warranty period for the TH-99 thermostat?"},
+    {"question": "What is the wind rating for the PK-8 pergola?"},
+    {"question": "Does the GD-200 garage door opener support HomeKit?"},
+    {"question": "What colors does the DS-12 deck stain come in?"}
+  ]
+}
