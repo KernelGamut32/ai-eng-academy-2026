@@ -11,12 +11,10 @@ backend; in local mode treat check thresholds as guidance, not gates.
 
 ## 1. Pinecone Local (Docker)
 
-```bash
-From the location where **pinecone-local-latest.tar** has been stored, run `docker load -i pinecone-local-latest.tar` to load the image to local cache
-```
+If not already executed, download **pinecone-local-latest.tar** from the **images** folder at <https://gamuttechnologysvcs-my.sharepoint.com/:f:/p/asanders/IgD_SIVCz8YJQYh7BL3DUy4ZAVgU8-9SO8Lo3boIy-wwV8g?e=D4X53b>. From the location where **pinecone-local-latest.tar** has been stored, run `docker load -i pinecone-local-latest.tar` to load the image to local cache
 
 ```bash
-docker run --rm -d \
+docker run -d \
   --name pinecone-local \
   -e PORT=5080 \
   -e PINECONE_HOST=localhost \

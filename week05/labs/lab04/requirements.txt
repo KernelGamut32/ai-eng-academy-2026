@@ -1,0 +1,20 @@
+# Week 5 Lab 04: Experiment Tracking with Weights & Biases
+# Cohort stack pins. Verified in the build sandbox on Python 3.12.3;
+# cohort machines run Python 3.13.
+
+# The lab's one new dependency. 0.28.1 verified end to end offline.
+# CURRENCY FLAG: wandb releases frequently; if a newer version is
+# installed, run the solution notebook once and confirm 32 of 32
+# checks before class.
+wandb==0.28.1
+
+pandas==3.0.2
+numpy==2.4.1
+
+# Notebook environment
+jupyterlab==4.6.1
+ipykernel==7.3.0
+nbformat==5.10.4
+
+# Used only if you re-verify notebooks headlessly the way the build did
+nbclient==0.10.2
