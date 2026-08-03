@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">The Diagnostic Map: Where Is Your System Right Now?</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Low and high mean relative to YOUR targets, not 0.5. The quadrant names the first fix. A, B, C are the Formative Check 3 scenarios.</text>
+
+  <!-- Quadrant backgrounds: plot x 140..1140, y 140..620, midlines 640 and 380 -->
+  <rect x="140" y="140" width="500" height="240" fill="#eff6ff"/>
+  <rect x="640" y="140" width="500" height="240" fill="#f0fdf4"/>
+  <rect x="140" y="380" width="500" height="240" fill="#fef2f2"/>
+  <rect x="640" y="380" width="500" height="240" fill="#fffbeb"/>
+  <rect x="140" y="140" width="1000" height="480" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+  <line x1="640" y1="140" x2="640" y2="620" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <line x1="140" y1="380" x2="1140" y2="380" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- Axis labels -->
+  <text x="640" y="662" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e3a5f">Context recall (retrieval stage) →</text>
+  <text x="150" y="648" font-size="13" fill="#64748b">below target</text>
+  <text x="1130" y="648" text-anchor="end" font-size="13" fill="#64748b">at or above target</text>
+  <text x="70" y="380" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e3a5f" transform="rotate(-90 70 380)">Faithfulness (generation stage) →</text>
+  
+
+  <!-- Quadrant labels -->
+  <g>
+    <text x="170" y="176" font-size="16" font-weight="bold" fill="#2563eb">LOW recall · HIGH faithfulness</text>
+    <text x="170" y="200" font-size="14" fill="#1e3a5f">Retrieval is the bottleneck. Model is honest</text>
+    <text x="170" y="220" font-size="14" fill="#1e3a5f">about inadequate context.</text>
+    <text x="170" y="246" font-size="14" font-weight="bold" fill="#2563eb">First fix: the index and query side.</text>
+
+    <text x="670" y="176" font-size="16" font-weight="bold" fill="#15803d">HIGH recall · HIGH faithfulness</text>
+    <text x="670" y="200" font-size="14" fill="#1e3a5f">Both halves working. If users still complain,</text>
+    <text x="670" y="220" font-size="14" fill="#1e3a5f">look at relevancy, latency, or UX.</text>
+    <text x="670" y="246" font-size="14" font-weight="bold" fill="#15803d">First fix: nothing. Do not add complexity.</text>
+
+    <text x="170" y="590" font-size="16" font-weight="bold" fill="#b91c1c">LOW recall · LOW faithfulness</text>
+    <text x="170" y="566" font-size="14" fill="#1e3a5f">Both broken, but low recall makes faithfulness</text>
+    <text x="170" y="546" font-size="14" fill="#1e3a5f">partly downstream: bad context invites fabrication.</text>
+    <text x="170" y="520" font-size="14" font-weight="bold" fill="#b91c1c">First fix: retrieval FIRST, then remeasure.</text>
+
+    <text x="670" y="590" font-size="16" font-weight="bold" fill="#b45309">HIGH recall · LOW faithfulness</text>
+    <text x="670" y="566" font-size="14" fill="#1e3a5f">The facts arrived. The model ignored or</text>
+    <text x="670" y="546" font-size="14" fill="#1e3a5f">contradicted them.</text>
+    <text x="670" y="520" font-size="14" font-weight="bold" fill="#b45309">First fix: generation - prompt, params, adapter.</text>
+  </g>
+
+  <!-- Scenario points -->
+  <g>
+    <circle cx="420" cy="290" r="13" fill="#2563eb" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="420" y="296" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">A</text>
+    <text x="442" y="282" font-size="13" fill="#334155">A: recall 0.40, faith 0.92</text>
+
+    <circle cx="960" cy="460" r="13" fill="#b45309" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="960" y="466" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">B</text>
+    <text x="945" y="490" text-anchor="end" font-size="13" fill="#334155">B: recall 0.88, faith 0.51</text>
+
+    <circle cx="360" cy="480" r="13" fill="#b91c1c" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="360" y="486" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">C</text>
+    <text x="382" y="474" font-size="13" fill="#334155">C: recall 0.35, faith 0.41</text>
+  </g>
+
+  <text x="640" y="700" text-anchor="middle" font-size="15" fill="#475569">Same map works in production: a metric that moves relocates you on this plane, and the direction of travel names the suspect stage.</text>
+</svg>

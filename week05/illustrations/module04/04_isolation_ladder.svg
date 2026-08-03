@@ -1,0 +1,77 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">Three Variables Moved. The Gap Attributes to Nothing.</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">Formative Check 3, drawn. The 0.08 improvement is real; the explanation is unearned until the ladder is run.</text>
+
+  <!-- The confounded pair -->
+  <rect x="60" y="100" width="360" height="180" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="240" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a5f">run-A · faithfulness 0.83</text>
+  <g font-size="14" font-family="monospace" fill="#334155">
+    <text x="90" y="164">lora_r:       16</text>
+    <text x="90" y="192">learning_rate: 2e-4</text>
+    <text x="90" y="220">chunk_size:   256</text>
+  </g>
+  <text x="90" y="256" font-size="12" fill="#64748b">same eval set, same index, same base model</text>
+
+  <rect x="480" y="100" width="360" height="180" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="660" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a5f">run-B · faithfulness 0.91</text>
+  <g font-size="14" font-family="monospace">
+    <text x="510" y="164" fill="#b91c1c">lora_r:       32   *</text>
+    <text x="510" y="192" fill="#b91c1c">learning_rate: 5e-4  *</text>
+    <text x="510" y="220" fill="#b91c1c">chunk_size:   384   *</text>
+  </g>
+  <text x="510" y="256" font-size="12" fill="#64748b">three simultaneous diffs, one aggregate gap</text>
+
+  <!-- The unattributable gap -->
+  <rect x="900" y="100" width="320" height="180" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="1060" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#b91c1c">+0.08, cause unknown</text>
+  <g font-size="13" fill="#7f1d1d">
+    <text x="925" y="164">Rank alone? Learning rate alone?</text>
+    <text x="925" y="186">Chunking alone? Two of them</text>
+    <text x="925" y="208">helping and one hurting?</text>
+    <text x="925" y="236">Every story fits the data.</text>
+  </g>
+  <text x="925" y="264" font-size="13" font-weight="bold" fill="#b91c1c">A comparison, not an experiment.</text>
+
+  <!-- Ladder -->
+  <line x1="640" y1="290" x2="640" y2="322" stroke="#475569" stroke-width="2.5" marker-end="url(#ar4)"/>
+  <text x="640" y="348" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e3a5f">The isolation ladder: from run-A, move ONE dial per rung</text>
+
+  <g font-size="13.5">
+    <rect x="60" y="370" width="370" height="130" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="80" y="398" font-size="15" font-weight="bold" fill="#7c3aed">Rung 1 · run-A2</text>
+    <text x="80" y="424" font-family="monospace" fill="#b91c1c">lora_r: 16 -> 32</text>
+    <text x="80" y="446" font-family="monospace" fill="#334155">lr: 2e-4, chunk: 256 (held)</text>
+    <text x="80" y="474" fill="#334155">Answers exactly one question:</text>
+    <text x="80" y="492" font-weight="bold" fill="#7c3aed">what does rank buy?</text>
+
+    <rect x="455" y="370" width="370" height="130" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="475" y="398" font-size="15" font-weight="bold" fill="#7c3aed">Rung 2 · run-A3</text>
+    <text x="475" y="424" font-family="monospace" fill="#b91c1c">lr: 2e-4 -> 5e-4</text>
+    <text x="475" y="446" font-family="monospace" fill="#334155">lora_r: 16, chunk: 256 (held)</text>
+    <text x="475" y="474" fill="#334155">Answers exactly one question:</text>
+    <text x="475" y="492" font-weight="bold" fill="#7c3aed">what does the LR buy?</text>
+
+    <rect x="850" y="370" width="370" height="130" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="870" y="398" font-size="15" font-weight="bold" fill="#7c3aed">Rung 3 · run-A4</text>
+    <text x="870" y="424" font-family="monospace" fill="#b91c1c">chunk_size: 256 -> 384</text>
+    <text x="870" y="446" font-family="monospace" fill="#334155">lora_r: 16, lr: 2e-4 (held)</text>
+    <text x="870" y="474" fill="#334155">Answers exactly one question:</text>
+    <text x="870" y="492" font-weight="bold" fill="#7c3aed">what does chunking buy?</text>
+  </g>
+
+  <!-- Honest reading checklist -->
+  <rect x="60" y="530" width="1160" height="155" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="80" y="562" font-size="16" font-weight="bold" fill="#1e3a5f">Before believing ANY pairwise gap, three questions (the honest-comparison gate)</text>
+  <g font-size="14" fill="#334155">
+    <text x="80" y="594"><tspan font-weight="bold" fill="#7c3aed">1 · One variable?</tspan>  If the configs differ in more than one key, the comparison attributes nothing. Run the ladder.</text>
+    <text x="80" y="624"><tspan font-weight="bold" fill="#7c3aed">2 · Bigger than noise?</tspan>  The judge is stochastic. A small move inside repeat-run variance is weather, not signal. Rerun before celebrating.</text>
+    <text x="80" y="654"><tspan font-weight="bold" fill="#7c3aed">3 · Same eval set version?</tspan>  Different eval sets produce incomparable numbers. The config tells you, if you logged it.</text>
+  </g>
+</svg>

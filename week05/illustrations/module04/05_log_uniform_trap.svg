@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="46" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">The log_uniform Trap, Drawn to Scale</text>
+  <text x="640" y="76" text-anchor="middle" font-size="17" fill="#475569">Same min and max in the sweep config. Two distributions. One samples learning rates; the other samples disasters, silently.</text>
+
+  <!-- Log axis: 1e-6 .. 1e1, seven decades. x from 100 to 1180, per decade ~154.3 px -->
+  <!-- decades: 1e-6:100 1e-5:254 1e-4:408 1e-3:563 1e-2:717 1e-1:871 1e0:1026 1e1:1180 -->
+  <line x1="100" y1="360" x2="1180" y2="360" stroke="#1e3a5f" stroke-width="3"/>
+  <g stroke="#94a3b8" stroke-width="1.5">
+    <line x1="100" y1="350" x2="100" y2="370"/><line x1="254" y1="350" x2="254" y2="370"/>
+    <line x1="408" y1="350" x2="408" y2="370"/><line x1="563" y1="350" x2="563" y2="370"/>
+    <line x1="717" y1="350" x2="717" y2="370"/><line x1="871" y1="350" x2="871" y2="370"/>
+    <line x1="1026" y1="350" x2="1026" y2="370"/><line x1="1180" y1="350" x2="1180" y2="370"/>
+  </g>
+  <g font-size="14" fill="#475569" text-anchor="middle" font-family="monospace">
+    <text x="100" y="394">1e-6</text><text x="254" y="394">1e-5</text><text x="408" y="394">1e-4</text>
+    <text x="563" y="394">1e-3</text><text x="717" y="394">1e-2</text><text x="871" y="394">1e-1</text>
+    <text x="1026" y="394">1.0</text><text x="1180" y="394">10</text>
+  </g>
+  <text x="640" y="424" text-anchor="middle" font-size="15" fill="#1e3a5f" font-weight="bold">learning rate, log scale</text>
+
+  <!-- CORRECT band: 1e-5 to 1e-3 => x 254..563 -->
+  <rect x="254" y="230" width="309" height="100" rx="10" fill="#bbf7d0" stroke="#15803d" stroke-width="2"/>
+  <g fill="#15803d">
+    <circle cx="285" cy="300" r="5"/><circle cx="330" cy="270" r="5"/><circle cx="368" cy="305" r="5"/>
+    <circle cx="402" cy="262" r="5"/><circle cx="441" cy="292" r="5"/><circle cx="476" cy="268" r="5"/>
+    <circle cx="512" cy="300" r="5"/><circle cx="543" cy="275" r="5"/>
+  </g>
+  <text x="408" y="210" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803d">log_uniform_values: samples BETWEEN 1e-5 and 1e-3</text>
+  <text x="408" y="182" text-anchor="middle" font-size="13" fill="#334155">min and max are LITERAL. Two decades of valid learning rates, evenly explored in log space.</text>
+
+  <!-- WRONG cluster: exp(1e-5)=1.00001 to exp(1e-3)=1.001, essentially at x=1026 -->
+  <g fill="#b91c1c">
+    <circle cx="1023" cy="470" r="5"/><circle cx="1027" cy="482" r="5"/><circle cx="1025" cy="458" r="5"/>
+    <circle cx="1029" cy="474" r="5"/><circle cx="1024" cy="490" r="5"/><circle cx="1028" cy="464" r="5"/>
+    <circle cx="1026" cy="478" r="5"/><circle cx="1025" cy="468" r="5"/>
+  </g>
+  <ellipse cx="1026" cy="474" rx="26" ry="36" fill="none" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="1026" y1="438" x2="1026" y2="372" stroke="#b91c1c" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="1026" y="540" text-anchor="middle" font-size="16" font-weight="bold" fill="#b91c1c">log_uniform: samples between exp(1e-5) and exp(1e-3)</text>
+  <text x="1026" y="564" text-anchor="middle" font-size="14" font-family="monospace" fill="#b91c1c">1.00001 to 1.00100</text>
+  <text x="1026" y="588" text-anchor="middle" font-size="13" fill="#7f1d1d">every sample is a learning rate near 1.0</text>
+
+  <!-- Gap annotation -->
+  <path d="M 563 340 Q 795 300 1000 355" fill="none" stroke="#b45309" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="790" y="300" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">3 orders of magnitude off target</text>
+
+  <!-- Consequence panel -->
+  <rect x="80" y="470" width="700" height="150" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="100" y="500" font-size="15" font-weight="bold" fill="#b91c1c">Why it fails silently</text>
+  <text x="100" y="528" font-size="14" fill="#334155">The config validates. The sweep launches. Every run logs cleanly. Every run also</text>
+  <text x="100" y="550" font-size="14" fill="#334155">diverges, because a learning rate of 1.0 destroys training. Nothing errors: you get</text>
+  <text x="100" y="572" font-size="14" fill="#334155">a very well-documented pile of failed runs and a Bayesian search optimizing noise.</text>
+  <text x="100" y="602" font-size="14" font-weight="bold" fill="#b91c1c">The tell in the dashboard: every loss curve explodes, and every sampled LR is 1.0-ish.</text>
+
+  <!-- Fix strip -->
+  <rect x="80" y="644" width="1120" height="52" rx="10" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="640" y="676" text-anchor="middle" font-size="15" font-family="monospace" fill="#15803d">"distribution": "log_uniform_values", "min": 1e-5, "max": 1e-3   # literal bounds, always</text>
+</svg>

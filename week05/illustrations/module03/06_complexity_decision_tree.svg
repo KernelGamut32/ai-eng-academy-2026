@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="760" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">Adding Complexity: Let a Measurement Send You There</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">Start naive. Measure. Each branch is entered by a specific metric symptom, never by enthusiasm.</text>
+
+  <!-- Root -->
+  <rect x="465" y="95" width="350" height="66" rx="12" fill="#1e3a5f"/>
+  <text x="640" y="122" text-anchor="middle" font-size="17" font-weight="bold" fill="#ffffff">Naive RAG + eval harness</text>
+  <text x="640" y="146" text-anchor="middle" font-size="13" fill="#cbd5e1">embed, retrieve, assemble, generate. Measure all four metrics.</text>
+
+  <!-- First gate -->
+  <line x1="640" y1="161" x2="640" y2="195" stroke="#475569" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <rect x="490" y="200" width="300" height="52" rx="10" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="640" y="226" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a5f">All four metrics acceptable?</text>
+  <text x="640" y="245" text-anchor="middle" font-size="12" fill="#64748b">against targets you set, on your labeled sets</text>
+
+  <!-- YES branch -->
+  <line x1="790" y1="226" x2="1010" y2="226" stroke="#15803d" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <text x="895" y="216" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803d">YES</text>
+  <rect x="1015" y="196" width="230" height="70" rx="10" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1130" y="224" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803d">STOP. Ship it.</text>
+  <text x="1130" y="246" text-anchor="middle" font-size="12" fill="#334155">Unmeasured complexity is debt.</text>
+
+  <!-- NO branch: symptom router -->
+  <line x1="640" y1="252" x2="640" y2="286" stroke="#b91c1c" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <text x="655" y="275" font-size="13" font-weight="bold" fill="#b91c1c">NO: which metric is the outlier?</text>
+
+  <!-- Four symptom -> pattern columns -->
+  <!-- Column 1 -->
+  <rect x="40" y="295" width="290" height="140" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="60" y="322" font-size="14" font-weight="bold" fill="#2563eb">Recall LOW, docs ARE indexed,</text>
+  <text x="60" y="342" font-size="14" font-weight="bold" fill="#2563eb">a human rephrase finds them</text>
+  <text x="60" y="368" font-size="13" fill="#334155">Query vocabulary misses index</text>
+  <text x="60" y="386" font-size="13" fill="#334155">vocabulary. Query-side problem,</text>
+  <text x="60" y="404" font-size="13" fill="#334155">not index-side. Do not reindex.</text>
+
+  <line x1="185" y1="435" x2="185" y2="465" stroke="#475569" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <rect x="40" y="470" width="290" height="76" rx="10" fill="#2563eb"/>
+  <text x="185" y="500" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Query Transformation</text>
+  <text x="185" y="524" text-anchor="middle" font-size="12" fill="#dbeafe">rewrite, decompose, multi-query</text>
+  <text x="185" y="572" text-anchor="middle" font-size="12" fill="#15803d" font-weight="bold">Confirm: context recall rises</text>
+
+  <!-- Column 2 -->
+  <rect x="350" y="295" width="290" height="140" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="370" y="322" font-size="14" font-weight="bold" fill="#2563eb">Recall at 50 candidates GOOD,</text>
+  <text x="370" y="342" font-size="14" font-weight="bold" fill="#2563eb">precision at final k BAD</text>
+  <text x="370" y="368" font-size="13" fill="#334155">Right chunks are in the candidate</text>
+  <text x="370" y="386" font-size="13" fill="#334155">set but ranked poorly. A ranking</text>
+  <text x="370" y="404" font-size="13" fill="#334155">problem, not a coverage problem.</text>
+
+  <line x1="495" y1="435" x2="495" y2="465" stroke="#475569" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <rect x="350" y="470" width="290" height="76" rx="10" fill="#2563eb"/>
+  <text x="495" y="500" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Reranking</text>
+  <text x="495" y="524" text-anchor="middle" font-size="12" fill="#dbeafe">retrieve 50 broadly, cross-encode to 5</text>
+  <text x="495" y="572" text-anchor="middle" font-size="12" fill="#15803d" font-weight="bold">Confirm: precision rises, recall holds</text>
+
+  <!-- Column 3 -->
+  <rect x="660" y="295" width="290" height="140" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="680" y="322" font-size="14" font-weight="bold" fill="#b45309">Recall GOOD, faithfulness LOW,</text>
+  <text x="680" y="342" font-size="14" font-weight="bold" fill="#b45309">answers are high-stakes</text>
+  <text x="680" y="368" font-size="13" fill="#334155">The facts arrive; the model drifts</text>
+  <text x="680" y="386" font-size="13" fill="#334155">from them. Worth paying a second</text>
+  <text x="680" y="404" font-size="13" fill="#334155">generation pass per answer.</text>
+
+  <line x1="805" y1="435" x2="805" y2="465" stroke="#475569" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <rect x="660" y="470" width="290" height="76" rx="10" fill="#d97706"/>
+  <text x="805" y="500" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Self-Reflective Generation</text>
+  <text x="805" y="524" text-anchor="middle" font-size="12" fill="#fef3c7">faithfulness check at inference time</text>
+  <text x="805" y="572" text-anchor="middle" font-size="12" fill="#15803d" font-weight="bold">Confirm: faithfulness rises; watch latency</text>
+
+  <!-- Column 4 -->
+  <rect x="970" y="295" width="290" height="140" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="990" y="322" font-size="14" font-weight="bold" fill="#475569">Multi-hop questions, exploratory</text>
+  <text x="990" y="342" font-size="14" font-weight="bold" fill="#475569">search, simpler patterns exhausted</text>
+  <text x="990" y="368" font-size="13" fill="#334155">The model controls retrieval itself.</text>
+  <text x="990" y="386" font-size="13" fill="#334155">Highest complexity, hardest to</text>
+  <text x="990" y="404" font-size="13" fill="#334155">debug. Where you go LAST.</text>
+
+  <line x1="1115" y1="435" x2="1115" y2="465" stroke="#475569" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <rect x="970" y="470" width="290" height="76" rx="10" fill="#64748b"/>
+  <text x="1115" y="500" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Agentic Retrieval</text>
+  <text x="1115" y="524" text-anchor="middle" font-size="12" fill="#e2e8f0">named today, built later in the program</text>
+  <text x="1115" y="572" text-anchor="middle" font-size="12" fill="#64748b" font-weight="bold">Out of scope for this module</text>
+
+  <!-- Loop back -->
+  <rect x="240" y="620" width="800" height="60" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="640" y="646" text-anchor="middle" font-size="16" font-weight="bold" fill="#7c3aed">After ANY addition: remeasure all four metrics, one change at a time</text>
+  <text x="640" y="668" text-anchor="middle" font-size="13" fill="#475569">If the named metric did not move in the named direction, the pattern did not earn its complexity. Take it back out.</text>
+
+  <text x="640" y="726" text-anchor="middle" font-size="15" fill="#334155">Reranking fixes precision, not recall. Query transformation fixes recall, not precision. Know which one you are buying.</text>
+</svg>

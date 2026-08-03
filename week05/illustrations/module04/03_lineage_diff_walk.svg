@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="ar3r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">Walking the Lineage Backwards: The Formative Check 2 Case</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">Faithfulness fell 0.91 to 0.78 between consecutive runs. Diff the input versions, and the graph names the suspect in two minutes.</text>
+
+  <!-- Run N column -->
+  <rect x="60" y="100" width="540" height="430" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="330" y="132" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e3a5f">RUN N · faithfulness 0.91</text>
+
+  <!-- Run N graph -->
+  <rect x="100" y="155" width="200" height="60" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="200" y="180" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">corpus</text>
+  <text x="200" y="200" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">cordwell-corpus:v2</text>
+
+  <rect x="360" y="155" width="200" height="60" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="460" y="180" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">index config</text>
+  <text x="460" y="200" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">index-config:v2</text>
+
+  <rect x="100" y="255" width="200" height="60" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="200" y="280" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">adapter</text>
+  <text x="200" y="300" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">cordwell-adapter:v3</text>
+
+  <rect x="360" y="255" width="200" height="60" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="460" y="280" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">eval set</text>
+  <text x="460" y="300" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">cordwell-eval:v2</text>
+
+  <line x1="200" y1="215" x2="290" y2="360" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+  <line x1="460" y1="215" x2="345" y2="360" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+  <line x1="200" y1="315" x2="295" y2="368" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+  <line x1="460" y1="315" x2="365" y2="368" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+
+  <rect x="230" y="370" width="200" height="56" rx="10" fill="#1e3a5f"/>
+  <text x="330" y="394" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">eval run N</text>
+  <text x="330" y="414" text-anchor="middle" font-size="12" fill="#cbd5e1">consumes all four inputs</text>
+
+  <line x1="330" y1="426" x2="330" y2="456" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+  <rect x="230" y="460" width="200" height="50" rx="10" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="330" y="491" text-anchor="middle" font-size="16" font-weight="bold" fill="#15803d">faithfulness 0.91</text>
+
+  <!-- Run N+1 column -->
+  <rect x="680" y="100" width="540" height="430" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="950" y="132" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e3a5f">RUN N+1 · faithfulness 0.78</text>
+
+  <rect x="720" y="155" width="200" height="60" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="820" y="180" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">corpus</text>
+  <text x="820" y="200" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">cordwell-corpus:v2</text>
+
+  <rect x="980" y="155" width="200" height="60" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="3"/>
+  <text x="1080" y="180" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">index config</text>
+  <text x="1080" y="200" text-anchor="middle" font-size="13" font-family="monospace" fill="#b91c1c">index-config:v3 *</text>
+
+  <rect x="720" y="255" width="200" height="60" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="820" y="280" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">adapter</text>
+  <text x="820" y="300" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">cordwell-adapter:v3</text>
+
+  <rect x="980" y="255" width="200" height="60" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="1080" y="280" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">eval set</text>
+  <text x="1080" y="300" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">cordwell-eval:v2</text>
+
+  <line x1="820" y1="215" x2="910" y2="360" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+  <line x1="1080" y1="215" x2="965" y2="360" stroke="#b91c1c" stroke-width="3" marker-end="url(#ar3r)"/>
+  <line x1="820" y1="315" x2="915" y2="368" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+  <line x1="1080" y1="315" x2="985" y2="368" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+
+  <rect x="850" y="370" width="200" height="56" rx="10" fill="#1e3a5f"/>
+  <text x="950" y="394" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">eval run N+1</text>
+  <text x="950" y="414" text-anchor="middle" font-size="12" fill="#cbd5e1">same inputs, one exception</text>
+
+  <line x1="950" y1="426" x2="950" y2="456" stroke="#64748b" stroke-width="2" marker-end="url(#ar3a)"/>
+  <rect x="850" y="460" width="200" height="50" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="950" y="491" text-anchor="middle" font-size="16" font-weight="bold" fill="#b91c1c">faithfulness 0.78</text>
+
+  <!-- The diff verdict -->
+  <rect x="60" y="555" width="1160" height="130" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="80" y="588" font-size="16" font-weight="bold" fill="#b45309">The walk: start at the metric that moved, step backwards through the inputs, diff versions.</text>
+  <text x="80" y="616" font-size="14" fill="#334155">Three of four inputs are identical. The index config moved v2 to v3, so the regression is a retrieval-side rebuild wearing a generation-stage costume:</text>
+  <text x="80" y="638" font-size="14" fill="#334155">faithfulness is answer versus context, and the context changed. Next step: open index-config v2 vs v3 (chunk size? overlap? embedding model?), and</text>
+  <text x="80" y="660" font-size="14" fill="#334155">rerun with index-config:v2 pinned to confirm recovery. This is Module 03's one-variable discipline, mechanized: lineage finds the variable someone changed.</text>
+</svg>

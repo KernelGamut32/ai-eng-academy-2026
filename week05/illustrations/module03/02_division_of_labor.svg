@@ -1,0 +1,77 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="46" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">Division of Labor: Which Lever Fixes Which Failure</text>
+  <text x="640" y="76" text-anchor="middle" font-size="17" fill="#475569">Route the symptom before reaching for a fix. Wrong lever = wasted week.</text>
+
+  <!-- Two lanes -->
+  <rect x="40" y="100" width="580" height="380" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="330" y="136" text-anchor="middle" font-size="21" font-weight="bold" fill="#2563eb">RAG provides KNOWLEDGE</text>
+  <text x="330" y="160" text-anchor="middle" font-size="14" fill="#475569">Facts live in the index. Update the index, not the weights.</text>
+
+  <rect x="660" y="100" width="580" height="380" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="950" y="136" text-anchor="middle" font-size="21" font-weight="bold" fill="#d97706">Fine-tuning shapes BEHAVIOR</text>
+  <text x="950" y="160" text-anchor="middle" font-size="14" fill="#475569">Patterns live in the adapter. Train the habit, not the fact.</text>
+
+  <!-- RAG symptom cards -->
+  <g font-size="14">
+    <rect x="70" y="185" width="520" height="62" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="90" y="211" font-weight="bold" fill="#1e3a5f">"It does not know the new spring catalog SKUs"</text>
+    <text x="90" y="233" fill="#2563eb">Fix: index the docs. Knowledge that changes belongs in retrieval.</text>
+
+    <rect x="70" y="257" width="520" height="62" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="90" y="283" font-weight="bold" fill="#1e3a5f">"Prices and stock answers are months stale"</text>
+    <text x="90" y="305" fill="#2563eb">Fix: refresh the index. Weights are frozen at training time.</text>
+
+    <rect x="70" y="329" width="520" height="62" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="90" y="355" font-weight="bold" fill="#1e3a5f">"It answers from general knowledge, not our manuals"</text>
+    <text x="90" y="377" fill="#2563eb">Fix: retrieval grounding, plus prompt instruction to use only context.</text>
+
+    <rect x="70" y="401" width="520" height="62" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="90" y="427" font-weight="bold" fill="#1e3a5f">"A human rephrasing the question finds the doc"</text>
+    <text x="90" y="449" fill="#2563eb">Fix: query transformation. A retrieval-side pattern, not an adapter.</text>
+  </g>
+
+  <!-- FT symptom cards -->
+  <g font-size="14">
+    <rect x="690" y="185" width="520" height="62" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+    <text x="710" y="211" font-weight="bold" fill="#1e3a5f">"Schema compliance is 85% and we need 99%"</text>
+    <text x="710" y="233" fill="#b45309">Fix: fine-tune. Prompting plateaus; volume format work is adapter work.</text>
+
+    <rect x="690" y="257" width="520" height="62" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+    <text x="710" y="283" font-weight="bold" fill="#1e3a5f">"Citations come back as [1], (Source 1), and [ref 1]"</text>
+    <text x="710" y="305" fill="#b45309">Fix: fine-tune one citation format and keep it.</text>
+
+    <rect x="690" y="329" width="520" height="62" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+    <text x="710" y="355" font-weight="bold" fill="#1e3a5f">"Tone drifts: chatty preambles in a terse support flow"</text>
+    <text x="710" y="377" fill="#b45309">Fix: fine-tune register and voice. Style is a pattern, not a fact.</text>
+
+    <rect x="690" y="401" width="520" height="62" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+    <text x="710" y="427" font-weight="bold" fill="#1e3a5f">"It fabricates instead of saying it does not know"</text>
+    <text x="710" y="449" fill="#b45309">Fix: fine-tune abstention. The highest-value behavior target.</text>
+  </g>
+
+  <!-- Neither band -->
+  <rect x="40" y="500" width="1200" height="190" rx="14" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="640" y="536" text-anchor="middle" font-size="20" font-weight="bold" fill="#b91c1c">NEITHER lever fixes these</text>
+
+  <g font-size="14">
+    <rect x="70" y="555" width="360" height="110" rx="10" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="90" y="583" font-weight="bold" fill="#1e3a5f">Right chunk missed the top k</text>
+    <text x="90" y="607" fill="#334155">No adapter recovers information the</text>
+    <text x="90" y="627" fill="#334155">model was never shown.</text>
+    <text x="90" y="651" fill="#b91c1c" font-weight="bold">Fix retrieval quality.</text>
+
+    <rect x="470" y="555" width="360" height="110" rx="10" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="490" y="583" font-weight="bold" fill="#1e3a5f">Document not in the index at all</text>
+    <text x="490" y="607" fill="#334155">Retrieval cannot find it, fine-tuning</text>
+    <text x="490" y="627" fill="#334155">cannot invent it.</text>
+    <text x="490" y="651" fill="#b91c1c" font-weight="bold">Fix the corpus.</text>
+
+    <rect x="870" y="555" width="360" height="110" rx="10" fill="#ffffff" stroke="#fca5a5"/>
+    <text x="890" y="583" font-weight="bold" fill="#1e3a5f">Context window exhausted</text>
+    <text x="890" y="607" fill="#334155">Adapters do not extend context length.</text>
+    <text x="890" y="627" fill="#334155">Rebudget top_k, chunk size, or change</text>
+    <text x="890" y="647" fill="#334155">the base model.</text>
+  </g>
+</svg>

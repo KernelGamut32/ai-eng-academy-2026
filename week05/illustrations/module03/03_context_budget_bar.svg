@@ -1,0 +1,71 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="46" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">The Context Budget Is a Bar, Not a Vibe</text>
+  <text x="640" y="76" text-anchor="middle" font-size="17" fill="#475569">Worked with the Formative Check 1 numbers: 4096 limit, 200 system, 300 reserved answer, 180-token chunks.</text>
+
+  <!-- Main stacked bar: scale 4096 tokens -> 1100 px (0.2686 px per token), origin x=90 -->
+  <text x="90" y="130" font-size="15" font-weight="bold" fill="#1e3a5f">Total context limit: 4096 tokens</text>
+  <g>
+    <rect x="90" y="145" width="53.7" height="70" fill="#7c3aed"/>
+    <rect x="143.7" y="145" width="80.6" height="70" fill="#94a3b8"/>
+    <rect x="224.3" y="145" width="965.7" height="70" fill="#2563eb"/>
+    <rect x="90" y="145" width="1100" height="70" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+  </g>
+  <!-- Segment labels -->
+  <text x="116" y="240" text-anchor="middle" font-size="13" fill="#7c3aed" font-weight="bold">system</text>
+  <text x="116" y="258" text-anchor="middle" font-size="13" fill="#7c3aed">200</text>
+  <text x="184" y="240" text-anchor="middle" font-size="13" fill="#64748b" font-weight="bold">answer</text>
+  <text x="184" y="258" text-anchor="middle" font-size="13" fill="#64748b">300</text>
+  <text x="707" y="185" text-anchor="middle" font-size="18" font-weight="bold" fill="#ffffff">available for retrieved chunks: 3596 tokens</text>
+
+  <!-- Arithmetic panel -->
+  <rect x="90" y="285" width="440" height="150" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="110" y="315" font-size="15" font-weight="bold" fill="#1e3a5f">The arithmetic, in order</text>
+  <g font-size="15" font-family="monospace" fill="#334155">
+    <text x="110" y="345">4096 - 200 - 300 = 3596</text>
+    <text x="110" y="372">3596 / 180 = 19.97...</text>
+    <text x="110" y="399">floor -> ceiling top_k = 19</text>
+  </g>
+  <text x="110" y="424" font-size="12" fill="#64748b">Always round down. Chunk 20 does not fit.</text>
+
+  <!-- Ceiling vs practical panel -->
+  <rect x="560" y="285" width="630" height="150" rx="12" fill="#fffbeb" stroke="#d97706"/>
+  <text x="580" y="315" font-size="15" font-weight="bold" fill="#b45309">Ceiling is what FITS. Practical is what HELPS.</text>
+  <text x="580" y="345" font-size="14" fill="#334155">Passing 19 chunks buries the signal, dilutes attention across weak</text>
+  <text x="580" y="366" font-size="14" fill="#334155">matches, slows generation, and makes citations noisier.</text>
+  <text x="580" y="396" font-size="14" fill="#334155">Your reranker's 50 candidates funnel down to the practical zone,</text>
+  <text x="580" y="417" font-size="14" fill="#334155">not to the ceiling. The other 45 to 47 are simply dropped.</text>
+
+  <!-- Expanded chunk-region bar with ticks: chunk region 3596 tokens -> 1100 px, x=90 -->
+  <text x="90" y="490" font-size="15" font-weight="bold" fill="#1e3a5f">The chunk region, expanded: 180-token slots</text>
+  <g>
+    <!-- practical zone highlight: chunks 1..5 -->
+    <rect x="90" y="505" width="275.3" height="70" fill="#bbf7d0"/>
+    <!-- fits zone chunks 6..19 -->
+    <rect x="365.3" y="505" width="770.4" height="70" fill="#dbeafe"/>
+    <!-- unusable sliver: 3420..3596 tokens = 176 tokens -> 53.8 px -->
+    <rect x="1135.7" y="505" width="53.8" height="70" fill="#fee2e2"/>
+    <rect x="90" y="505" width="1100" height="70" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+    <!-- tick marks every 180 tokens: 55.06 px -->
+    <g stroke="#64748b" stroke-width="1">
+      <line x1="145.1" y1="505" x2="145.1" y2="575"/><line x1="200.1" y1="505" x2="200.1" y2="575"/>
+      <line x1="255.2" y1="505" x2="255.2" y2="575"/><line x1="310.2" y1="505" x2="310.2" y2="575"/>
+      <line x1="365.3" y1="505" x2="365.3" y2="575"/><line x1="420.3" y1="505" x2="420.3" y2="575"/>
+      <line x1="475.4" y1="505" x2="475.4" y2="575"/><line x1="530.4" y1="505" x2="530.4" y2="575"/>
+      <line x1="585.5" y1="505" x2="585.5" y2="575"/><line x1="640.5" y1="505" x2="640.5" y2="575"/>
+      <line x1="695.6" y1="505" x2="695.6" y2="575"/><line x1="750.6" y1="505" x2="750.6" y2="575"/>
+      <line x1="805.7" y1="505" x2="805.7" y2="575"/><line x1="860.7" y1="505" x2="860.7" y2="575"/>
+      <line x1="915.8" y1="505" x2="915.8" y2="575"/><line x1="970.8" y1="505" x2="970.8" y2="575"/>
+      <line x1="1025.9" y1="505" x2="1025.9" y2="575"/><line x1="1080.9" y1="505" x2="1080.9" y2="575"/>
+      <line x1="1135.7" y1="505" x2="1135.7" y2="575"/>
+    </g>
+  </g>
+  <!-- zone labels -->
+  <text x="227" y="605" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803d">practical top_k: 3 to 5</text>
+  <text x="750" y="605" text-anchor="middle" font-size="14" fill="#2563eb">fits, but hurts more than it helps (up to 19)</text>
+  <text x="1162" y="605" text-anchor="middle" font-size="12" fill="#b91c1c">176 tok</text>
+  <text x="1162" y="622" text-anchor="middle" font-size="12" fill="#b91c1c">unusable</text>
+
+  <text x="640" y="675" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a5f">top_k is bounded arithmetic, chosen by evaluation. It is not a free parameter.</text>
+</svg>

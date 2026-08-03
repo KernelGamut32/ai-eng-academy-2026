@@ -1,0 +1,112 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="46" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">What Actually Flows Through the Chain</text>
+  <text x="640" y="76" text-anchor="middle" font-size="17" fill="#475569">Every arrow carries a different data shape. When the chain breaks, name the arrow.</text>
+
+  <!-- Stage lane backgrounds -->
+  <rect x="40" y="105" width="580" height="330" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="60" y="133" font-size="15" font-weight="bold" fill="#2563eb">RETRIEVAL HALF · Module 02 · Pinecone Local</text>
+
+  <rect x="660" y="105" width="580" height="330" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="680" y="133" font-size="15" font-weight="bold" fill="#d97706">GENERATION HALF · Module 01 · SmolLM2 + LoRA adapter</text>
+
+  <!-- The seam -->
+  <line x1="640" y1="105" x2="640" y2="435" stroke="#7c3aed" stroke-width="3" stroke-dasharray="8 6"/>
+  <rect x="562" y="440" width="156" height="30" rx="15" fill="#7c3aed"/>
+  <text x="640" y="460" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">THE SEAM · today</text>
+
+  <!-- Stage boxes -->
+  <g>
+    <rect x="70" y="170" width="150" height="70" rx="10" fill="#2563eb"/>
+    <text x="145" y="199" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Embed</text>
+    <text x="145" y="221" text-anchor="middle" font-size="12" fill="#dbeafe">sentence-transformers</text>
+
+    <rect x="300" y="170" width="150" height="70" rx="10" fill="#2563eb"/>
+    <text x="375" y="199" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Retrieve</text>
+    <text x="375" y="221" text-anchor="middle" font-size="12" fill="#dbeafe">as_retriever(k=4)</text>
+
+    <rect x="700" y="170" width="180" height="70" rx="10" fill="#d97706"/>
+    <text x="790" y="199" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Assemble Prompt</text>
+    <text x="790" y="221" text-anchor="middle" font-size="12" fill="#fef3c7">stuff_documents_chain</text>
+
+    <rect x="990" y="170" width="170" height="70" rx="10" fill="#d97706"/>
+    <text x="1075" y="199" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">Generate</text>
+    <text x="1075" y="221" text-anchor="middle" font-size="12" fill="#fef3c7">base model + adapter</text>
+  </g>
+
+  <!-- Arrows between stages -->
+  <line x1="220" y1="205" x2="294" y2="205" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="450" y1="205" x2="694" y2="205" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="880" y1="205" x2="984" y2="205" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Input arrow -->
+  <line x1="70" y1="205" x2="70" y2="205" stroke="none"/>
+
+  <!-- Payload cards under each arrow -->
+  <g font-size="12">
+    <rect x="52" y="270" width="186" height="130" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="62" y="292" font-weight="bold" fill="#1e3a5f" font-size="13">IN: query string</text>
+    <text x="62" y="314" fill="#334155" font-family="monospace" font-size="11">"what breaker size</text>
+    <text x="62" y="330" fill="#334155" font-family="monospace" font-size="11"> for the TH-40"</text>
+    <text x="62" y="358" font-weight="bold" fill="#1e3a5f" font-size="13">OUT: vector</text>
+    <text x="62" y="380" fill="#334155" font-family="monospace" font-size="11">[0.021, -0.318, ...]</text>
+    <text x="62" y="394" fill="#64748b" font-size="10">384 floats, one per query</text>
+
+    <rect x="282" y="270" width="186" height="130" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="292" y="292" font-weight="bold" fill="#1e3a5f" font-size="13">OUT: List[Document]</text>
+    <text x="292" y="314" fill="#334155" font-family="monospace" font-size="11">page_content="..."</text>
+    <text x="292" y="330" fill="#334155" font-family="monospace" font-size="11">metadata={"source":</text>
+    <text x="292" y="346" fill="#334155" font-family="monospace" font-size="11"> "install_manual</text>
+    <text x="292" y="362" fill="#334155" font-family="monospace" font-size="11"> _th40.md#7"}</text>
+    <text x="292" y="390" fill="#64748b" font-size="10">k docs, ranked. Metadata is</text>
+    <text x="292" y="403" fill="#64748b" font-size="10">what makes citations possible.</text>
+
+    <rect x="700" y="270" width="220" height="130" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="710" y="292" font-weight="bold" fill="#1e3a5f" font-size="13">OUT: one assembled string</text>
+    <text x="710" y="314" fill="#334155" font-family="monospace" font-size="11">SYSTEM ... Context:</text>
+    <text x="710" y="330" fill="#334155" font-family="monospace" font-size="11">[1] (source: ...) chunk</text>
+    <text x="710" y="346" fill="#334155" font-family="monospace" font-size="11">[2] (source: ...) chunk</text>
+    <text x="710" y="362" fill="#334155" font-family="monospace" font-size="11">Human: what breaker...</text>
+    <text x="710" y="390" fill="#64748b" font-size="10">Numbering here is why [1] in the</text>
+    <text x="710" y="403" fill="#64748b" font-size="10">answer means anything at all.</text>
+
+    <rect x="960" y="270" width="230" height="130" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="970" y="292" font-weight="bold" fill="#1e3a5f" font-size="13">OUT: result dict, 3 keys</text>
+    <text x="970" y="316" fill="#334155" font-family="monospace" font-size="11">result["input"]</text>
+    <text x="970" y="334" fill="#334155" font-family="monospace" font-size="11">result["context"]</text>
+    <text x="970" y="352" fill="#334155" font-family="monospace" font-size="11">result["answer"]</text>
+    <text x="970" y="378" fill="#64748b" font-size="10">Keep all three. Discard context</text>
+    <text x="970" y="391" fill="#64748b" font-size="10">and you cannot evaluate anything.</text>
+  </g>
+
+  <!-- Evaluation footer: which keys feed which metric -->
+  <rect x="40" y="500" width="1200" height="190" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="60" y="532" font-size="17" font-weight="bold" fill="#1e3a5f">Why the chain returns all three keys: every metric is a pairing</text>
+
+  <g font-size="14">
+    <rect x="70" y="555" width="360" height="110" rx="10" fill="#eff6ff" stroke="#2563eb"/>
+    <text x="90" y="583" font-weight="bold" fill="#2563eb">Retrieval metrics</text>
+    <text x="90" y="608" fill="#334155">context recall = input + context</text>
+    <text x="90" y="630" fill="#334155">context precision = input + context</text>
+    <text x="90" y="652" fill="#64748b" font-size="12">Grade what came back, before generation.</text>
+
+    <rect x="470" y="555" width="360" height="110" rx="10" fill="#fffbeb" stroke="#d97706"/>
+    <text x="490" y="583" font-weight="bold" fill="#d97706">Generation metrics</text>
+    <text x="490" y="608" fill="#334155">faithfulness = answer + context</text>
+    <text x="490" y="630" fill="#334155">answer relevancy = answer + input</text>
+    <text x="490" y="652" fill="#64748b" font-size="12">Grade what the model did with it.</text>
+
+    <rect x="870" y="555" width="340" height="110" rx="10" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="890" y="583" font-weight="bold" fill="#7c3aed">Stage attribution</text>
+    <text x="890" y="608" fill="#334155">Two stages, two metric pairs,</text>
+    <text x="890" y="630" fill="#334155">two different fixes.</text>
+    <text x="890" y="652" fill="#64748b" font-size="12">End-to-end alone tells you nothing usable.</text>
+  </g>
+</svg>

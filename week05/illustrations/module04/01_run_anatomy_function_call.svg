@@ -1,0 +1,86 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="46" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">A Run Is a Function Call</text>
+  <text x="640" y="76" text-anchor="middle" font-size="17" fill="#475569">Config is the signature, the run is the invocation, metrics are the return values, artifacts are what it wrote to disk.</text>
+
+  <!-- CONFIG (inputs) -->
+  <rect x="40" y="110" width="330" height="330" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="60" y="142" font-size="17" font-weight="bold" fill="#7c3aed">CONFIG · the inputs</text>
+  <text x="60" y="164" font-size="12" fill="#64748b">Set once at init. Immutable for the run.</text>
+  <g font-size="13" font-family="monospace" fill="#334155">
+    <text x="60" y="196">"base_model":  SmolLM2-360M</text>
+    <text x="60" y="218">"adapter":     cordwell:v3</text>
+    <text x="60" y="240">"lora_r": 16, "alpha": 32</text>
+    <text x="60" y="262">"learning_rate": 2e-4</text>
+    <text x="60" y="284">"chunk_size": 384, "top_k": 5</text>
+    <text x="60" y="306">"embedding_model": ...</text>
+    <text x="60" y="328">"eval_set": cordwell-eval:v2</text>
+  </g>
+  <text x="60" y="366" font-size="13" font-weight="bold" fill="#7c3aed">The test for membership:</text>
+  <text x="60" y="388" font-size="13" fill="#334155">would changing it change the result?</text>
+  <text x="60" y="408" font-size="13" fill="#334155">Then it belongs in config.</text>
+
+  <line x1="370" y1="275" x2="425" y2="275" stroke="#475569" stroke-width="2.5" marker-end="url(#ar1)"/>
+
+  <!-- RUN (execution) -->
+  <rect x="430" y="110" width="420" height="330" rx="14" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="450" y="142" font-size="17" font-weight="bold" fill="#1e3a5f">RUN · one execution</text>
+  <text x="450" y="164" font-size="12" fill="#64748b">Unique ID, timestamp, name, tags. One training job or one eval pass.</text>
+
+  <rect x="450" y="180" width="380" height="66" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="466" y="204" font-size="13" font-family="monospace" fill="#334155">wandb.init(project="cordwell-rag",</text>
+  <text x="466" y="224" font-size="13" font-family="monospace" fill="#334155">  name="rag-eval-adapter-on-topk5",</text>
+  <text x="466" y="240" font-size="13" font-family="monospace" fill="#334155">  config={...}, tags=["retrieval-eval"])</text>
+
+  <rect x="450" y="258" width="380" height="166" rx="10" fill="#ecfdf5" stroke="#15803d" stroke-width="1.5"/>
+  <text x="466" y="284" font-size="14" font-weight="bold" fill="#15803d">Captured without you asking</text>
+  <g font-size="13" fill="#334155">
+    <text x="466" y="310">git commit + DIRTY STATE of the working tree</text>
+    <text x="466" y="332">Python version, installed package versions</text>
+    <text x="466" y="354">launch command line</text>
+    <text x="466" y="376">CPU, RAM, GPU utilization over time</text>
+  </g>
+  <text x="466" y="406" font-size="12" fill="#64748b">The dirty flag is how "reproducible" runs get caught lying.</text>
+
+  <line x1="850" y1="275" x2="905" y2="275" stroke="#475569" stroke-width="2.5" marker-end="url(#ar1)"/>
+
+  <!-- OUTPUTS -->
+  <rect x="910" y="110" width="330" height="155" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="930" y="142" font-size="17" font-weight="bold" fill="#2563eb">METRICS · return values</text>
+  <text x="930" y="164" font-size="12" fill="#64748b">Logged over time during execution. Prefixed by stage.</text>
+  <g font-size="13" font-family="monospace" fill="#334155">
+    <text x="930" y="194">"retrieval/context_recall"</text>
+    <text x="930" y="216">"generation/faithfulness"</text>
+    <text x="930" y="238">"train/loss" (per step)</text>
+  </g>
+
+  <rect x="910" y="285" width="330" height="155" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="930" y="317" font-size="17" font-weight="bold" fill="#b45309">ARTIFACTS · what it wrote</text>
+  <text x="930" y="339" font-size="12" fill="#64748b">Versioned, immutable, content-addressed.</text>
+  <g font-size="13" font-family="monospace" fill="#334155">
+    <text x="930" y="369">cordwell-adapter:v4  (model)</text>
+    <text x="930" y="391">index-config:v3   (dataset)</text>
+    <text x="930" y="413">cordwell-eval:v2   (dataset)</text>
+  </g>
+
+  <!-- Footer engineering mapping -->
+  <rect x="40" y="470" width="1200" height="215" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="60" y="502" font-size="17" font-weight="bold" fill="#1e3a5f">The engineering translation, term by term</text>
+  <g font-size="14">
+    <text x="60" y="536" fill="#7c3aed" font-weight="bold">config</text>
+    <text x="230" y="536" fill="#334155">= the signature plus every default that matters. A partial config makes the score incomparable and unreproducible.</text>
+    <text x="60" y="568" fill="#1e3a5f" font-weight="bold">run</text>
+    <text x="230" y="568" fill="#334155">= one invocation, environment recorded. Two runs compare only if their configs differ in exactly one key.</text>
+    <text x="60" y="600" fill="#2563eb" font-weight="bold">metrics</text>
+    <text x="230" y="600" fill="#334155">= return values with history. The prefix declares the producing stage, mirroring the Module 03 split.</text>
+    <text x="60" y="632" fill="#b45309" font-weight="bold">artifacts</text>
+    <text x="230" y="632" fill="#334155">= the files produced or consumed, versioned. A metric says a number happened; the artifact produced it.</text>
+  </g>
+  <text x="640" y="670" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803d">Log the config before you run, not after you get a good result. Tracking costs three lines; reconstruction costs a week.</text>
+</svg>

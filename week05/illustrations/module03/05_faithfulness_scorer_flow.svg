@@ -1,0 +1,76 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">Faithfulness: Decompose, Judge Each Claim, Score the Fraction</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">Worked on one Cordwell answer. The decomposition step is what catches the one fabricated detail buried in a mostly grounded answer.</text>
+
+  <!-- Step 1: the answer -->
+  <rect x="40" y="110" width="360" height="200" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="60" y="140" font-size="15" font-weight="bold" fill="#b45309">1 · THE ANSWER (one blob)</text>
+  <g font-size="13" fill="#334155">
+    <text x="60" y="170">"The TH-40 needs a 15 amp breaker.</text>
+    <text x="60" y="190">Install it on a dedicated circuit. It</text>
+    <text x="60" y="210">supports 2.4 GHz wifi, and it carries</text>
+    <text x="60" y="230">a 5 year warranty."</text>
+  </g>
+  <text x="60" y="268" font-size="12" fill="#64748b">Judged as a whole, this reads fine.</text>
+  <text x="60" y="286" font-size="12" fill="#64748b">Fluent, on-topic, confident.</text>
+
+  <line x1="400" y1="210" x2="450" y2="210" stroke="#475569" stroke-width="2.5" marker-end="url(#arr2)"/>
+
+  <!-- Step 2: decompose -->
+  <rect x="455" y="110" width="360" height="200" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="475" y="140" font-size="15" font-weight="bold" fill="#7c3aed">2 · DECOMPOSE (CLAIM_PROMPT)</text>
+  <g font-size="13" fill="#334155" font-family="monospace">
+    <text x="475" y="172">c1: TH-40 needs 15 amp breaker</text>
+    <text x="475" y="198">c2: needs a dedicated circuit</text>
+    <text x="475" y="224">c3: supports 2.4 GHz wifi</text>
+    <text x="475" y="250">c4: carries a 5 year warranty</text>
+  </g>
+  <text x="475" y="286" font-size="12" fill="#64748b">Atomic claims. One judgment each.</text>
+
+  <line x1="815" y1="210" x2="865" y2="210" stroke="#475569" stroke-width="2.5" marker-end="url(#arr2)"/>
+
+  <!-- Step 3: judge -->
+  <rect x="870" y="110" width="370" height="200" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="890" y="140" font-size="15" font-weight="bold" fill="#2563eb">3 · JUDGE EACH (VERIFY_PROMPT)</text>
+  <g font-size="13" font-family="monospace">
+    <text x="890" y="172" fill="#334155">c1 vs context ->  </text><text x="1090" y="172" fill="#15803d" font-weight="bold">YES</text>
+    <text x="890" y="198" fill="#334155">c2 vs context ->  </text><text x="1090" y="198" fill="#15803d" font-weight="bold">YES</text>
+    <text x="890" y="224" fill="#334155">c3 vs context ->  </text><text x="1090" y="224" fill="#15803d" font-weight="bold">YES</text>
+    <text x="890" y="250" fill="#334155">c4 vs context ->  </text><text x="1090" y="250" fill="#b91c1c" font-weight="bold">NO</text>
+  </g>
+  <text x="890" y="286" font-size="12" fill="#64748b">Same retrieved context every time.</text>
+
+  <!-- Score bar -->
+  <line x1="640" y1="315" x2="640" y2="355" stroke="#475569" stroke-width="2.5" marker-end="url(#arr2)"/>
+  <rect x="290" y="360" width="700" height="90" rx="12" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="640" y="398" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e3a5f">4 · SCORE = supported / total = 3 / 4 = 0.75</text>
+  <g>
+    <rect x="390" y="412" width="500" height="22" rx="6" fill="#e2e8f0"/>
+    <rect x="390" y="412" width="375" height="22" rx="6" fill="#15803d"/>
+    <text x="640" y="428" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="bold">0.75</text>
+  </g>
+
+  <!-- Why it matters panels -->
+  <rect x="40" y="480" width="590" height="200" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="60" y="512" font-size="16" font-weight="bold" fill="#b91c1c">Why the blob check would have missed it</text>
+  <text x="60" y="542" font-size="14" fill="#334155">c4 is the fabrication: the context never mentions warranty at all.</text>
+  <text x="60" y="564" font-size="14" fill="#334155">An answer that is 90% grounded with one invented detail buried in it</text>
+  <text x="60" y="586" font-size="14" fill="#334155">is exactly the dangerous case. Whole-answer judging averages it away.</text>
+  <text x="60" y="616" font-size="14" fill="#334155">Per-claim judging surfaces it as a hard NO, and the score drops.</text>
+  <text x="60" y="652" font-size="13" fill="#64748b">Same failure shape as the TH-99 lab case: perfect format, buried invention.</text>
+
+  <rect x="660" y="480" width="580" height="200" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="680" y="512" font-size="16" font-weight="bold" fill="#1e3a5f">Design notes carried from the harness</text>
+  <text x="680" y="542" font-size="14" fill="#334155">The judge is injected, like search_fn in Module 02: the same</text>
+  <text x="680" y="564" font-size="14" fill="#334155">function runs against a local or hosted judge.</text>
+  <text x="680" y="594" font-size="14" fill="#334155">RAGAS and DeepEval implement this decomposition more robustly.</text>
+  <text x="680" y="616" font-size="14" fill="#334155">You build the minimal version so the production number is never</text>
+  <text x="680" y="638" font-size="14" fill="#334155">a black box to you.</text>
+</svg>
