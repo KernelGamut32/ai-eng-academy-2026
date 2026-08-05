@@ -1,0 +1,6 @@
+# Week 6 Lab 2.1: Evaluating Text Generation with BLEU
+# Verified at build time on Python 3.13 (build sandbox 3.12.3, noted discrepancy)
+pandas==3.0.2
+numpy==2.4.4
+matplotlib==3.10.8
+sacrebleu==2.6.0

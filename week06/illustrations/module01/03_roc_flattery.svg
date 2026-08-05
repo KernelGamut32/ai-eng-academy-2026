@@ -1,0 +1,64 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">The Same 107 False Positives, Seen Two Ways</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">ROC-AUC 0.962 and average precision 0.604 come from the same test set. The difference is which denominator meets the 107.</text>
+
+  <!-- Left: ROC's view -->
+  <rect x="40" y="100" width="590" height="330" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="335" y="134" text-anchor="middle" font-size="18" font-weight="bold" fill="#2563eb">ROC's question: what fraction of NEGATIVES got flagged?</text>
+
+  <!-- bar of 1933 negatives, 107 flagged. 1933 -> 510px, 107 -> 28.2 -->
+  <text x="80" y="176" font-size="13" fill="#334155">denominator: all 1,933 negatives</text>
+  <rect x="80" y="188" width="481.8" height="52" fill="#cbd5e1"/>
+  <rect x="561.8" y="188" width="28.2" height="52" fill="#d97706"/>
+  <rect x="80" y="188" width="510" height="52" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="320" y="220" text-anchor="middle" font-size="13" fill="#334155">1,826 correctly left alone</text>
+  <text x="576" y="262" text-anchor="middle" font-size="12" fill="#b45309">107</text>
+
+  <text x="80" y="308" font-size="15" font-family="monospace" fill="#2563eb">FPR = 107 / 1933 = 0.055</text>
+  <text x="80" y="336" font-size="13.5" fill="#334155">A sliver. The huge pool of negatives absorbs the mistake,</text>
+  <text x="80" y="356" font-size="13.5" fill="#334155">so the ROC curve hugs the corner and the area looks superb.</text>
+  <rect x="80" y="376" width="510" height="38" rx="8" fill="#ffffff" stroke="#2563eb"/>
+  <text x="335" y="401" text-anchor="middle" font-size="15" font-weight="bold" fill="#2563eb">ROC-AUC = 0.962 · "looks excellent"</text>
+
+  <!-- Right: precision's view -->
+  <rect x="650" y="100" width="590" height="330" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="945" y="134" text-anchor="middle" font-size="18" font-weight="bold" fill="#b45309">Precision's question: what fraction of the QUEUE is junk?</text>
+
+  <!-- bar of 160 flags: 53 TP, 107 FP. 160 -> 510px: TP 168.9, FP 341.1 -->
+  <text x="690" y="176" font-size="13" fill="#334155">denominator: the 160 reviews you escalated</text>
+  <rect x="690" y="188" width="168.9" height="52" fill="#15803d"/>
+  <rect x="858.9" y="188" width="341.1" height="52" fill="#d97706"/>
+  <rect x="690" y="188" width="510" height="52" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="774" y="220" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="bold">53 real</text>
+  <text x="1029" y="220" text-anchor="middle" font-size="13" fill="#ffffff" font-weight="bold">the SAME 107, now 67% of the pile</text>
+
+  <text x="690" y="308" font-size="15" font-family="monospace" fill="#b45309">precision = 53 / 160 = 0.331</text>
+  <text x="690" y="336" font-size="13.5" fill="#334155">The reviewer working this queue meets two false alarms for</text>
+  <text x="690" y="356" font-size="13.5" fill="#334155">every real report. THIS is the operational experience.</text>
+  <rect x="690" y="376" width="510" height="38" rx="8" fill="#ffffff" stroke="#d97706"/>
+  <text x="945" y="401" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">average precision = 0.604 · "much more honest"</text>
+
+  <!-- Baseline strip -->
+  <rect x="40" y="460" width="1200" height="120" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="60" y="492" font-size="16" font-weight="bold" fill="#1e3a5f">Judge each number against ITS OWN no-skill baseline</text>
+  <!-- number line 0..1 for AP: x 60..1220 -->
+  <line x1="60" y1="536" x2="1220" y2="536" stroke="#475569" stroke-width="2.5"/>
+  <g font-size="12" fill="#64748b"><text x="60" y="562">0.0</text><text x="1205" y="562">1.0</text></g>
+  <!-- no-skill AP at 0.0335 -> x = 60 + 0.0335*1160 = 98.9 ; AP 0.604 -> 60+700.6=760.6 ; AUC baseline 0.5 -> 640 -->
+  <line x1="98.9" y1="522" x2="98.9" y2="550" stroke="#b91c1c" stroke-width="3"/>
+  <text x="98.9" y="512" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#b91c1c">no-skill AP = 0.034</text>
+  <circle cx="760.6" cy="536" r="9" fill="#d97706"/>
+  <text x="760.6" y="566" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#b45309">AP 0.604</text>
+  <line x1="640" y1="522" x2="640" y2="550" stroke="#2563eb" stroke-width="3" stroke-dasharray="5 4"/>
+  <text x="640" y="512" text-anchor="middle" font-size="12.5" fill="#2563eb">no-skill AUC = 0.5</text>
+  <circle cx="1175.9" cy="536" r="9" fill="#2563eb"/>
+  <text x="1145" y="566" text-anchor="middle" font-size="12.5" fill="#2563eb">AUC 0.962</text>
+
+  <text x="640" y="616" text-anchor="middle" font-size="14" fill="#334155">AP's 0.604 sits eighteen times above its 0.034 floor: genuine skill, honestly measured against the base rate.</text>
+  <text x="640" y="640" text-anchor="middle" font-size="14" fill="#334155">AUC's 0.962 is measured against a 0.5 floor that imbalance makes easy to clear. Same model. Two stories. Report the honest one.</text>
+
+  <rect x="270" y="662" width="740" height="42" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="640" y="689" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">Both curves take SCORES, not predictions. Passing y_pred fails silently: no exception, wrong number.</text>
+</svg>

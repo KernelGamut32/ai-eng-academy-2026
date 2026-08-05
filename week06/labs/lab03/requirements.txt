@@ -1,0 +1,22 @@
+# Week 6 Lab 1.3: Threshold Tuning for Cordwell Safety Alerts
+# Pinned to the cohort standard stack; identical to Labs 1.1 and 1.2's
+# environment, so machines set up this morning need nothing new.
+# Install once:
+#   pip install -r requirements.txt
+#
+# Currency notes (verified 2026-08-03):
+# - scikit-learn 1.6 is the hard floor for Week 6 Day 1 as a whole:
+#   stretch 1 uses FrozenEstimator (landed in 1.6) alongside
+#   FixedThresholdClassifier (landed in 1.5). The pin below is the
+#   version the lab was executed and verified against.
+# - No seaborn anywhere on Day 1; confusion matrices render with
+#   sklearn's own ConfusionMatrixDisplay.
+# - No OpenAI, LangChain, Docker, or local LLM dependencies today.
+#   Pure scikit-learn, CPU only.
+
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+jupyterlab==4.6.1
+ipykernel==7.3.0

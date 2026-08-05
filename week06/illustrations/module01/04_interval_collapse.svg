@@ -1,0 +1,63 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">0.4670 Is Not a Number. It Is the Middle of a Range.</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">Bootstrap intervals from the deck, drawn on the F1 axis. Four decimal places all morning; here is what the data can actually support.</text>
+
+  <!-- Main F1 axis: 0..1 -> x 100..1180 -->
+  <line x1="100" y1="290" x2="1180" y2="290" stroke="#1e3a5f" stroke-width="3"/>
+  <g stroke="#94a3b8" stroke-width="1.5">
+    <line x1="100" y1="282" x2="100" y2="298"/><line x1="316" y1="282" x2="316" y2="298"/>
+    <line x1="532" y1="282" x2="532" y2="298"/><line x1="748" y1="282" x2="748" y2="298"/>
+    <line x1="964" y1="282" x2="964" y2="298"/><line x1="1180" y1="282" x2="1180" y2="298"/>
+  </g>
+  <g font-size="13" fill="#64748b" text-anchor="middle">
+    <text x="100" y="318">0.0</text><text x="316" y="318">0.2</text><text x="532" y="318">0.4</text>
+    <text x="748" y="318">0.6</text><text x="964" y="318">0.8</text><text x="1180" y="318">1.0</text>
+  </g>
+  <text x="640" y="346" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a5f">F1 →</text>
+
+  <!-- Full set interval: [0.383, 0.543], point 0.467 -->
+  <rect x="513.6" y="150" width="172.8" height="36" rx="8" fill="#bbf7d0" stroke="#15803d" stroke-width="2"/>
+  <line x1="604.4" y1="142" x2="604.4" y2="194" stroke="#15803d" stroke-width="3"/>
+  <text x="604.4" y="132" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803d">Full test set: N = 2,000 · 67 positives</text>
+  <text x="604.4" y="212" text-anchor="middle" font-size="13" font-family="monospace" fill="#15803d">0.467, 95% CI [0.383, 0.543] · width 0.160</text>
+  <line x1="604.4" y1="220" x2="604.4" y2="286" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- Slice interval: [0.095, 0.600], point 0.364 -->
+  <rect x="202.6" y="380" width="545.4" height="36" rx="8" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/>
+  <line x1="493.1" y1="372" x2="493.1" y2="424" stroke="#b91c1c" stroke-width="3"/>
+  <line x1="493.1" y1="294" x2="493.1" y2="372" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="493.1" y="446" text-anchor="middle" font-size="14" font-weight="bold" fill="#b91c1c">200-row slice · 6 positives</text>
+  <text x="493.1" y="468" text-anchor="middle" font-size="13" font-family="monospace" fill="#b91c1c">0.364, 95% CI [0.095, 0.600] · width 0.505</text>
+  <text x="493.1" y="490" text-anchor="middle" font-size="13" fill="#7f1d1d">spans essentially the whole useful range: this evaluation cannot tell a good model from a bad one</text>
+
+  <!-- Comparison strip -->
+  <rect x="70" y="520" width="700" height="170" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="90" y="550" font-size="15" font-weight="bold" fill="#1e3a5f">The rule for the week: overlapping intervals measure noise, not a winner</text>
+  <!-- mini axis 0.30..0.65 -> x 110..730, per unit 1771 -->
+  <line x1="110" y1="620" x2="730" y2="620" stroke="#475569" stroke-width="2"/>
+  <!-- A [0.387,0.547] point .467 : x = 110+(v-0.30)*1771 -->
+  <rect x="264" y="588" width="283" height="20" rx="6" fill="#bfdbfe"/>
+  <line x1="405.7" y1="582" x2="405.7" y2="614" stroke="#2563eb" stroke-width="3"/>
+  <text x="250" y="602" text-anchor="end" font-size="13" fill="#2563eb" font-weight="bold">A: 0.467</text>
+  <!-- B [0.409,0.569] point .489 -->
+  <rect x="303" y="632" width="283" height="20" rx="6" fill="#fde68a"/>
+  <line x1="444.7" y1="626" x2="444.7" y2="658" stroke="#b45309" stroke-width="3"/>
+  <text x="600" y="648" font-size="13" fill="#b45309" font-weight="bold">B: 0.489</text>
+  <text x="90" y="682" font-size="12.5" fill="#334155">Both 0.16 wide, heavily overlapping. Wanting B to win does not make 0.022 a measurement. Bootstrap the paired difference instead.</text>
+
+  <!-- Width vs N schematic -->
+  <rect x="800" y="520" width="440" height="170" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="820" y="550" font-size="15" font-weight="bold" fill="#1e3a5f">Demo 2's shape (schematic)</text>
+  <path d="M 840 580 Q 900 660 1210 662" fill="none" stroke="#7c3aed" stroke-width="3"/>
+  <line x1="840" y1="672" x2="1216" y2="672" stroke="#475569" stroke-width="2"/>
+  <text x="1028" y="688" text-anchor="middle" font-size="12" fill="#64748b">positive count in the test set →</text>
+  <text x="826" y="576" text-anchor="end" font-size="12" fill="#64748b" transform="rotate(-90 826 576)"> </text>
+  <text x="820" y="576" font-size="12" fill="#7c3aed" font-weight="bold">CI width</text>
+  <circle cx="861" cy="608" r="6" fill="#b91c1c"/>
+  <text x="875" y="604" font-size="12" fill="#b91c1c">6 positives</text>
+  <circle cx="1000" cy="656" r="6" fill="#15803d"/>
+  <text x="1000" y="644" text-anchor="middle" font-size="12" fill="#15803d">67 positives</text>
+  <text x="820" y="712" font-size="12" fill="#334155">Width is governed by POSITIVE count, not row count.</text>
+</svg>

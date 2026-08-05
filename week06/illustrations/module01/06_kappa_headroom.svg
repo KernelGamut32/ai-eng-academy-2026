@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">91% Agreement, and Almost None of It Was Earned</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">The judge validation numbers from the deck: raw agreement 0.9105, Cohen's kappa 0.3334. Kappa is the fraction of the headroom above chance.</text>
+
+  <!-- Agreement bar 0..1 -> x 90..1190 -->
+  <text x="90" y="150" font-size="15" font-weight="bold" fill="#1e3a5f">Agreement with human labels</text>
+  <!-- chance zone 0..0.8657 -> width 952.3 ; earned 0.8657..0.9105 -> 49.3 ; headroom left 0.9105..1 -> 98.4 -->
+  <rect x="90" y="165" width="952.3" height="70" fill="#e2e8f0"/>
+  <rect x="1042.3" y="165" width="49.3" height="70" fill="#15803d"/>
+  <rect x="1091.6" y="165" width="98.4" height="70" fill="#ffffff"/>
+  <rect x="90" y="165" width="1100" height="70" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="566" y="206" text-anchor="middle" font-size="15" font-weight="bold" fill="#475569">chance agreement = 0.866</text>
+  <line x1="1042.3" y1="155" x2="1042.3" y2="245" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4"/>
+  <line x1="1091.6" y1="155" x2="1091.6" y2="245" stroke="#15803d" stroke-width="2.5"/>
+  <text x="1091.6" y="140" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#15803d">observed: 0.9105</text>
+  <text x="1140" y="206" text-anchor="middle" font-size="12" fill="#94a3b8">to 1.0</text>
+
+  <!-- Why chance is so high -->
+  <rect x="90" y="270" width="560" height="170" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="110" y="300" font-size="15" font-weight="bold" fill="#1e3a5f">Why chance alone gets you to 0.866 here</text>
+  <text x="110" y="330" font-size="13.5" fill="#334155">On a 3.35% base-rate task, both the judge and the humans say</text>
+  <text x="110" y="352" font-size="13.5" fill="#334155">"routine" almost every time. Two rubber stamps that never read</text>
+  <text x="110" y="374" font-size="13.5" fill="#334155">a review would still agree on the vast majority of them, purely</text>
+  <text x="110" y="396" font-size="13.5" fill="#334155">by both defaulting to the majority class.</text>
+  <text x="110" y="424" font-size="13" font-weight="bold" fill="#b91c1c">Raw agreement is accuracy's twin: imbalance inflates it identically.</text>
+
+  <!-- Kappa arithmetic -->
+  <rect x="690" y="270" width="550" height="170" rx="12" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="710" y="300" font-size="15" font-weight="bold" fill="#15803d">Kappa scores only the green sliver</text>
+  <g font-size="14" font-family="monospace" fill="#334155">
+    <text x="710" y="334">earned  = 0.9105 - 0.866 = 0.045</text>
+    <text x="710" y="362">headroom = 1.000 - 0.866 = 0.134</text>
+    <text x="710" y="390">kappa  = 0.045 / 0.134 = 0.333</text>
+  </g>
+  <text x="710" y="422" font-size="13" fill="#334155">The judge claimed one third of the agreement that was</text>
+  <text x="710" y="440" font-size="13" fill="#334155" transform=""> actually available to earn. Barely better than a weighted coin.</text>
+
+  <!-- The two headlines -->
+  <rect x="90" y="470" width="540" height="120" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="360" y="504" text-anchor="middle" font-size="17" font-weight="bold" fill="#b91c1c">The headline that gets reported</text>
+  <text x="360" y="544" text-anchor="middle" font-size="26" font-weight="bold" fill="#b91c1c">"91% agreement with humans"</text>
+  <text x="360" y="574" text-anchor="middle" font-size="12.5" fill="#7f1d1d">true, impressive-sounding, and mostly chance</text>
+
+  <rect x="700" y="470" width="540" height="120" rx="12" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="970" y="504" text-anchor="middle" font-size="17" font-weight="bold" fill="#15803d">The number that should gate the judge</text>
+  <text x="970" y="544" text-anchor="middle" font-size="26" font-weight="bold" fill="#15803d">kappa = 0.333</text>
+  <text x="970" y="574" text-anchor="middle" font-size="12.5" fill="#166534">chance-corrected: this judge is not yet a measuring instrument</text>
+
+  <text x="640" y="636" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a5f">Your LLM judge is a classifier. Validate it like one: never report raw agreement on an imbalanced task.</text>
+  <text x="640" y="664" text-anchor="middle" font-size="14" fill="#475569">Same lesson as the accuracy trap in Section 4, wearing a different hat. If the room internalized that one, this one is a two-minute corollary.</text>
+</svg>

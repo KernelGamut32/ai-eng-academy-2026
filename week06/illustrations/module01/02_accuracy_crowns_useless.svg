@@ -1,0 +1,65 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="44" text-anchor="middle" font-size="30" font-weight="bold" fill="#1e3a5f">How Accuracy Crowns the Useless Model</text>
+  <text x="640" y="72" text-anchor="middle" font-size="16" fill="#475569">2,000 reviews, drawn to scale. Accuracy's denominator is dominated by the gray; whoever owns the gray wins the metric.</text>
+
+  <!-- Composition bar: 2000 -> 1100px @ x=90. routine 1933 -> 1063.2, safety 67 -> 36.8 -->
+  <text x="90" y="122" font-size="14" font-weight="bold" fill="#1e3a5f">The test set</text>
+  <rect x="90" y="132" width="1063.2" height="44" fill="#cbd5e1"/>
+  <rect x="1153.2" y="132" width="36.8" height="44" fill="#d97706"/>
+  <rect x="90" y="132" width="1100" height="44" fill="none" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="620" y="160" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">1,933 routine reviews (96.65%)</text>
+  <text x="1171" y="200" text-anchor="middle" font-size="12" fill="#b45309" font-weight="bold">67 safety</text>
+  <text x="1171" y="216" text-anchor="middle" font-size="12" fill="#b45309">(3.35%)</text>
+
+  <!-- Majority predictor row -->
+  <text x="90" y="258" font-size="15" font-weight="bold" fill="#b91c1c">"Always routine" predictor · accuracy 0.9665</text>
+  <rect x="90" y="268" width="1063.2" height="40" fill="#bbf7d0"/>
+  <rect x="1153.2" y="268" width="36.8" height="40" fill="#fecaca"/>
+  <rect x="90" y="268" width="1100" height="40" fill="none" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="620" y="293" text-anchor="middle" font-size="13" fill="#166534">correct on all 1,933 negatives, for free</text>
+  <text x="1090" y="330" font-size="12.5" fill="#b91c1c">wrong on all 67 positives:</text>
+  <text x="1090" y="346" font-size="12.5" fill="#b91c1c">every safety report missed</text>
+
+  <!-- Actual model row -->
+  <text x="90" y="392" font-size="15" font-weight="bold" fill="#15803d">The actual model · accuracy 0.9395</text>
+  <!-- correct: TN 1826 -> 1004.3, TP 53 -> 29.15 ; wrong: FP 107 -> 58.85, FN 14 -> 7.7 -->
+  <rect x="90" y="402" width="1004.3" height="40" fill="#bbf7d0"/>
+  <rect x="1094.3" y="402" width="58.85" height="40" fill="#fecaca"/>
+  <rect x="1153.2" y="402" width="29.15" height="40" fill="#15803d"/>
+  <rect x="1182.3" y="402" width="7.7" height="40" fill="#7f1d1d"/>
+  <rect x="90" y="402" width="1100" height="40" fill="none" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="592" y="427" text-anchor="middle" font-size="13" fill="#166534">1,826 negatives correct</text>
+  <text x="1123" y="464" text-anchor="middle" font-size="12" fill="#b45309">107 FP</text>
+  <text x="1190" y="484" text-anchor="end" font-size="12" fill="#15803d">dark green: 53 of 67 safety reports CAUGHT</text>
+  <text x="1190" y="502" text-anchor="end" font-size="12" fill="#7f1d1d">dark red: 14 missed</text>
+  <line x1="1167" y1="446" x2="1160" y2="478" stroke="#15803d" stroke-width="1.5"/>
+  <line x1="1186" y1="446" x2="1178" y2="496" stroke="#7f1d1d" stroke-width="1.5"/>
+
+  <!-- The arithmetic of the loss -->
+  <rect x="90" y="530" width="520" height="150" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="110" y="560" font-size="15" font-weight="bold" fill="#b91c1c">Why the useless model wins by 2.7 points</text>
+  <text x="110" y="588" font-size="13.5" fill="#334155">The model trades 107 cheap negatives for 53 precious</text>
+  <text x="110" y="608" font-size="13.5" fill="#334155">positives. Accuracy prices every cell identically, so the</text>
+  <text x="110" y="628" font-size="13.5" fill="#334155">trade books as a net loss of 54 correct predictions:</text>
+  <text x="110" y="656" font-size="13.5" font-family="monospace" fill="#b91c1c">0.9665 - 0.9395 = 54 / 2000 = 0.027</text>
+
+  <!-- Verdict table -->
+  <rect x="650" y="530" width="590" height="150" rx="12" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="670" y="560" font-size="15" font-weight="bold" fill="#15803d">Metrics that price the cells honestly flip the verdict</text>
+  <g font-size="13.5" font-family="monospace" fill="#334155">
+    <text x="670" y="590">metric        always-routine  model</text>
+    <text x="670" y="612">recall (safety)   0.000      0.791</text>
+    <text x="670" y="634">balanced accuracy 0.500      0.868</text>
+    <text x="670" y="656">MCC          0.000      0.488</text>
+  </g>
+  <text x="1225" y="590" text-anchor="end" font-size="12" fill="#15803d" font-weight="bold">winner</text>
+  <g font-size="12" fill="#15803d" font-weight="bold" text-anchor="end">
+    <text x="1225" y="612">model</text>
+    <text x="1225" y="634">model</text>
+    <text x="1225" y="656">model</text>
+  </g>
+
+  <text x="640" y="708" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a5f">"Beat the majority baseline" is the entry fee, and accuracy cannot referee that contest on rare positives.</text>
+</svg>

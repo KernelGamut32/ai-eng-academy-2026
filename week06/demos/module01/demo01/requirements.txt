@@ -1,0 +1,18 @@
+# Week 6 Module 01 Demo 1: Read the Matrix
+# Verified by execution on Python 3.12.3 (cohort standard is 3.13; no
+# version sensitive behavior in this demo).
+#
+# CURRENCY NOTES
+# - scikit-learn 1.8.0 verified. Everything used here (confusion_matrix,
+#   ConfusionMatrixDisplay, classification_report, the four metric
+#   functions, balanced_accuracy_score, matthews_corrcoef) is stable API.
+# - pandas 3.0.x: this demo reads one CSV and uses .iloc only; no pandas
+#   3.0 removals apply.
+# - No LLM backend, no network, no Docker service is used by this demo.
+
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+jupyterlab==4.6.1
+ipykernel==7.3.0

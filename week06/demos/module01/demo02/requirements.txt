@@ -1,0 +1,19 @@
+# Week 6 Module 01 Demo 2: Watch the Interval Collapse
+# Verified by execution on Python 3.12.3 (cohort standard is 3.13; no
+# version sensitive behavior in this demo).
+#
+# CURRENCY NOTES
+# - scikit-learn 1.8.0 verified. f1_score's zero_division keyword and
+#   train_test_split's stratify behavior are stable API.
+# - numpy 2.4.x verified. np.random.default_rng, rng.integers, and
+#   np.percentile are stable API.
+# - pandas 3.0.x: DataFrame.sample and .to_numpy only; no pandas 3.0
+#   removals apply.
+# - No LLM backend, no network, no Docker service is used by this demo.
+
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+jupyterlab==4.6.1
+ipykernel==7.3.0

@@ -1,0 +1,18 @@
+# Week 6 Lab 01: Confusion Matrix and Core Metrics
+# Pinned to the cohort standard stack. Install once per environment:
+#   pip install -r requirements.txt
+#
+# Currency notes (verified 2026-08-01):
+# - scikit-learn 1.6 is the hard floor for this lab: FrozenEstimator
+#   (stretch goal 2) landed in 1.6; FixedThresholdClassifier and
+#   TunedThresholdClassifierCV landed in 1.5. The pin below is the
+#   version the lab was executed and verified against.
+# - No OpenAI, LangChain, Docker, or local LLM dependencies today.
+#   This lab is pure scikit-learn and runs entirely on CPU.
+
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+jupyterlab==4.6.1
+ipykernel==7.3.0
