@@ -1,0 +1,7 @@
+# Week 6 Demo: BERTScore vs BLEU and ROUGE (cohort pins)
+sacrebleu==2.6.0
+rouge-score==0.1.2
+bert-score==0.3.13
+torch==2.13.0
+transformers==5.14.1
+# bert-score also pulls matplotlib (used by plot_example in Part 5)

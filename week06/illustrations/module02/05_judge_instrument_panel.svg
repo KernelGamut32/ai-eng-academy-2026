@@ -1,0 +1,108 @@
+<svg viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arj" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="760" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">A Judge Is an Instrument. Calibrate It or It Is a Random Number Generator.</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">The three components of a usable judge: a real rubric, a bias control per known failure, and a closed calibration loop with humans.</text>
+
+  <!-- Rubric anatomy -->
+  <rect x="40" y="95" width="590" height="280" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="60" y="127" font-size="17" font-weight="bold" fill="#7c3aed">1 · Rubric anatomy: all four parts required</text>
+  <g font-size="13.5">
+    <rect x="60" y="145" width="265" height="100" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <text x="80" y="171" font-weight="bold" fill="#1e3a5f">Named criterion</text>
+    <text x="80" y="193" fill="#334155">Not "quality." For Task A: does the</text>
+    <text x="80" y="211" fill="#334155">summary state the resolution, and is</text>
+    <text x="80" y="229" fill="#334155">it present in the ticket thread?</text>
+
+    <rect x="345" y="145" width="265" height="100" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <text x="365" y="171" font-weight="bold" fill="#1e3a5f">Anchored scale</text>
+    <text x="365" y="193" fill="#334155">Binary pass or fail beats 1-to-10.</text>
+    <text x="365" y="211" fill="#334155">If you must use a scale, every point</text>
+    <text x="365" y="229" fill="#334155">gets a written anchor.</text>
+
+    <rect x="60" y="257" width="265" height="100" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <text x="80" y="283" font-weight="bold" fill="#1e3a5f">Worked examples</text>
+    <text x="80" y="305" fill="#334155">A pass and a fail shown in the</text>
+    <text x="80" y="323" fill="#334155">prompt, so the judge's standard is</text>
+    <text x="80" y="341" fill="#334155">demonstrated, not implied.</text>
+
+    <rect x="345" y="257" width="265" height="100" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <text x="365" y="283" font-weight="bold" fill="#1e3a5f">Structured output</text>
+    <text x="365" y="305" fill="#334155">A JSON verdict with a reason field:</text>
+    <text x="365" y="323" fill="#334155">parseable in CI, auditable by a</text>
+    <text x="365" y="341" fill="#334155">human reading the failures.</text>
+  </g>
+
+  <!-- Bias table -->
+  <rect x="650" y="95" width="590" height="280" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="670" y="127" font-size="17" font-weight="bold" fill="#b45309">2 · Four known biases, one control each</text>
+  <g font-size="13">
+    <text x="670" y="160" font-weight="bold" fill="#1e3a5f">Position</text>
+    <text x="670" y="180" fill="#334155">Slot A wins 10 to 15 extra points on close calls.</text>
+    <text x="670" y="200" fill="#15803d" font-weight="bold">Run every pair twice, order swapped; flips count as ties.</text>
+
+    <text x="670" y="230" font-weight="bold" fill="#1e3a5f">Verbosity</text>
+    <text x="670" y="250" fill="#334155">Longer answers score higher at matched quality.</text>
+    <text x="670" y="270" fill="#15803d" font-weight="bold">Put length in the rubric, or match lengths in the set.</text>
+
+    <text x="670" y="300" font-weight="bold" fill="#1e3a5f">Self-preference</text>
+    <text x="670" y="320" fill="#334155">A judge favors its own model family.</text>
+    <text x="670" y="340" fill="#15803d" font-weight="bold">Never the same family as generator and judge.</text>
+
+    <text x="960" y="160" font-weight="bold" fill="#1e3a5f">Calibration drift</text>
+    <text x="960" y="180" fill="#334155">Same rubric, new judge version,</text>
+    <text x="960" y="200" fill="#334155">different score distribution.</text>
+    <text x="960" y="220" fill="#15803d" font-weight="bold">Pin the judge model version</text>
+    <text x="960" y="240" fill="#15803d" font-weight="bold">like any other dependency.</text>
+    <text x="960" y="290" font-size="12" fill="#64748b">Direct scoring: the CI deploy gate.</text>
+    <text x="960" y="310" font-size="12" fill="#64748b">Pairwise: model-vs-model, higher</text>
+    <text x="960" y="330" font-size="12" fill="#64748b">human agreement, needs the swap.</text>
+  </g>
+
+  <!-- Calibration loop -->
+  <rect x="40" y="400" width="1200" height="230" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="60" y="432" font-size="17" font-weight="bold" fill="#15803d">3 · The calibration loop: humans are no longer your scorer, they are your judge's gold set</text>
+
+  <g>
+    <rect x="80" y="455" width="230" height="90" rx="12" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+    <text x="195" y="486" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a5f">Build gold set</text>
+    <text x="195" y="508" text-anchor="middle" font-size="12" fill="#334155">humans label a stratified</text>
+    <text x="195" y="526" text-anchor="middle" font-size="12" fill="#334155">sample against the rubric</text>
+
+    <line x1="310" y1="500" x2="365" y2="500" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arj)"/>
+
+    <rect x="370" y="455" width="230" height="90" rx="12" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+    <text x="485" y="486" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a5f">Run the judge</text>
+    <text x="485" y="508" text-anchor="middle" font-size="12" fill="#334155">same items, same rubric,</text>
+    <text x="485" y="526" text-anchor="middle" font-size="12" fill="#334155">pinned judge version</text>
+
+    <line x1="600" y1="500" x2="655" y2="500" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arj)"/>
+
+    <rect x="660" y="455" width="230" height="90" rx="12" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+    <text x="775" y="486" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a5f">Measure agreement</text>
+    <text x="775" y="508" text-anchor="middle" font-size="12" fill="#334155">Cohen's kappa vs humans:</text>
+    <text x="775" y="526" text-anchor="middle" font-size="12" fill="#334155">Module 01's lesson applies whole</text>
+
+    <line x1="890" y1="500" x2="945" y2="500" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arj)"/>
+
+    <rect x="950" y="455" width="230" height="90" rx="12" fill="#ffffff" stroke="#15803d" stroke-width="1.5"/>
+    <text x="1065" y="486" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a5f">Re-run on cadence</text>
+    <text x="1065" y="508" text-anchor="middle" font-size="12" fill="#334155">per release, and on any judge</text>
+    <text x="1065" y="526" text-anchor="middle" font-size="12" fill="#334155">model or rubric change</text>
+  </g>
+  <path d="M 1065 545 L 1065 585 L 195 585 L 195 545" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arj)"/>
+  <text x="630" y="578" text-anchor="middle" font-size="12.5" fill="#7c3aed" font-weight="bold">drift, rubric edits, and new judge versions all re-enter the loop</text>
+
+  <text x="640" y="616" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803d">The number you report is never the judge's score alone. It is the score PLUS its measured agreement. Ship both or ship neither.</text>
+
+  <!-- FC3 tie-in -->
+  <rect x="150" y="650" width="980" height="88" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="170" y="680" font-size="14" font-weight="bold" fill="#b91c1c">Formative Check 3's three seeded defects are three cells of this diagram</text>
+  <text x="170" y="706" font-size="13" fill="#334155">"Overall quality, 1 to 10" violates the rubric panel. gpt-4o judging gpt-4o violates self-preference. Always placing</text>
+  <text x="170" y="726" font-size="13" fill="#334155">system_a first violates the position control. Find a defect by asking which cell of this visual the prompt ignores.</text>
+</svg>

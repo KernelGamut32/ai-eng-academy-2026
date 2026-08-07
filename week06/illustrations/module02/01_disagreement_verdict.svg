@@ -1,0 +1,91 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">Every Metric Votes for the Wrong Answer</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">The Cordwell Disagreement: one reference, two outputs, six metrics, one unanimous and factually wrong verdict.</text>
+
+  <!-- Reference strip -->
+  <rect x="60" y="90" width="1160" height="52" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="80" y="112" font-size="12.5" font-weight="bold" fill="#475569">REFERENCE</text>
+  <text x="80" y="132" font-size="13.5" font-family="monospace" fill="#334155">"Customer received a cracked 2200 PSI pressure washer and wants a <tspan fill="#15803d" font-weight="bold">replacement unit shipped</tspan> before Saturday."</text>
+
+  <!-- System A -->
+  <rect x="60" y="158" width="570" height="118" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2.5"/>
+  <text x="80" y="184" font-size="14" font-weight="bold" fill="#b91c1c">SYSTEM A · factually WRONG</text>
+  <text x="80" y="208" font-size="12.5" font-family="monospace" fill="#334155">"Customer received a cracked 2200 PSI</text>
+  <text x="80" y="226" font-size="12.5" font-family="monospace" fill="#334155">pressure washer and wants a <tspan fill="#b91c1c" font-weight="bold">refund issued</tspan></text>
+  <text x="80" y="244" font-size="12.5" font-family="monospace" fill="#334155">before Saturday."</text>
+  <text x="80" y="266" font-size="12" fill="#7f1d1d">13 of 15 tokens copied verbatim. One swapped phrase inverts the promise made to the customer.</text>
+
+  <!-- System B -->
+  <rect x="650" y="158" width="570" height="118" rx="12" fill="#ecfdf5" stroke="#15803d" stroke-width="2.5"/>
+  <text x="670" y="184" font-size="14" font-weight="bold" fill="#15803d">SYSTEM B · factually CORRECT</text>
+  <text x="670" y="208" font-size="12.5" font-family="monospace" fill="#334155">"The buyer's 2200 PSI power washer arrived</text>
+  <text x="670" y="226" font-size="12.5" font-family="monospace" fill="#334155">damaged; they are asking for a <tspan fill="#15803d" font-weight="bold">replacement</tspan></text>
+  <text x="670" y="244" font-size="12.5" font-family="monospace" fill="#334155">to arrive by Saturday."</text>
+  <text x="670" y="266" font-size="12" fill="#166534">Nearly every surface token changed. The meaning is the reference's meaning.</text>
+
+  <!-- Metric verdict bars: six paired bars. Plot area x 130..1150 per metric column of 170 -->
+  <text x="640" y="312" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a5f">The vote, metric by metric (verified values; TER inverted below since lower is better)</text>
+
+  <!-- columns: BLEU, chrF++, R-1, R-2, R-L, TER at x centers 175,345,515,685,855,1025... use 6 columns width 160 start 95 -->
+  <!-- bar area y: 340 baseline at 500, max height 150 for score 100 -->
+  <g font-size="12.5">
+    <!-- BLEU A 69.97 B 6.89 -->
+    <rect x="120" y="395.0" width="52" height="105.0" fill="#b91c1c"/>
+    <rect x="180" y="489.7" width="52" height="10.3" fill="#15803d"/>
+    <text x="146" y="386" text-anchor="middle" fill="#b91c1c" font-weight="bold">69.97</text>
+    <text x="206" y="481" text-anchor="middle" fill="#15803d" font-weight="bold">6.89</text>
+    <text x="176" y="522" text-anchor="middle" font-weight="bold" fill="#1e3a5f">BLEU</text>
+
+    <!-- chrF++ A 79.55 B 36.71 -->
+    <rect x="300" y="380.7" width="52" height="119.3" fill="#b91c1c"/>
+    <rect x="360" y="444.9" width="52" height="55.1" fill="#15803d"/>
+    <text x="326" y="372" text-anchor="middle" fill="#b91c1c" font-weight="bold">79.55</text>
+    <text x="386" y="436" text-anchor="middle" fill="#15803d" font-weight="bold">36.71</text>
+    <text x="356" y="522" text-anchor="middle" font-weight="bold" fill="#1e3a5f">chrF++</text>
+
+    <!-- R-1 A 83.87 B 34.29 -->
+    <rect x="480" y="374.2" width="52" height="125.8" fill="#b91c1c"/>
+    <rect x="540" y="448.6" width="52" height="51.4" fill="#15803d"/>
+    <text x="506" y="366" text-anchor="middle" fill="#b91c1c" font-weight="bold">83.87</text>
+    <text x="566" y="440" text-anchor="middle" fill="#15803d" font-weight="bold">34.29</text>
+    <text x="536" y="522" text-anchor="middle" font-weight="bold" fill="#1e3a5f">ROUGE-1</text>
+
+    <!-- R-2 A 75.86 B 12.12 -->
+    <rect x="660" y="386.2" width="52" height="113.8" fill="#b91c1c"/>
+    <rect x="720" y="481.8" width="52" height="18.2" fill="#15803d"/>
+    <text x="686" y="378" text-anchor="middle" fill="#b91c1c" font-weight="bold">75.86</text>
+    <text x="746" y="473" text-anchor="middle" fill="#15803d" font-weight="bold">12.12</text>
+    <text x="716" y="522" text-anchor="middle" font-weight="bold" fill="#1e3a5f">ROUGE-2</text>
+
+    <!-- R-L A 83.87 B 34.29 -->
+    <rect x="840" y="374.2" width="52" height="125.8" fill="#b91c1c"/>
+    <rect x="900" y="448.6" width="52" height="51.4" fill="#15803d"/>
+    <text x="866" y="366" text-anchor="middle" fill="#b91c1c" font-weight="bold">83.87</text>
+    <text x="926" y="440" text-anchor="middle" fill="#15803d" font-weight="bold">34.29</text>
+    <text x="896" y="522" text-anchor="middle" font-weight="bold" fill="#1e3a5f">ROUGE-L</text>
+
+    <!-- TER inverted: 100-TER as "goodness": A 81.25, B 12.50 -->
+    <rect x="1020" y="378.1" width="52" height="121.9" fill="#b91c1c"/>
+    <rect x="1080" y="481.3" width="52" height="18.7" fill="#15803d"/>
+    <text x="1046" y="370" text-anchor="middle" fill="#b91c1c" font-weight="bold">18.75</text>
+    <text x="1106" y="473" text-anchor="middle" fill="#15803d" font-weight="bold">87.50</text>
+    <text x="1076" y="522" text-anchor="middle" font-weight="bold" fill="#1e3a5f">TER (edit dist.)</text>
+  </g>
+  <line x1="100" y1="500" x2="1160" y2="500" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="1076" y="542" text-anchor="middle" font-size="11" fill="#64748b">lower TER = fewer edits = "better"</text>
+
+  <!-- Verdict banner -->
+  <rect x="60" y="560" width="700" height="130" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="80" y="590" font-size="15" font-weight="bold" fill="#b91c1c">The unanimous verdict is wrong, and it is not a close call</text>
+  <text x="80" y="616" font-size="13.5" fill="#334155">Six for six, every metric prefers System A: roughly 10x on BLEU. A promises</text>
+  <text x="80" y="638" font-size="13.5" fill="#334155">the customer a refund the ticket never mentions. B says the true thing in</text>
+  <text x="80" y="660" font-size="13.5" fill="#334155">different words, and the metrics can only see the different words.</text>
+
+  <rect x="790" y="560" width="430" height="130" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="810" y="590" font-size="15" font-weight="bold" fill="#7c3aed">Why: they all share one move</text>
+  <text x="810" y="616" font-size="13.5" fill="#334155">Tokenize, then count overlap. Meaning never</text>
+  <text x="810" y="638" font-size="13.5" fill="#334155">enters the computation. The fix is not more</text>
+  <text x="810" y="660" font-size="13.5" fill="#334155">references: it is a check that reads the SOURCE.</text>
+</svg>

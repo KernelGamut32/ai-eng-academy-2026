@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="760" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">The Layered Pipeline, and the Gate Every Claim Passes</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Three layers matched to cost and cadence, and the significance discipline that decides whether a delta is allowed to mean anything.</text>
+
+  <!-- Funnel layers -->
+  <g>
+    <rect x="90" y="95" width="1100" height="108" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="110" y="126" font-size="16" font-weight="bold" fill="#2563eb">LAYER 1 · every commit · cents</text>
+    <text x="110" y="152" font-size="13.5" fill="#334155">Surface metrics as regression tripwires: chrF++, ROUGE deltas against the pinned baseline, length and format checks.</text>
+    <text x="110" y="174" font-size="13.5" fill="#334155">Catches: truncation (the BP alarm), format collapse, the day the fine-tune starts emitting garbage. Cannot see meaning, and is not asked to.</text>
+    <text x="1170" y="126" text-anchor="end" font-size="13" fill="#2563eb" font-weight="bold">100% of commits</text>
+
+    <rect x="180" y="223" width="920" height="108" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="200" y="254" font-size="16" font-weight="bold" fill="#b45309">LAYER 2 · per deploy · dollars</text>
+    <text x="200" y="280" font-size="13.5" fill="#334155">Judge-based checks on a sample: calibrated rubric, bias controls, structured verdicts. Faithfulness against the SOURCE,</text>
+    <text x="200" y="302" font-size="13.5" fill="#334155">which is the check that catches System A. Reference-free, so it works on Task B where no gold summaries exist.</text>
+    <text x="1080" y="254" text-anchor="end" font-size="13" fill="#b45309" font-weight="bold">a sample per deploy</text>
+
+    <rect x="270" y="351" width="740" height="108" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+    <text x="290" y="382" font-size="16" font-weight="bold" fill="#15803d">LAYER 3 · per release · human hours</text>
+    <text x="290" y="408" font-size="13.5" fill="#334155">Human review on a stratified sample, whose job is NOT scoring outputs: it is validating that the</text>
+    <text x="290" y="430" font-size="13.5" fill="#334155">Layer 2 judge is still calibrated. Humans are the gold set, kappa is the reading.</text>
+    <text x="990" y="382" text-anchor="end" font-size="13" fill="#15803d" font-weight="bold">stratified sample</text>
+  </g>
+  <text x="640" y="486" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1e3a5f">Each layer catches what the cheaper one above it cannot see, and certifies the layer above it. Skipping a layer does not save money; it defers the bill.</text>
+
+  <!-- Significance gate -->
+  <rect x="60" y="510" width="700" height="230" rx="14" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="80" y="542" font-size="16" font-weight="bold" fill="#1e3a5f">The gate: is +0.67 BLEU real? (verified, 200-item blurb set)</text>
+  <!-- CI axis 64..78 -> x 120..720 -->
+  <line x1="120" y1="660" x2="720" y2="660" stroke="#475569" stroke-width="2"/>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="120" y="682">64</text><text x="420" y="682">71</text><text x="720" y="682">78</text>
+  </g>
+  <!-- baseline [65.73,75.55] -->
+  <rect x="194.1" y="574" width="420.8" height="24" rx="7" fill="#bfdbfe"/>
+  <line x1="404.6" y1="568" x2="404.6" y2="604" stroke="#2563eb" stroke-width="3"/>
+  <text x="180" y="591" text-anchor="end" font-size="13" font-weight="bold" fill="#2563eb">baseline 70.64</text>
+  <!-- candidate [66.51,76.11] -->
+  <rect x="227.6" y="616" width="411.4" height="24" rx="7" fill="#fde68a"/>
+  <line x1="433.3" y1="610" x2="433.3" y2="646" stroke="#b45309" stroke-width="3"/>
+  <text x="655" y="633" font-size="13" font-weight="bold" fill="#b45309">candidate 71.31</text>
+  <text x="80" y="714" font-size="13" fill="#334155">Paired bootstrap, n=1000: +0.67 inside intervals of +/- 4.9, p = 0.333. This is noise.</text>
+  <text x="80" y="734" font-size="13" font-weight="bold" fill="#b91c1c">"Small but potentially meaningful" is the wrong label. "Not significant, say so explicitly" is the standard.</text>
+
+  <!-- Reporting standard -->
+  <rect x="790" y="510" width="450" height="230" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="810" y="542" font-size="16" font-weight="bold" fill="#7c3aed">The five items every reported number carries</text>
+  <g font-size="13.5" fill="#334155">
+    <text x="810" y="574">1 · metric + full config signature</text>
+    <text x="810" y="602">2 · the delta vs a named baseline</text>
+    <text x="810" y="630">3 · the confidence interval</text>
+    <text x="810" y="658">4 · test type + p-value, significance stated</text>
+    <text x="810" y="686">5 · test set identifier + size</text>
+  </g>
+  <text x="810" y="714" font-size="12.5" fill="#7c3aed" font-weight="bold">Missing any one and the number is not reviewable.</text>
+  <text x="810" y="732" font-size="12.5" fill="#7c3aed" font-weight="bold">This is the PR template.</text>
+</svg>

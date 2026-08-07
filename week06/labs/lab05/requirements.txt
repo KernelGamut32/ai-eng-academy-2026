@@ -1,0 +1,10 @@
+# Week 6 Lab 2.2 core dependencies (cohort pinned stack)
+pandas==3.0.2
+numpy==2.4.4
+scikit-learn==1.8.0
+matplotlib>=3.10
+rouge-score==0.1.2
+
+# Optional, Stretch 2 only (needs network for a one time model download):
+# torch==2.13.0
+# sentence-transformers==5.6.1

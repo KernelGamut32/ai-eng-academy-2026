@@ -1,0 +1,86 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">Two Booleans That Move ROUGE by 40 to 90 Points</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Same texts on both sides of every cliff. The score difference is configuration, which is why unpinned cross-paper ROUGE comparison is meaningless.</text>
+
+  <!-- Cliff 1: stemmer -->
+  <rect x="50" y="95" width="580" height="420" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="340" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e3a5f">Cliff 1 · use_stemmer</text>
+  <rect x="80" y="145" width="520" height="82" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="100" y="169" font-size="12" font-family="monospace" fill="#334155">ref:  "The installer mounted the brackets and</text>
+  <text x="100" y="185" font-size="12" font-family="monospace" fill="#334155">    secured the shelving to the studs."</text>
+  <text x="100" y="203" font-size="12" font-family="monospace" fill="#334155">cand: "The installers mount the bracket and</text>
+  <text x="100" y="219" font-size="12" font-family="monospace" fill="#334155">    secure the shelves to the stud."</text>
+
+  <!-- paired bars: R-1 and R-2, False vs True. axis 0..100 -> 200px, baseline 460 -->
+  <g font-size="13">
+    <text x="205" y="262" text-anchor="middle" font-weight="bold" fill="#1e3a5f">ROUGE-1</text>
+    <rect x="140" y="360" width="56" height="100" fill="#94a3b8"/>
+    <text x="168" y="352" text-anchor="middle" font-weight="bold" fill="#475569">50.00</text>
+    <text x="168" y="480" text-anchor="middle" fill="#475569">False</text>
+    <rect x="216" y="260" width="56" height="200" fill="#7c3aed"/>
+    <text x="244" y="252" text-anchor="middle" font-weight="bold" fill="#7c3aed">100.00</text>
+    <text x="244" y="480" text-anchor="middle" fill="#7c3aed">True</text>
+
+    <text x="455" y="262" text-anchor="middle" font-weight="bold" fill="#1e3a5f">ROUGE-2</text>
+    <rect x="390" y="441.8" width="56" height="18.2" fill="#94a3b8"/>
+    <text x="418" y="434" text-anchor="middle" font-weight="bold" fill="#475569">9.09</text>
+    <text x="418" y="480" text-anchor="middle" fill="#475569">False</text>
+    <rect x="466" y="260" width="56" height="200" fill="#7c3aed"/>
+    <text x="494" y="252" text-anchor="middle" font-weight="bold" fill="#7c3aed">100.00</text>
+    <text x="494" y="480" text-anchor="middle" fill="#7c3aed">True</text>
+  </g>
+  <line x1="100" y1="460" x2="580" y2="460" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="340" y="498" text-anchor="middle" font-size="12.5" fill="#334155">The stemmer folds installer to installers, bracket to brackets, stud to studs.</text>
+  <text x="340" y="516" text-anchor="middle" font-size="12.5" fill="#334155">One keyword argument: a 50-point and a 91-point cliff.</text>
+
+  <!-- Cliff 2: rougeLsum newlines -->
+  <rect x="650" y="95" width="580" height="420" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="940" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e3a5f">Cliff 2 · rougeLsum and newlines</text>
+  <rect x="680" y="145" width="520" height="82" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="700" y="171" font-size="12.5" fill="#334155">Multi-sentence summary, sentences REORDERED,</text>
+  <text x="700" y="191" font-size="12.5" fill="#334155">content identical. The only variable that changes below</text>
+  <text x="700" y="211" font-size="12.5" fill="#334155">is whether sentences are separated by newlines.</text>
+
+  <g font-size="13">
+    <!-- four bars: rougeL single .56, rougeLsum single .56, rougeL newline .56, rougeLsum newline .96 -->
+    <rect x="700" y="348" width="80" height="112" fill="#94a3b8"/>
+    <text x="740" y="340" text-anchor="middle" font-weight="bold" fill="#475569">0.5600</text>
+    <text x="740" y="480" text-anchor="middle" fill="#475569" font-size="11.5">rougeL</text>
+    <text x="740" y="495" text-anchor="middle" fill="#64748b" font-size="11">single line</text>
+
+    <rect x="810" y="348" width="80" height="112" fill="#94a3b8"/>
+    <text x="850" y="340" text-anchor="middle" font-weight="bold" fill="#475569">0.5600</text>
+    <text x="850" y="480" text-anchor="middle" fill="#475569" font-size="11.5">rougeLsum</text>
+    <text x="850" y="495" text-anchor="middle" fill="#b91c1c" font-size="11" font-weight="bold">single line !</text>
+
+    <rect x="920" y="348" width="80" height="112" fill="#94a3b8"/>
+    <text x="960" y="340" text-anchor="middle" font-weight="bold" fill="#475569">0.5600</text>
+    <text x="960" y="480" text-anchor="middle" fill="#475569" font-size="11.5">rougeL</text>
+    <text x="960" y="495" text-anchor="middle" fill="#64748b" font-size="11">newline-split</text>
+
+    <rect x="1030" y="268" width="80" height="192" fill="#7c3aed"/>
+    <text x="1070" y="260" text-anchor="middle" font-weight="bold" fill="#7c3aed">0.9600</text>
+    <text x="1070" y="480" text-anchor="middle" fill="#7c3aed" font-size="11.5" font-weight="bold">rougeLsum</text>
+    <text x="1070" y="495" text-anchor="middle" fill="#7c3aed" font-size="11">newline-split</text>
+  </g>
+  <line x1="690" y1="460" x2="1190" y2="460" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="940" y="510" text-anchor="middle" font-size="12.5" fill="#334155" font-weight="bold">Fed a single-line string, rougeLsum silently degrades to rougeL.</text>
+  <text x="940" y="528" text-anchor="middle" font-size="12.5" fill="#334155">The most common silent ROUGE bug in production code.</text>
+
+  <!-- Bottom: the pin list + argument order trap -->
+  <rect x="50" y="545" width="720" height="150" rx="12" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="70" y="575" font-size="15" font-weight="bold" fill="#15803d">A ROUGE number is reviewable only with all four pins</text>
+  <text x="70" y="603" font-size="13.5" fill="#334155">1 · library and version (rouge-score 0.1.2)   2 · use_stemmer value</text>
+  <text x="70" y="627" font-size="13.5" fill="#334155">3 · variant name (rouge1, rouge2, rougeL, rougeLsum)   4 · tokenizer and newline handling</text>
+  <text x="70" y="657" font-size="13" fill="#334155">The only defensible use is a delta against YOUR baseline, on YOUR set, with the config pinned</text>
+  <text x="70" y="677" font-size="13" fill="#334155">in version control. There is no absolute ROUGE scale to compare against.</text>
+
+  <rect x="790" y="545" width="440" height="150" rx="12" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="810" y="575" font-size="15" font-weight="bold" fill="#b91c1c">And one API landmine</text>
+  <text x="810" y="603" font-size="13" font-family="monospace" fill="#334155">scorer.score(target, prediction)</text>
+  <text x="810" y="629" font-size="13" fill="#334155">rouge-score takes the REFERENCE first, the</text>
+  <text x="810" y="649" font-size="13" fill="#334155">candidate second: the reverse of sacrebleu and of</text>
+  <text x="810" y="669" font-size="13" fill="#334155">mental order. Swapping them fails silently.</text>
+</svg>
