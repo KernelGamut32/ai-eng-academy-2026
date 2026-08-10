@@ -1,0 +1,16 @@
+# Week 6 Lab 4 client environment (Python 3.13)
+#
+# mlflow-skinny instead of full mlflow, on purpose: full mlflow 3.15.1 pins
+# pandas<3 and would silently downgrade the cohort's pandas 3.0.2. The skinny
+# client logs runs over HTTP to the Docker server, which carries its own full
+# mlflow internally. skops is required by the scikit-learn model flavor for
+# secure model serialization.
+mlflow-skinny==3.15.1
+skops==0.14.0
+pandas==3.0.2
+numpy==2.4.4
+scikit-learn==1.8.0
+sacrebleu==2.6.0
+rouge-score==0.1.2
+matplotlib==3.11.1
+openai==2.46.0
