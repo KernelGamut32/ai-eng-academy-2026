@@ -1,0 +1,100 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="at5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">A Metric Is a Patch Cable: Record Slots Wired to Parameter Names</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">The selector dict plugs captured record slots into the judge callable's parameters. Keys must match parameter names EXACTLY.</text>
+
+  <!-- Record slots (left) -->
+  <rect x="45" y="100" width="330" height="330" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="210" y="132" text-anchor="middle" font-size="15" font-weight="bold" fill="#2563eb">THE RECORD · captured slots</text>
+  <g font-size="13" font-family="monospace">
+    <rect x="70" y="152" width="280" height="48" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="85" y="172" fill="#334155">the input (query)</text>
+    <text x="85" y="190" font-size="11" fill="#64748b">Selector: record input</text>
+    <rect x="70" y="214" width="280" height="60" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+    <text x="85" y="236" fill="#2563eb">the retrieved context</text>
+    <text x="85" y="254" font-size="11" fill="#334155">select_context(collect_list=True)</text>
+    <text x="85" y="268" font-size="10.5" fill="#64748b">exists only if the retriever is in the graph</text>
+    <rect x="70" y="288" width="280" height="48" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+    <text x="85" y="308" fill="#334155">the final output</text>
+    <text x="85" y="326" font-size="11" fill="#64748b">select_record_output()</text>
+  </g>
+  <text x="70" y="366" font-size="12" fill="#334155">These are the only things a selector can point</text>
+  <text x="70" y="384" font-size="12" fill="#334155">at. Visual 3 decides what exists; this diagram</text>
+  <text x="70" y="402" font-size="12" fill="#334155">decides where each one is delivered.</text>
+
+  <!-- Wiring center -->
+  <rect x="435" y="100" width="410" height="330" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="640" y="132" text-anchor="middle" font-size="15" font-weight="bold" fill="#7c3aed">THE METRIC · the patch bay</text>
+  <g font-size="12" font-family="monospace" fill="#334155">
+    <text x="455" y="162">m_groundedness = Metric(</text>
+    <text x="455" y="182">  implementation=judge</text>
+    <text x="455" y="200">   .groundedness_measure_with_cot_reasons,</text>
+    <text x="455" y="220">  name="Groundedness",</text>
+    <text x="455" y="240">).on({</text>
+    <text x="455" y="262">  <tspan fill="#2563eb" font-weight="bold">"source"</tspan>:  select_context(collect_list=True),</text>
+    <text x="455" y="284">  <tspan fill="#b45309" font-weight="bold">"statement"</tspan>: select_record_output(),</text>
+    <text x="455" y="304">})</text>
+  </g>
+  <rect x="455" y="322" width="370" height="90" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+  <text x="472" y="348" font-size="12.5" font-weight="bold" fill="#7c3aed">The key rule (verified):</text>
+  <text x="472" y="370" font-size="12.5" fill="#334155">dict keys must equal the implementation's</text>
+  <text x="472" y="388" font-size="12.5" fill="#334155">PARAMETER names exactly. "source" and</text>
+  <text x="472" y="406" font-size="12.5" fill="#334155">"statement" below are why those keys exist.</text>
+
+  <!-- Judge callable (right) -->
+  <rect x="905" y="100" width="335" height="330" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="1072" y="132" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803d">THE IMPLEMENTATION · a callable</text>
+  <g font-size="12" font-family="monospace" fill="#334155">
+    <text x="925" y="164">def groundedness_measure</text>
+    <text x="925" y="182">  _with_cot_reasons(</text>
+    <text x="925" y="204">   <tspan fill="#2563eb" font-weight="bold">source</tspan>: list[str],</text>
+    <text x="925" y="226">   <tspan fill="#b45309" font-weight="bold">statement</tspan>: str,</text>
+    <text x="925" y="246">  ) -> float:</text>
+  </g>
+  <text x="925" y="280" font-size="12.5" fill="#334155">Live provider methods return</text>
+  <text x="925" y="298" font-size="12.5" fill="#334155">(score, reasons_dict); a bare float is</text>
+  <text x="925" y="316" font-size="12.5" fill="#334155">also valid. ANY callable returning a</text>
+  <text x="925" y="334" font-size="12.5" fill="#334155">float in [0, 1] works: a keyword check,</text>
+  <text x="925" y="352" font-size="12.5" fill="#334155">a regex, an offline stub, a live judge.</text>
+  <text x="925" y="380" font-size="12.5" font-weight="bold" fill="#15803d">Swap the callable, keep the wiring:</text>
+  <text x="925" y="398" font-size="12.5" font-weight="bold" fill="#15803d">that is the offline-to-live design.</text>
+  <text x="925" y="418" font-size="11.5" fill="#64748b">No provider.score() method exists: verified.</text>
+
+  <!-- wires -->
+  <path d="M 350 244 Q 400 244 447 262" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#at5)"/>
+  <path d="M 350 312 Q 400 300 447 284" fill="none" stroke="#b45309" stroke-width="2.5" marker-end="url(#at5)"/>
+  <path d="M 845 262 Q 880 240 917 208" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#at5)"/>
+  <path d="M 845 284 Q 880 260 917 230" fill="none" stroke="#b45309" stroke-width="2.5" marker-end="url(#at5)"/>
+
+  <!-- Name and identity band -->
+  <rect x="45" y="458" width="580" height="230" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="65" y="490" font-size="15" font-weight="bold" fill="#b45309">name= becomes the column, verbatim</text>
+  <g font-size="12.5" font-family="monospace" fill="#334155">
+    <text x="65" y="518">Metric(name="Groundedness") ...</text>
+    <text x="65" y="542">df, metric_cols = session.get_records_and_feedback(...)</text>
+    <text x="65" y="566">metric_cols -> ['Groundedness', 'Answer Relevance']</text>
+  </g>
+  <text x="65" y="596" font-size="12.5" fill="#334155">The return is a Tuple of the DataFrame and the metric column</text>
+  <text x="65" y="616" font-size="12.5" fill="#334155">names, exactly as given. Downstream code that hard-codes</text>
+  <text x="65" y="636" font-size="12.5" fill="#334155">column strings breaks the day someone renames a Metric:</text>
+  <text x="65" y="656" font-size="12.5" font-weight="bold" fill="#b45309">iterate metric_cols instead of spelling columns twice.</text>
+
+  <rect x="655" y="458" width="585" height="230" rx="14" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="675" y="490" font-size="15" font-weight="bold" fill="#b91c1c">App identity: name + version, and the silent app_id trap</text>
+  <g font-size="12.5" font-family="monospace" fill="#334155">
+    <text x="675" y="518">TruChain(chain, app_name="cordwell_qa",</text>
+    <text x="675" y="538">       app_version="v1", feedbacks=[...])</text>
+  </g>
+  <text x="675" y="566" font-size="12.5" fill="#334155">app_id is a COMPUTED hash of name and version. It is not a</text>
+  <text x="675" y="586" font-size="12.5" fill="#334155">constructor argument you supply.</text>
+  <text x="675" y="614" font-size="12.5" fill="#b91c1c" font-weight="bold">Trap (verified): passing app_id="cordwell_qa" is accepted,</text>
+  <text x="675" y="634" font-size="12.5" fill="#b91c1c" font-weight="bold">silently becomes the app NAME, and a hash replaces the real</text>
+  <text x="675" y="654" font-size="12.5" fill="#b91c1c" font-weight="bold">app_id. Comparisons across versions quietly fracture.</text>
+  <text x="675" y="676" font-size="12" fill="#334155">Always app_name plus app_version. The leaderboard groups by both.</text>
+</svg>

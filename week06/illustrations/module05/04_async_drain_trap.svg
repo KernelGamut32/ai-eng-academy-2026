@@ -1,0 +1,67 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="at4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">Feedback Runs Async. Read Before It Lands and Your Gate Judges Nothing.</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Verified on 2.11.0: reading right after the with block returns rows with EMPTY score columns. The mean of nothing is NaN; NaN fails every assert.</text>
+
+  <!-- Trap timeline -->
+  <rect x="45" y="100" width="1190" height="250" rx="14" fill="#fef2f2" stroke="#b91c1c" stroke-width="2.5"/>
+  <text x="65" y="132" font-size="16" font-weight="bold" fill="#b91c1c">THE TRAP PATH · read immediately</text>
+  <line x1="90" y1="210" x2="1200" y2="210" stroke="#b91c1c" stroke-width="2.5"/>
+  <g font-size="12.5">
+    <circle cx="150" cy="210" r="9" fill="#1e3a5f"/>
+    <text x="150" y="184" text-anchor="middle" font-weight="bold" fill="#1e3a5f">with block ends</text>
+    <text x="150" y="240" text-anchor="middle" fill="#334155">queries answered;</text>
+    <text x="150" y="258" text-anchor="middle" fill="#334155">scores still computing</text>
+
+    <circle cx="430" cy="210" r="9" fill="#b91c1c"/>
+    <text x="430" y="184" text-anchor="middle" font-weight="bold" fill="#b91c1c">read the session NOW</text>
+    <text x="430" y="240" text-anchor="middle" font-family="monospace" fill="#334155">get_records_and_feedback(...)</text>
+    <text x="430" y="258" text-anchor="middle" fill="#7f1d1d">rows return; score columns EMPTY</text>
+
+    <circle cx="740" cy="210" r="9" fill="#b91c1c"/>
+    <text x="740" y="184" text-anchor="middle" font-weight="bold" fill="#b91c1c">aggregate</text>
+    <text x="740" y="240" text-anchor="middle" font-family="monospace" fill="#334155">df["Groundedness"].mean() -> NaN</text>
+
+    <circle cx="1040" cy="210" r="9" fill="#b91c1c"/>
+    <text x="1040" y="184" text-anchor="middle" font-weight="bold" fill="#b91c1c">the gate fires</text>
+    <text x="1040" y="240" text-anchor="middle" font-family="monospace" fill="#334155">assert NaN >= 0.80 -> False</text>
+    <text x="1040" y="258" text-anchor="middle" fill="#7f1d1d" font-weight="bold">CI fails on an app that may be fine</text>
+  </g>
+  <text x="65" y="308" font-size="13" fill="#7f1d1d" font-weight="bold">The failure reads like a quality regression and is actually a race. Half a morning disappears into debugging an app that did nothing wrong.</text>
+  <text x="65" y="330" font-size="12.5" fill="#334155">The reverse gate polarity is worse: a gate written as "fail if mean BELOW floor" with NaN comparisons can pass vacuously and ship the untested build.</text>
+
+  <!-- Correct timeline -->
+  <rect x="45" y="378" width="1190" height="230" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2.5"/>
+  <text x="65" y="410" font-size="16" font-weight="bold" fill="#15803d">THE CORRECT PATH · drain, then read</text>
+  <line x1="90" y1="488" x2="1200" y2="488" stroke="#15803d" stroke-width="2.5"/>
+  <g font-size="12.5">
+    <circle cx="150" cy="488" r="9" fill="#1e3a5f"/>
+    <text x="150" y="462" text-anchor="middle" font-weight="bold" fill="#1e3a5f">with block ends</text>
+
+    <circle cx="470" cy="488" r="9" fill="#15803d"/>
+    <text x="470" y="462" text-anchor="middle" font-weight="bold" fill="#15803d">DRAIN: block until scores land</text>
+    <text x="470" y="518" text-anchor="middle" font-family="monospace" fill="#334155">for record in recording.records:</text>
+    <text x="470" y="536" text-anchor="middle" font-family="monospace" fill="#334155">  record.retrieve_feedback_results()</text>
+    <text x="470" y="558" text-anchor="middle" fill="#166534">waits, returns per-record scores</text>
+
+    <circle cx="820" cy="488" r="9" fill="#15803d"/>
+    <text x="820" y="462" text-anchor="middle" font-weight="bold" fill="#15803d">read the session</text>
+    <text x="820" y="518" text-anchor="middle" font-family="monospace" fill="#334155">df, metric_cols = ...</text>
+    <text x="820" y="538" text-anchor="middle" fill="#334155">columns populated, means real</text>
+
+    <circle cx="1090" cy="488" r="9" fill="#15803d"/>
+    <text x="1090" y="462" text-anchor="middle" font-weight="bold" fill="#15803d">the gate judges reality</text>
+    <text x="1090" y="518" text-anchor="middle" font-family="monospace" fill="#334155">assert mean >= 0.80</text>
+  </g>
+
+  <!-- get rule strip -->
+  <rect x="45" y="632" width="1190" height="60" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="65" y="658" font-size="13.5" font-weight="bold" fill="#7c3aed">The .get() rule, while we are here:</text>
+  <text x="65" y="680" font-size="13" fill="#334155">recording.get() is safe ONLY when exactly one query ran in the with block. For any loop, iterate recording.records. One habit covers both traps.</text>
+</svg>

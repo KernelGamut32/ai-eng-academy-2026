@@ -1,0 +1,101 @@
+<svg viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="at6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="760" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">The Strategy: Five Stages, Two Judges, One Honesty Rule</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">No single stage is sufficient: the value is in the chain. The judge splits by cadence, and every reported delta still owes Module 02 an interval.</text>
+
+  <!-- Five stages -->
+  <g font-size="12.5">
+    <rect x="40" y="100" width="222" height="120" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+    <text x="151" y="128" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1e3a5f">1 · Component tests</text>
+    <text x="151" y="152" text-anchor="middle" fill="#334155">sklearn metrics on labeled</text>
+    <text x="151" y="170" text-anchor="middle" fill="#334155">sets: Module 01's toolkit</text>
+    <text x="151" y="200" text-anchor="middle" font-size="11.5" fill="#64748b">every change · cheapest</text>
+
+    <rect x="286" y="100" width="222" height="120" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="397" y="128" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#2563eb">2 · Integration eval</text>
+    <text x="397" y="152" text-anchor="middle" fill="#334155">TruLens Triad on end-to-end</text>
+    <text x="397" y="170" text-anchor="middle" fill="#334155">RAG queries: this module</text>
+    <text x="397" y="200" text-anchor="middle" font-size="11.5" fill="#64748b">per change set</text>
+
+    <rect x="532" y="100" width="222" height="120" rx="12" fill="#ecfdf5" stroke="#15803d" stroke-width="2.5"/>
+    <text x="643" y="128" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#15803d">3 · Offline suite · THE GATE</text>
+    <text x="643" y="152" text-anchor="middle" fill="#334155">deterministic judge, seeded</text>
+    <text x="643" y="170" text-anchor="middle" fill="#334155">query set, gated CI run</text>
+    <text x="643" y="200" text-anchor="middle" font-size="11.5" fill="#15803d" font-weight="bold">every commit · blocks merges</text>
+
+    <rect x="778" y="100" width="222" height="120" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+    <text x="889" y="128" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#b45309">4 · Online monitoring</text>
+    <text x="889" y="152" text-anchor="middle" fill="#334155">sampled continuous eval,</text>
+    <text x="889" y="170" text-anchor="middle" fill="#334155">leaderboard, drift tracking</text>
+    <text x="889" y="200" text-anchor="middle" font-size="11.5" fill="#64748b">continuous, sampled</text>
+
+    <rect x="1024" y="100" width="216" height="120" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="1132" y="128" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#7c3aed">5 · Human feedback</text>
+    <text x="1132" y="152" text-anchor="middle" fill="#334155">periodic review of sampled</text>
+    <text x="1132" y="170" text-anchor="middle" fill="#334155">records: calibrates the judges</text>
+    <text x="1132" y="200" text-anchor="middle" font-size="11.5" fill="#64748b">per release · human hours</text>
+  </g>
+  <g stroke="#475569" stroke-width="2">
+    <line x1="262" y1="160" x2="280" y2="160" marker-end="url(#at6)"/>
+    <line x1="508" y1="160" x2="526" y2="160" marker-end="url(#at6)"/>
+    <line x1="754" y1="160" x2="772" y2="160" marker-end="url(#at6)"/>
+    <line x1="1000" y1="160" x2="1018" y2="160" marker-end="url(#at6)"/>
+  </g>
+
+  <!-- Two-phase judge -->
+  <rect x="40" y="252" width="590" height="220" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="60" y="284" font-size="15" font-weight="bold" fill="#15803d">PHASE 1 · CI gate: the OFFLINE judge, every commit</text>
+  <g font-size="12.5" fill="#334155">
+    <text x="60" y="312">Deterministic callables: no network, no variance, fast. The</text>
+    <text x="60" y="332">same wiring as the live judge: only the callable differs.</text>
+  </g>
+  <rect x="60" y="348" width="550" height="66" rx="10" fill="#ffffff" stroke="#86efac"/>
+  <g font-size="12.5" font-family="monospace" fill="#334155">
+    <text x="78" y="374">assert df["Groundedness"].mean()   >= 0.80</text>
+    <text x="78" y="398">assert df["Answer Relevance"].mean() >= 0.75</text>
+  </g>
+  <text x="60" y="440" font-size="12.5" fill="#334155">The floors are policy choices tied to business risk, not universal</text>
+  <text x="60" y="460" font-size="12.5" fill="#334155">constants. Drain feedback first, or these asserts judge NaN.</text>
+
+  <rect x="650" y="252" width="590" height="220" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="670" y="284" font-size="15" font-weight="bold" fill="#b45309">PHASE 2 · nightly: the LIVE judge</text>
+  <g font-size="12.5" fill="#334155">
+    <text x="670" y="312">Ollama or LM Studio through the same OpenAI-compatible</text>
+    <text x="670" y="332">provider (base_url), model held in MODEL_TAG. Higher fidelity</text>
+    <text x="670" y="352">scores, real judgment, latency and variance to match.</text>
+  </g>
+  <text x="670" y="384" font-size="12.5" font-weight="bold" fill="#b45309">Why the split works: CI stays fast and deterministic; the</text>
+  <text x="670" y="404" font-size="12.5" font-weight="bold" fill="#b45309">nightly run catches what a keyword stub cannot judge.</text>
+  <text x="670" y="432" font-size="12.5" fill="#334155">Pin and LOG the judge identity like a dependency: a judge</text>
+  <text x="670" y="452" font-size="12.5" fill="#334155">change moves scores with zero app change. New judge, new baseline.</text>
+
+  <!-- Honest A-vs-B -->
+  <rect x="40" y="500" width="1200" height="190" rx="14" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="60" y="532" font-size="15" font-weight="bold" fill="#1e3a5f">The honesty rule, applied to this module's own A-vs-B (v1 vs v2: "if uncertain, say so")</text>
+  <!-- mini bars: G v1 .90 v2 .92 ; AR v1 .80 v2 .85 ; scale 0.7..1.0 -> 240px width bars horizontal -->
+  <g font-size="12.5">
+    <text x="80" y="568" fill="#15803d" font-weight="bold">Groundedness</text>
+    <rect x="200" y="552" width="266.7" height="20" rx="6" fill="#bbf7d0"/>
+    <text x="475" y="568" font-family="monospace" fill="#334155">v1 0.90</text>
+    <rect x="200" y="580" width="293.3" height="20" rx="6" fill="#15803d"/>
+    <text x="502" y="596" font-family="monospace" fill="#334155">v2 0.92  (+0.02)</text>
+
+    <text x="80" y="640" fill="#b45309" font-weight="bold">Answer Relevance</text>
+    <rect x="200" y="624" width="133.3" height="20" rx="6" fill="#fde68a"/>
+    <text x="342" y="640" font-family="monospace" fill="#334155">v1 0.80</text>
+    <rect x="200" y="652" width="200" height="20" rx="6" fill="#d97706"/>
+    <text x="409" y="668" font-family="monospace" fill="#334155">v2 0.85  (+0.05)</text>
+  </g>
+  <text x="660" y="568" font-size="13" fill="#334155">Both legs improved. And the deck's own Section 5 slide sets the bar</text>
+  <text x="660" y="590" font-size="13" fill="#334155">for what that means: a 0.02-point improvement is NOT a win without</text>
+  <text x="660" y="612" font-size="13" fill="#334155">error bounds. Carry Module 02 forward: report the delta WITH its</text>
+  <text x="660" y="634" font-size="13" fill="#334155">interval, on a seeded query set large enough to support one.</text>
+  <text x="660" y="664" font-size="13" font-weight="bold" fill="#1e3a5f">The handout example runs this exact A-vs-B at proper scale and finds the</text>
+  <text x="660" y="684" font-size="13" font-weight="bold" fill="#1e3a5f">interesting mechanism hiding under the means.</text>
+</svg>

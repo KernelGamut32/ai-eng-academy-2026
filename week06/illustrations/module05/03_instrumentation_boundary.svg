@@ -1,0 +1,67 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">The Instrument Only Sees the Graph</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">TruChain instruments components IN the chain graph. Retrieval hidden inside a plain function is invisible, and groundedness silently never computes.</text>
+
+  <!-- Left: visible -->
+  <rect x="45" y="95" width="590" height="430" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2.5"/>
+  <text x="340" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#15803d">VISIBLE · retriever object in the graph</text>
+  <rect x="75" y="148" width="530" height="96" rx="10" fill="#ffffff" stroke="#86efac"/>
+  <g font-size="12.5" font-family="monospace" fill="#334155">
+    <text x="92" y="174">class CordwellRetriever(BaseRetriever): ...</text>
+    <text x="92" y="196">chain = ({"context": CordwellRetriever(),</text>
+    <text x="92" y="216">      "question": RunnablePassthrough()}</text>
+    <text x="92" y="236">     | RunnableLambda(answer))</text>
+  </g>
+  <!-- x-ray field of view -->
+  <rect x="75" y="264" width="530" height="150" rx="10" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="95" y="290" font-size="13" font-weight="bold" fill="#15803d">What the recorder captures per query:</text>
+  <g font-size="12.5" fill="#334155">
+    <text x="95" y="316">the input · the retriever CALL · the returned</text>
+    <text x="95" y="336">Documents (the CONTEXT) · the final output</text>
+  </g>
+  <text x="95" y="366" font-size="12.5" fill="#15803d" font-weight="bold">Selector.select_context(collect_list=True) has</text>
+  <text x="95" y="386" font-size="12.5" fill="#15803d" font-weight="bold">something to point at. Groundedness computes.</text>
+  <g font-size="12.5">
+    <text x="95" y="444" fill="#334155">Triad status:</text>
+    <text x="200" y="444" fill="#2563eb" font-weight="bold">CR YES</text>
+    <text x="290" y="444" fill="#15803d" font-weight="bold">G YES</text>
+    <text x="370" y="444" fill="#b45309" font-weight="bold">AR YES</text>
+  </g>
+  <text x="95" y="474" font-size="12" fill="#64748b">Three edges, three scores, full diagnostic coverage.</text>
+
+  <!-- Right: invisible -->
+  <rect x="655" y="95" width="590" height="430" rx="14" fill="#fef2f2" stroke="#b91c1c" stroke-width="2.5"/>
+  <text x="950" y="128" text-anchor="middle" font-size="17" font-weight="bold" fill="#b91c1c">INVISIBLE · retrieval inside a lambda</text>
+  <rect x="685" y="148" width="530" height="96" rx="10" fill="#ffffff" stroke="#fca5a5"/>
+  <g font-size="12.5" font-family="monospace" fill="#334155">
+    <text x="702" y="174">def answer(question):</text>
+    <text x="702" y="196">  docs = my_search(question) # hidden here</text>
+    <text x="702" y="216">  return synthesize(docs)</text>
+    <text x="702" y="236">chain = RunnableLambda(answer)</text>
+  </g>
+  <rect x="685" y="264" width="530" height="150" rx="10" fill="#fff1f2" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="705" y="290" font-size="13" font-weight="bold" fill="#b91c1c">What the recorder captures per query:</text>
+  <g font-size="12.5" fill="#334155">
+    <text x="705" y="316">the input · one opaque function call · the final</text>
+    <text x="705" y="336">output. The retrieval step never appears. The</text>
+    <text x="705" y="356">context is never captured.</text>
+  </g>
+  <text x="705" y="386" font-size="12.5" fill="#b91c1c" font-weight="bold">select_context has nothing to point at.</text>
+  <g font-size="12.5">
+    <text x="705" y="444" fill="#334155">Triad status:</text>
+    <text x="810" y="444" fill="#94a3b8" font-weight="bold">CR never computes</text>
+    <text x="965" y="444" fill="#94a3b8" font-weight="bold">G never computes</text>
+    <text x="1130" y="444" fill="#b45309" font-weight="bold">AR only</text>
+  </g>
+  <text x="705" y="474" font-size="12" fill="#7f1d1d">No exception. No warning. The columns are simply absent.</text>
+
+  <!-- Footer -->
+  <rect x="45" y="550" width="1190" height="140" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="65" y="582" font-size="15" font-weight="bold" fill="#1e3a5f">Why this trap is the module's nastiest, and the two defenses</text>
+  <text x="65" y="610" font-size="13.5" fill="#334155">It fails by OMISSION: the run succeeds, answer relevance still scores, and the metric that watches hallucination quietly stops existing. A gate that reads</text>
+  <text x="65" y="632" font-size="13.5" fill="#334155">its metric columns dynamically passes vacuously. Defense 1: put the retriever OBJECT in the graph: that is the entire reason the worked example builds a</text>
+  <text x="65" y="654" font-size="13.5" fill="#334155">real BaseRetriever for a three-document toy corpus. Defense 2: make gates assert a metric EXISTS before asserting its value: coverage first, then quality.</text>
+  <text x="65" y="680" font-size="12.5" fill="#64748b">The examples handout runs this incident end to end, refactor to postmortem.</text>
+</svg>

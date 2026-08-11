@@ -1,0 +1,18 @@
+# Week 6 Lab 5.1: Structured LLM Evaluation and Experiment Tracking
+# Install into a DEDICATED venv, not the shared cohort environment.
+# Two upstream pins conflict with the cohort stack:
+#   trulens-providers-openai 2.12.0 pins openai<2.0.0 (cohort has openai 2.x)
+#   mlflow 3.15.1 pins pandas<3 (cohort has pandas 3.x)
+# Installing these into the shared environment would silently downgrade
+# openai and pandas there. See README.md for venv setup.
+
+trulens==2.12.0
+trulens-providers-openai==2.12.0
+mlflow==3.15.1
+sacrebleu==2.6.0
+rouge-score==0.1.2
+scikit-learn==1.8.0
+pandas==2.3.3
+numpy==2.4.4
+openai==1.109.1
+ipykernel==7.3.0

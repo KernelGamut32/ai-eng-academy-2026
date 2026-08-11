@@ -1,0 +1,74 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="at2g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">Groundedness Traces Claims to Spans. Faithfulness Only Checks for Contradiction.</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Same Cordwell response, claim by claim. The distinction is granularity, and the fabricated discount is the claim only the granular check catches.</text>
+
+  <!-- Retrieved context panel -->
+  <rect x="45" y="100" width="440" height="250" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="65" y="132" font-size="15" font-weight="bold" fill="#2563eb">RETRIEVED CONTEXT · the source spans</text>
+  <rect x="65" y="150" width="400" height="60" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="80" y="176" font-size="12.5" font-family="monospace" fill="#334155">"CordSeal S-100 shellac primer is in</text>
+  <text x="80" y="196" font-size="12.5" font-family="monospace" fill="#334155"> Aisle 4, paint."</text>
+  <rect x="65" y="222" width="400" height="60" rx="8" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="80" y="248" font-size="12.5" font-family="monospace" fill="#334155">"Use CordSeal S-100 shellac primer on</text>
+  <text x="80" y="268" font-size="12.5" font-family="monospace" fill="#334155"> pine before oil paint."</text>
+  <text x="65" y="316" font-size="12" fill="#64748b">Two chunks. Every span a claim could cite lives here.</text>
+  <text x="65" y="334" font-size="12" fill="#64748b">Nothing about discounts exists anywhere in them.</text>
+
+  <!-- Response claims panel -->
+  <rect x="545" y="100" width="690" height="250" rx="14" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+  <text x="565" y="132" font-size="15" font-weight="bold" fill="#1e3a5f">THE RESPONSE, decomposed into claims</text>
+
+  <g font-size="12.5">
+    <rect x="565" y="150" width="440" height="52" rx="8" fill="#ecfdf5" stroke="#15803d" stroke-width="1.5"/>
+    <text x="580" y="172" font-family="monospace" fill="#334155">c1: "Use CordSeal S-100 on pine before oil paint"</text>
+    <text x="580" y="192" fill="#15803d" font-weight="bold">GROUNDED: traces to a span in chunk 2</text>
+    <line x1="545" y1="176" x2="490" y2="250" stroke="#15803d" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#at2g)"/>
+
+    <rect x="565" y="214" width="440" height="52" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+    <text x="580" y="236" font-family="monospace" fill="#334155">c2: "CordSeal S-100 is a good primer"</text>
+    <text x="580" y="256" fill="#b45309" font-weight="bold">FAITHFUL, NOT GROUNDED: consistent, no explicit span</text>
+
+    <rect x="565" y="278" width="440" height="52" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="2.5"/>
+    <text x="580" y="300" font-family="monospace" fill="#334155">c3: "Pro members get a 40% contractor discount"</text>
+    <text x="580" y="320" fill="#b91c1c" font-weight="bold">UNGROUNDED: no span anywhere. Fabricated.</text>
+  </g>
+
+  <rect x="1025" y="150" width="195" height="180" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="1122" y="176" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1e3a5f">The two verdicts</text>
+  <text x="1040" y="202" font-size="12" fill="#334155">Faithfulness (document</text>
+  <text x="1040" y="220" font-size="12" fill="#334155">level): no contradiction,</text>
+  <text x="1040" y="238" font-size="12" fill="#334155">reads acceptably.</text>
+  <text x="1040" y="264" font-size="12" fill="#b91c1c" font-weight="bold">Groundedness (claim</text>
+  <text x="1040" y="282" font-size="12" fill="#b91c1c" font-weight="bold">level): c3 drags the</text>
+  <text x="1040" y="300" font-size="12" fill="#b91c1c" font-weight="bold">score toward zero.</text>
+  <text x="1040" y="320" font-size="11" fill="#64748b">Granularity catches it.</text>
+
+  <!-- Why it matters band -->
+  <rect x="45" y="378" width="1190" height="120" rx="14" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="65" y="410" font-size="15" font-weight="bold" fill="#b91c1c">This is the Section 1 blind spot, closed</text>
+  <text x="65" y="438" font-size="13.5" fill="#334155">ROUGE scored this response HIGH: the product name overlaps a reference beautifully, and string overlap has no model of factuality. A customer walks in</text>
+  <text x="65" y="460" font-size="13.5" fill="#334155">expecting a discount that does not exist. Groundedness is the first metric in this course that sees c3 for what it is, because it is the first metric that</text>
+  <text x="65" y="482" font-size="13.5" fill="#334155">reads the SOURCE instead of a reference: the check Module 02's Discussion 1 concluded had to exist.</text>
+
+  <!-- Normalization strip -->
+  <rect x="45" y="522" width="1190" height="168" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="65" y="554" font-size="15" font-weight="bold" fill="#7c3aed">Reading the number: the provider's internal scale (verified on trulens 2.11.0)</text>
+  <!-- internal 0-3 scale bar -->
+  <text x="65" y="586" font-size="12.5" fill="#334155">internal judge scale (min_score_val=0, max_score_val=3, temperature=0.0):</text>
+  <rect x="65" y="598" width="720" height="30" rx="8" fill="#ffffff" stroke="#c4b5fd"/>
+  <rect x="65" y="598" width="648" height="30" rx="8" fill="#7c3aed" opacity="0.35"/>
+  <line x1="713" y1="590" x2="713" y2="636" stroke="#7c3aed" stroke-width="3"/>
+  <g font-size="12" fill="#64748b"><text x="65" y="650">0</text><text x="305" y="650">1</text><text x="545" y="650">2</text><text x="779" y="650">3</text></g>
+  <text x="713" y="668" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#7c3aed">a reported 0.9 means 2.7 of 3 internally</text>
+  <text x="820" y="600" font-size="13" fill="#334155">The API returns a normalized float in [0.0, 1.0]. Your</text>
+  <text x="820" y="622" font-size="13" fill="#334155">rubrics can use any integer scale: the provider handles</text>
+  <text x="820" y="644" font-size="13" fill="#334155">the transform. Compare scores only across the SAME</text>
+  <text x="820" y="666" font-size="13" fill="#334155">judge and rubric: the float hides the scale it came from.</text>
+</svg>

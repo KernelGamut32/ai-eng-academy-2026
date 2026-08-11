@@ -1,0 +1,76 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="at1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">The Triad Is Three Edges, Not Three Grades</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Each leg measures one specific edge of the pipeline. That attachment is what turns a score into a diagnosis with a component's name on it.</text>
+
+  <!-- Pipeline nodes -->
+  <g font-size="14" font-weight="bold" text-anchor="middle">
+    <rect x="60" y="240" width="130" height="56" rx="10" fill="#1e3a5f"/>
+    <text x="125" y="273" fill="#ffffff">QUERY</text>
+    <rect x="290" y="240" width="150" height="56" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="365" y="266" fill="#334155">RETRIEVER</text>
+    <text x="365" y="284" font-size="10.5" font-weight="normal" fill="#64748b">BaseRetriever in the graph</text>
+    <rect x="540" y="240" width="140" height="56" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="610" y="273" fill="#2563eb">CONTEXT</text>
+    <rect x="780" y="240" width="150" height="56" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="855" y="273" fill="#334155">GENERATOR</text>
+    <rect x="1030" y="240" width="150" height="56" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="1105" y="273" fill="#b45309">RESPONSE</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="2">
+    <line x1="190" y1="268" x2="284" y2="268" marker-end="url(#at1)"/>
+    <line x1="440" y1="268" x2="534" y2="268" marker-end="url(#at1)"/>
+    <line x1="680" y1="268" x2="774" y2="268" marker-end="url(#at1)"/>
+    <line x1="930" y1="268" x2="1024" y2="268" marker-end="url(#at1)"/>
+  </g>
+
+  <!-- CR arc: query -> context (above) -->
+  <path d="M 125 236 Q 367 110 610 236" fill="none" stroke="#2563eb" stroke-width="3.5"/>
+  <text x="367" y="128" text-anchor="middle" font-size="15" font-weight="bold" fill="#2563eb">CONTEXT RELEVANCE</text>
+  <text x="367" y="150" text-anchor="middle" font-size="12.5" fill="#334155">did the chunks that came back match the query?</text>
+
+  <!-- G arc: context -> response (above) -->
+  <path d="M 610 236 Q 857 110 1105 236" fill="none" stroke="#15803d" stroke-width="3.5"/>
+  <text x="857" y="128" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803d">GROUNDEDNESS</text>
+  <text x="857" y="150" text-anchor="middle" font-size="12.5" fill="#334155">is every claim in the response supported by a span in the context?</text>
+
+  <!-- AR arc: query -> response (below) -->
+  <path d="M 125 300 Q 615 470 1105 300" fill="none" stroke="#d97706" stroke-width="3.5"/>
+  <text x="615" y="420" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">ANSWER RELEVANCE</text>
+  <text x="615" y="442" text-anchor="middle" font-size="12.5" fill="#334155">does the response actually answer the question that was asked?</text>
+
+  <text x="640" y="482" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1e3a5f">Together the three edges cover the full failure surface: bad retrieval, hallucination, and off-topic generation are separately diagnosable.</text>
+
+  <!-- Signature cards -->
+  <g font-size="12.5">
+    <rect x="45" y="510" width="385" height="180" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="65" y="540" font-size="14" font-weight="bold" fill="#2563eb">SIGNATURE 1 · low context relevance</text>
+    <text x="65" y="566" fill="#334155">The blue edge failed: chunks coming back do not</text>
+    <text x="65" y="586" fill="#334155">match the query. Nothing downstream can save it.</text>
+    <text x="65" y="614" font-weight="bold" fill="#2563eb">Component: the RETRIEVER.</text>
+    <text x="65" y="638" fill="#334155">Fix menu: embedding model, chunk size, top-k,</text>
+    <text x="65" y="658" fill="#334155">query rewriting. Week 5's levers, exactly.</text>
+
+    <rect x="450" y="510" width="385" height="180" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+    <text x="470" y="540" font-size="14" font-weight="bold" fill="#15803d">SIGNATURE 2 · low G, high CR</text>
+    <text x="470" y="566" fill="#334155">Good context arrived and the response still contains</text>
+    <text x="470" y="586" fill="#334155">claims no span supports. The invention happened</text>
+    <text x="470" y="606" fill="#334155">AFTER retrieval did its job.</text>
+    <text x="470" y="634" font-weight="bold" fill="#15803d">Component: the LLM. The hallucination is in the</text>
+    <text x="470" y="654" font-weight="bold" fill="#15803d">generator, not the retriever.</text>
+
+    <rect x="855" y="510" width="385" height="180" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="875" y="540" font-size="14" font-weight="bold" fill="#b45309">SIGNATURE 3 · low AR, high G</text>
+    <text x="875" y="566" fill="#334155">Every claim is faithfully supported by context, and</text>
+    <text x="875" y="586" fill="#334155">the response still fails the user: it answered a</text>
+    <text x="875" y="606" fill="#334155">different question than the one asked.</text>
+    <text x="875" y="634" font-weight="bold" fill="#b45309">Component: prompt framing or off-topic</text>
+    <text x="875" y="654" font-weight="bold" fill="#b45309">generation. Retrieval is innocent here too.</text>
+  </g>
+</svg>
