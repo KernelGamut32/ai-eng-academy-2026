@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="am1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">Where Every log Call Actually Lands</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">One tracking URI, four components. Knowing which store receives each call is what makes every later error message make sense.</text>
+
+  <!-- Your code column -->
+  <rect x="40" y="100" width="330" height="440" rx="14" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="205" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a5f">YOUR CODE · the client API</text>
+  <text x="205" y="154" text-anchor="middle" font-size="12" font-family="monospace" fill="#475569">sqlite:///mlflow.db</text>
+
+  <g font-size="13" font-family="monospace">
+    <rect x="65" y="175" width="280" height="40" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="205" y="200" text-anchor="middle" fill="#7c3aed">log_param("C", 1.0)</text>
+
+    <rect x="65" y="230" width="280" height="40" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="205" y="255" text-anchor="middle" fill="#2563eb">log_metric("recall", .83)</text>
+
+    <rect x="65" y="285" width="280" height="40" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+    <text x="205" y="310" text-anchor="middle" fill="#15803d">set_tag("owner", "ml")</text>
+
+    <rect x="65" y="340" width="280" height="40" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+    <text x="205" y="365" text-anchor="middle" fill="#b45309">log_artifact("cm.png")</text>
+
+    <rect x="65" y="395" width="280" height="56" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+    <text x="205" y="418" text-anchor="middle" fill="#b91c1c">log_model(name="model",</text>
+    <text x="205" y="438" text-anchor="middle" fill="#b91c1c"> registered_model_name=...)</text>
+  </g>
+  <text x="205" y="480" text-anchor="middle" font-size="12" fill="#64748b">Same calls, whether the backend is this</text>
+  <text x="205" y="498" text-anchor="middle" font-size="12" fill="#64748b">local SQLite file or a team Postgres server.</text>
+  <text x="205" y="516" text-anchor="middle" font-size="12" fill="#64748b">Only the URI changes.</text>
+
+  <!-- Tracking DB -->
+  <rect x="470" y="100" width="360" height="240" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="650" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#2563eb">TRACKING STORE · a database</text>
+  <text x="650" y="154" text-anchor="middle" font-size="12" fill="#475569">rows and columns: small, structured, queryable</text>
+  <g font-size="13" fill="#334155">
+    <text x="495" y="186">Runs, experiments, and their:</text>
+    <text x="495" y="212"><tspan fill="#7c3aed" font-weight="bold">params</tspan>  write-once inputs</text>
+    <text x="495" y="238"><tspan fill="#2563eb" font-weight="bold">metrics</tspan>  numbers, optionally stepped</text>
+    <text x="495" y="264"><tspan fill="#15803d" font-weight="bold">tags</tspan>  mutable key-value metadata</text>
+  </g>
+  <text x="495" y="296" font-size="12.5" font-weight="bold" fill="#2563eb">This is what search_runs and the UI filter box query.</text>
+  <text x="495" y="316" font-size="12.5" fill="#334155">If it is not a DB row, you cannot filter or sort on it.</text>
+
+  <!-- Artifact store -->
+  <rect x="470" y="360" width="360" height="180" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="650" y="392" text-anchor="middle" font-size="16" font-weight="bold" fill="#b45309">ARTIFACT STORE · a filesystem</text>
+  <text x="650" y="414" text-anchor="middle" font-size="12" fill="#475569">binary files, linked to a run: local dir today, S3 later</text>
+  <g font-size="13" fill="#334155">
+    <text x="495" y="446">plots/confusion_matrix.png</text>
+    <text x="495" y="470">eval/predictions.csv · configs · prompt templates</text>
+    <text x="495" y="494">the serialized model + MLmodel manifest + signature</text>
+  </g>
+  <text x="495" y="522" font-size="12.5" font-weight="bold" fill="#b45309">Big things live here. The DB stores only the pointer.</text>
+
+  <!-- Registry -->
+  <rect x="900" y="100" width="340" height="440" rx="14" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="1070" y="132" text-anchor="middle" font-size="16" font-weight="bold" fill="#b91c1c">MODEL REGISTRY · in the database</text>
+  <text x="1070" y="154" text-anchor="middle" font-size="12" fill="#475569">named, versioned models with aliases + tags</text>
+  <g font-size="13" fill="#334155">
+    <text x="925" y="188">cordwell-escalation-clf</text>
+    <text x="945" y="214">version 1 · version 2 · version 3</text>
+    <text x="945" y="240"><tspan fill="#15803d" font-weight="bold">@champion</tspan> -> a version (movable)</text>
+    <text x="945" y="266"><tspan fill="#7c3aed" font-weight="bold">@challenger</tspan> -> a version (movable)</text>
+    <text x="945" y="292">tags: validation_status=passed</text>
+  </g>
+  <rect x="925" y="316" width="290" height="94" rx="10" fill="#ffffff" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="945" y="342" font-size="13" font-weight="bold" fill="#b91c1c">Requires a database backend.</text>
+  <text x="945" y="364" font-size="12.5" fill="#334155">On a bare file store the registry has</text>
+  <text x="945" y="382" font-size="12.5" fill="#334155">never worked: sqlite:///mlflow.db is</text>
+  <text x="945" y="400" font-size="12.5" fill="#334155">the minimum, and it is one URI.</text>
+  <text x="925" y="440" font-size="12.5" fill="#334155">Serving code loads through it:</text>
+  <text x="925" y="462" font-size="12.5" font-family="monospace" fill="#b91c1c">models:/name@champion</text>
+  <text x="925" y="490" font-size="12" fill="#64748b">Segment 5 lives entirely in this box.</text>
+
+  <!-- Arrows -->
+  <line x1="345" y1="195" x2="464" y2="200" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#am1)"/>
+  <line x1="345" y1="250" x2="464" y2="235" stroke="#2563eb" stroke-width="2.5" marker-end="url(#am1)"/>
+  <line x1="345" y1="305" x2="464" y2="262" stroke="#15803d" stroke-width="2.5" marker-end="url(#am1)"/>
+  <line x1="345" y1="360" x2="464" y2="440" stroke="#d97706" stroke-width="2.5" marker-end="url(#am1)"/>
+  <line x1="345" y1="423" x2="464" y2="470" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#am1)"/>
+  <line x1="830" y1="470" x2="894" y2="300" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#am1)"/>
+  <text x="850" y="392" font-size="11.5" fill="#b91c1c" transform="rotate(-63 856 392)">registered_model_name=</text>
+
+  <!-- Footer -->
+  <rect x="40" y="570" width="1200" height="120" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="60" y="602" font-size="15" font-weight="bold" fill="#1e3a5f">Why the split matters: three symptoms, three stores</text>
+  <text x="60" y="630" font-size="13.5" fill="#334155">"I cannot filter on it" means it went to the artifact store instead of a param, metric, or tag. "The UI shows the run but the plot is missing" means the</text>
+  <text x="60" y="652" font-size="13.5" fill="#334155">artifact path moved. "Registered models tab is erroring" means someone pointed MLflow at a bare directory with no database behind it. One log call,</text>
+  <text x="60" y="674" font-size="13.5" fill="#334155">one destination: knowing the destination is the debugging skill this module quietly teaches.</text>
+</svg>

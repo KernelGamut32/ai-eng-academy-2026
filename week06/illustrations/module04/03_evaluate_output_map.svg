@@ -1,0 +1,106 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="am3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">One evaluate Call, the Whole Module 01 Toolkit, Logged</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">The verified eval_champion run on 1,000 reviews. Every metric below regenerates exactly from the four counts: it is Monday's matrix, mechanized.</text>
+
+  <!-- The call -->
+  <rect x="40" y="95" width="380" height="180" rx="14" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="230" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a5f">The one call</text>
+  <g font-size="12.5" font-family="monospace" fill="#334155">
+    <text x="62" y="154">mlflow.models.evaluate(</text>
+    <text x="62" y="174">  "models:/cordwell-escalation</text>
+    <text x="62" y="192">   -clf@champion",</text>
+    <text x="62" y="212">  edf, targets="label",</text>
+    <text x="62" y="232">  model_type="classifier")</text>
+  </g>
+  <text x="62" y="262" font-size="12" fill="#64748b">Replaces six manual log_metric calls and a hand-built CSV.</text>
+
+  <!-- Counts -->
+  <rect x="40" y="300" width="380" height="240" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="230" y="330" text-anchor="middle" font-size="15" font-weight="bold" fill="#7c3aed">The four counts it logs first</text>
+  <g font-size="14" font-family="monospace">
+    <rect x="70" y="350" width="150" height="60" rx="8" fill="#ecfdf5" stroke="#15803d"/>
+    <text x="145" y="376" text-anchor="middle" fill="#15803d" font-weight="bold">TP = 54</text>
+    <text x="145" y="396" text-anchor="middle" font-size="11" fill="#334155">caught escalations</text>
+    <rect x="240" y="350" width="150" height="60" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+    <text x="315" y="376" text-anchor="middle" fill="#b91c1c" font-weight="bold">FN = 11</text>
+    <text x="315" y="396" text-anchor="middle" font-size="11" fill="#334155">missed: the costly cell</text>
+    <rect x="70" y="425" width="150" height="60" rx="8" fill="#fffbeb" stroke="#d97706"/>
+    <text x="145" y="451" text-anchor="middle" fill="#b45309" font-weight="bold">FP = 132</text>
+    <text x="145" y="471" text-anchor="middle" font-size="11" fill="#334155">false alarms in queue</text>
+    <rect x="240" y="425" width="150" height="60" rx="8" fill="#f8fafc" stroke="#64748b"/>
+    <text x="315" y="451" text-anchor="middle" fill="#475569" font-weight="bold">TN = 803</text>
+    <text x="315" y="471" text-anchor="middle" font-size="11" fill="#334155">routine, left alone</text>
+  </g>
+  <text x="230" y="518" text-anchor="middle" font-size="12" fill="#64748b">example_count: 1,000 · 65 true positives (6.5% base rate)</text>
+
+  <line x1="420" y1="420" x2="475" y2="420" stroke="#475569" stroke-width="2.5" marker-end="url(#am3)"/>
+
+  <!-- Derived metrics -->
+  <rect x="480" y="95" width="440" height="445" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="700" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#2563eb">Run metrics, all logged automatically</text>
+  <g font-size="13.5" font-family="monospace" fill="#334155">
+    <text x="505" y="162">precision_score  0.2903</text>
+    <text x="505" y="192">recall_score    0.8308</text>
+    <text x="505" y="222">f1_score      0.4303</text>
+    <text x="505" y="252">accuracy_score  0.857</text>
+    <text x="505" y="282">roc_auc      0.8972</text>
+    <text x="505" y="312">precision_recall_auc 0.6667</text>
+    <text x="505" y="342">log_loss      0.336</text>
+  </g>
+  <g font-size="12">
+    <text x="740" y="162" fill="#2563eb">= 54 / (54 + 132): the column</text>
+    <text x="740" y="192" fill="#d97706">= 54 / (54 + 11): the row</text>
+    <text x="740" y="222" fill="#475569">harmonic mean of the two</text>
+    <text x="740" y="252" fill="#475569">= 857 / 1000</text>
+    <text x="740" y="282" fill="#b91c1c">flatters at 6.5% base rate:</text>
+    <text x="740" y="300" fill="#b91c1c">read PR-AUC instead</text>
+    <text x="740" y="342" fill="#475569">needs scores, not labels</text>
+  </g>
+  <rect x="505" y="368" width="390" height="160" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="525" y="394" font-size="13.5" font-weight="bold" fill="#1e3a5f">Module 01, mechanized</text>
+  <text x="525" y="418" font-size="12.5" fill="#334155">Precision still lives in the predicted column; recall still</text>
+  <text x="525" y="438" font-size="12.5" fill="#334155">lives in the actual row. Recall 0.8308 is the champion</text>
+  <text x="525" y="458" font-size="12.5" fill="#334155">metric because a missed escalation is the expensive error.</text>
+  <text x="525" y="482" font-size="12.5" fill="#334155">And accuracy 0.857 on a 6.5% base rate deserves the</text>
+  <text x="525" y="502" font-size="12.5" fill="#334155">same suspicion it earned on Monday. Nothing new is true</text>
+  <text x="525" y="522" font-size="12.5" fill="#334155">here: it is just LOGGED now, every time, for free.</text>
+
+  <line x1="920" y1="320" x2="975" y2="320" stroke="#475569" stroke-width="2.5" marker-end="url(#am3)"/>
+
+  <!-- Eval table artifact -->
+  <rect x="980" y="95" width="260" height="445" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="1110" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">Plus one artifact</text>
+  <text x="1005" y="156" font-size="13" fill="#334155">The eval table CSV:</text>
+  <text x="1005" y="178" font-size="13" fill="#334155">one row per input with</text>
+  <text x="1005" y="198" font-size="13" fill="#334155">prediction and ground truth.</text>
+  <rect x="1005" y="216" width="210" height="130" rx="8" fill="#ffffff" stroke="#fcd34d"/>
+  <g font-size="11" font-family="monospace" fill="#334155">
+    <text x="1018" y="240">input   y  pred</text>
+    <text x="1018" y="260">rev_0031  1  1</text>
+    <text x="1018" y="280">rev_0047  1  0 &lt;-FN</text>
+    <text x="1018" y="300">rev_0102  0  1</text>
+    <text x="1018" y="320">rev_0110  0  0</text>
+  </g>
+  <text x="1005" y="374" font-size="12.5" fill="#334155">Openable in the UI. Filter</text>
+  <text x="1005" y="394" font-size="12.5" fill="#334155">to the 11 false negatives</text>
+  <text x="1005" y="414" font-size="12.5" fill="#334155">without leaving the browser:</text>
+  <text x="1005" y="434" font-size="12.5" fill="#334155">Monday's read-the-failures</text>
+  <text x="1005" y="454" font-size="12.5" fill="#334155">discipline, one click away.</text>
+  <text x="1005" y="482" font-size="12.5" font-weight="bold" fill="#b45309">Without this artifact, error</text>
+  <text x="1005" y="502" font-size="12.5" font-weight="bold" fill="#b45309">analysis means re-running</text>
+  <text x="1005" y="522" font-size="12.5" font-weight="bold" fill="#b45309">the model.</text>
+
+  <!-- Footer -->
+  <rect x="40" y="565" width="1200" height="125" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="60" y="597" font-size="15" font-weight="bold" fill="#15803d">The verification habit this visual models</text>
+  <text x="60" y="625" font-size="13.5" fill="#334155">Every derived metric on this slide was recomputed from the four counts before it was drawn, and every one closes exactly: 54 over 186 is 0.2903,</text>
+  <text x="60" y="647" font-size="13.5" fill="#334155">54 over 65 is 0.8308, their harmonic mean is 0.4303, and 857 over 1,000 is 0.857. When a tool logs eleven numbers for free, the engineer's job</text>
+  <text x="60" y="669" font-size="13.5" fill="#334155">shifts from computing them to being able to CHECK them. Ten seconds of arithmetic is the difference between reading a dashboard and trusting one.</text>
+</svg>

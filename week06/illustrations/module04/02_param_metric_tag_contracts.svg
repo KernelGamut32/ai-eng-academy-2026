@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">Param, Metric, or Tag? The Three Contracts</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Same log call shape, three different mutation contracts. The contract, not the content, is what decides where a value belongs.</text>
+
+  <!-- Params column -->
+  <rect x="45" y="95" width="385" height="380" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="237" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#7c3aed">PARAMS</text>
+  <text x="237" y="150" text-anchor="middle" font-size="13" fill="#475569">inputs, set before the run</text>
+  <g font-size="13" fill="#334155">
+    <text x="70" y="184">C=0.1 · class_weight="balanced"</text>
+    <text x="70" y="206">seed=42 · MODEL="logreg"</text>
+  </g>
+  <rect x="70" y="222" width="335" height="120" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+  <text x="90" y="248" font-size="13.5" font-weight="bold" fill="#7c3aed">Contract: WRITE ONCE</text>
+  <text x="90" y="272" font-size="12.5" fill="#334155">Re-log the SAME value: silently allowed.</text>
+  <text x="90" y="292" font-size="12.5" fill="#334155">Log a DIFFERENT value for an existing key:</text>
+  <text x="90" y="312" font-size="12.5" font-family="monospace" fill="#b91c1c">MlflowException: Changing param</text>
+  <text x="90" y="330" font-size="12.5" font-family="monospace" fill="#b91c1c">values is not allowed</text>
+  <text x="70" y="370" font-size="12.5" fill="#334155">Immutable means cannot CHANGE,</text>
+  <text x="70" y="390" font-size="12.5" fill="#334155">not cannot repeat. That distinction is</text>
+  <text x="70" y="410" font-size="12.5" fill="#334155">Formative Check 1's question 2, verbatim.</text>
+  <text x="70" y="446" font-size="12.5" font-weight="bold" fill="#7c3aed">For LLM runs: MODEL is a config variable,</text>
+  <text x="70" y="464" font-size="12.5" font-weight="bold" fill="#7c3aed">never a hard-coded model ID.</text>
+
+  <!-- Metrics column -->
+  <rect x="450" y="95" width="385" height="380" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="642" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#2563eb">METRICS</text>
+  <text x="642" y="150" text-anchor="middle" font-size="13" fill="#475569">measured outputs, always numbers</text>
+  <g font-size="13" fill="#334155">
+    <text x="475" y="184">recall=0.8308 · f1=0.4286</text>
+    <text x="475" y="206">latency_p95 · train_f1 per epoch</text>
+  </g>
+  <rect x="475" y="222" width="335" height="120" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="495" y="248" font-size="13.5" font-weight="bold" fill="#2563eb">Contract: STEPPED or FINAL</text>
+  <text x="495" y="272" font-size="12.5" fill="#334155">With step= : a history, one value per epoch.</text>
+  <text x="495" y="292" font-size="12.5" fill="#334155">Powers the charts view.</text>
+  <text x="495" y="314" font-size="12.5" fill="#334155">Without step: the final number you sort,</text>
+  <text x="495" y="332" font-size="12.5" fill="#334155">filter, and compare on in the runs table.</text>
+  <text x="475" y="370" font-size="12.5" fill="#334155">Rule of thumb: step for training</text>
+  <text x="475" y="390" font-size="12.5" fill="#334155">dynamics, no step for the comparison</text>
+  <text x="475" y="410" font-size="12.5" fill="#334155">value. Mixing prefixes (train_, val_,</text>
+  <text x="475" y="430" font-size="12.5" fill="#334155">test_) carelessly breaks the charts view.</text>
+
+  <!-- Tags column -->
+  <rect x="855" y="95" width="385" height="380" rx="14" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1047" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#15803d">TAGS</text>
+  <text x="1047" y="150" text-anchor="middle" font-size="13" fill="#475569">free-form metadata for filtering and grouping</text>
+  <g font-size="13" fill="#334155">
+    <text x="880" y="184">task · owner · experiment_type</text>
+    <text x="880" y="206">dataset_version=cordwell_v2 · dataset_sha256</text>
+  </g>
+  <rect x="880" y="222" width="335" height="120" rx="10" fill="#ffffff" stroke="#86efac"/>
+  <text x="900" y="248" font-size="13.5" font-weight="bold" fill="#15803d">Contract: MUTABLE</text>
+  <text x="900" y="272" font-size="12.5" fill="#334155">Set, overwrite, delete at will. This is the</text>
+  <text x="900" y="292" font-size="12.5" fill="#334155">right home for anything that describes a</text>
+  <text x="900" y="312" font-size="12.5" fill="#334155">run after the fact: alerts, review status,</text>
+  <text x="900" y="332" font-size="12.5" fill="#334155">dataset identity.</text>
+  <text x="880" y="370" font-size="12.5" font-weight="bold" fill="#15803d">Consistent tag conventions are what</text>
+  <text x="880" y="390" font-size="12.5" font-weight="bold" fill="#15803d">make search_runs filters actually work.</text>
+  <text x="880" y="414" font-size="12.5" fill="#334155">Enforce a required set (task, dataset,</text>
+  <text x="880" y="434" font-size="12.5" fill="#334155">owner) in a logging wrapper.</text>
+
+  <!-- Sorter footer -->
+  <rect x="45" y="500" width="1195" height="190" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="65" y="532" font-size="15" font-weight="bold" fill="#1e3a5f">The sorting question, and the two traps</text>
+  <text x="65" y="560" font-size="13.5" fill="#334155"><tspan font-weight="bold">Ask: does it go IN before the run, come OUT as a measurement, or DESCRIBE the run?</tspan>  C and class_weight go in: params. recall and f1 come</text>
+  <text x="65" y="582" font-size="13.5" fill="#334155">out: metrics. owner and dataset_version describe: tags. That single question answers Formative Check 1, question 1.</text>
+  <text x="65" y="614" font-size="13.5" fill="#b91c1c"><tspan font-weight="bold">Trap 1, naming drift:</tspan> lr in run 1, learning_rate in run 2, LearningRate in run 3. The filter params.lr = "0.01" returns one of three runs, silently.</text>
+  <text x="65" y="636" font-size="13.5" fill="#334155">One PARAMS dict, one spelling, forever. <tspan font-weight="bold" fill="#b91c1c">Trap 2, dataset identity:</tspan> Python's builtin hash() is salted per process and will not reproduce across runs</text>
+  <text x="65" y="658" font-size="13.5" fill="#334155">or machines. Tag datasets with hashlib.sha256 over the file bytes, alongside a human-readable dataset_version.</text>
+</svg>

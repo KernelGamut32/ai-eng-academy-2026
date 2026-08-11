@@ -1,0 +1,85 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="am5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="am5g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#15803d"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+
+  <text x="640" y="42" text-anchor="middle" font-size="29" font-weight="bold" fill="#1e3a5f">The Alias Is a Pointer. Promotion Is Moving It.</text>
+  <text x="640" y="70" text-anchor="middle" font-size="16" fill="#475569">Serving code references a name and an alias, never a version number. One registry operation promotes or rolls back everywhere at once.</text>
+
+  <!-- URI anatomy -->
+  <rect x="140" y="92" width="1000" height="86" rx="12" fill="#f8fafc" stroke="#1e3a5f" stroke-width="2"/>
+  <text x="640" y="122" text-anchor="middle" font-size="19" font-family="monospace" fill="#334155">models:/<tspan fill="#2563eb" font-weight="bold">cordwell-escalation-clf</tspan><tspan fill="#15803d" font-weight="bold">@champion</tspan></text>
+  <g font-size="12.5">
+    <text x="435" y="160" text-anchor="middle" fill="#2563eb" font-weight="bold">the registered model: a stable NAME</text>
+    <text x="880" y="160" text-anchor="middle" fill="#15803d" font-weight="bold">a movable ALIAS: never a version number</text>
+  </g>
+
+  <!-- Serving code -->
+  <rect x="40" y="220" width="330" height="150" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="205" y="250" text-anchor="middle" font-size="15" font-weight="bold" fill="#2563eb">SERVING CODE · never changes</text>
+  <g font-size="12" font-family="monospace" fill="#334155">
+    <text x="62" y="280">model = mlflow.pyfunc</text>
+    <text x="62" y="298"> .load_model("models:/</text>
+    <text x="62" y="316">  cordwell-escalation-clf</text>
+    <text x="62" y="334">  @champion")</text>
+  </g>
+  <text x="62" y="360" font-size="11.5" fill="#64748b">Deployed once. Promotion never touches it.</text>
+
+  <line x1="370" y1="295" x2="470" y2="295" stroke="#475569" stroke-width="2.5" marker-end="url(#am5)"/>
+
+  <!-- Registry alias table -->
+  <rect x="475" y="200" width="360" height="190" rx="14" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="655" y="230" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803d">REGISTRY · the alias map</text>
+  <g font-size="13.5" font-family="monospace" fill="#334155">
+    <text x="505" y="264">@champion  -> version 2</text>
+    <text x="505" y="292">@challenger -> version 3</text>
+  </g>
+  <text x="505" y="322" font-size="12.5" fill="#334155">One movable pointer per alias. Assignment</text>
+  <text x="505" y="342" font-size="12.5" fill="#334155">is an OVERWRITE, not an append: pointing</text>
+  <text x="505" y="362" font-size="12.5" fill="#334155">@challenger at v3 silently unpoints it from v2.</text>
+
+  <!-- Versions -->
+  <rect x="900" y="200" width="340" height="190" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="1070" y="230" text-anchor="middle" font-size="15" font-weight="bold" fill="#b45309">VERSIONS · immutable, all kept</text>
+  <g font-size="13" fill="#334155">
+    <text x="925" y="262">v1 · validation_status=failed · no alias</text>
+    <text x="925" y="290">v2 · passed · <tspan fill="#15803d" font-weight="bold">@champion</tspan> · serving</text>
+    <text x="925" y="318">v3 · passed · <tspan fill="#7c3aed" font-weight="bold">@challenger</tspan> · shadow test</text>
+  </g>
+  <text x="925" y="348" font-size="12.5" fill="#334155">Every version links back to its run: params,</text>
+  <text x="925" y="368" font-size="12.5" fill="#334155">metrics, dataset tags. Lineage for free.</text>
+
+  <line x1="835" y1="270" x2="894" y2="286" stroke="#15803d" stroke-width="2.5" marker-end="url(#am5g)"/>
+  <line x1="835" y1="298" x2="894" y2="314" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#am5)"/>
+
+  <!-- Promotion / rollback strip -->
+  <rect x="40" y="420" width="590" height="130" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+  <text x="60" y="450" font-size="15" font-weight="bold" fill="#15803d">Promotion = one pointer move</text>
+  <text x="60" y="478" font-size="12.5" font-family="monospace" fill="#334155">set_registered_model_alias(name, "champion", 3)</text>
+  <text x="60" y="504" font-size="12.5" fill="#334155">v3 starts serving everywhere the URI is loaded. The prior</text>
+  <text x="60" y="524" font-size="12.5" fill="#334155">mapping lands in alias history: the audit trail is queryable.</text>
+
+  <rect x="650" y="420" width="590" height="130" rx="14" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="670" y="450" font-size="15" font-weight="bold" fill="#b91c1c">Rollback = the same pointer move, backwards</text>
+  <text x="670" y="478" font-size="12.5" font-family="monospace" fill="#334155">set_registered_model_alias(name, "champion", 2)</text>
+  <text x="670" y="504" font-size="12.5" fill="#334155">One line, at 2am, with no redeploy. This line is the entire</text>
+  <text x="670" y="524" font-size="12.5" fill="#334155">argument against tracking production models in chat threads.</text>
+
+  <!-- Stages mapping -->
+  <rect x="40" y="575" width="1200" height="120" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="60" y="605" font-size="15" font-weight="bold" fill="#7c3aed">CURRENCY FLAG carried through: stages are deprecated since MLflow 2.9.0, and this row is the translation</text>
+  <g font-size="13" font-family="monospace" fill="#334155">
+    <text x="60" y="635">models:/name/Production      ->  models:/name@champion</text>
+    <text x="60" y="659">transition_model_version_stage(...) ->  set_registered_model_alias(name, alias, version)</text>
+    <text x="60" y="683">get_latest_versions(stages=[...])  ->  get_model_version_by_alias(name, alias)</text>
+  </g>
+  <text x="1220" y="635" text-anchor="end" font-size="12" fill="#7c3aed" font-weight="bold">house convention: @champion,</text>
+  <text x="1220" y="655" text-anchor="end" font-size="12" fill="#7c3aed" font-weight="bold">@challenger: not @production,</text>
+  <text x="1220" y="675" text-anchor="end" font-size="12" fill="#7c3aed" font-weight="bold">@staging through the back door</text>
+</svg>
