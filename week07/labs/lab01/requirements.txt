@@ -1,0 +1,8 @@
+# Notebook environment for the Week 7 Module 01 Docker lab (combined).
+# The in-lab service and gateway pins are written by the notebook itself.
+# Pins verified against PyPI on build day; see README.md verification ledger.
+fastapi==0.141.1
+uvicorn==0.52.3
+requests==2.34.2
+pydantic==2.13.4
+PyYAML==6.0.3
