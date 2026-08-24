@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa0ab"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5fcf80"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6aa9ff"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#212226"/>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#e8e8ea">Time Travel: Every Commit Pins One Dataset Version</text>
+  <text x="60" y="108" font-size="22" fill="#a3a7b0">raw_reviews.jsonl over three months. Git holds the history of pointers; the remote holds every set of bytes.</text>
+
+  <!-- timeline axis -->
+  <line x1="120" y1="260" x2="1480" y2="260" stroke="#4a4d55" stroke-width="4"/>
+  <text x="60" y="200" font-size="16" font-weight="700" fill="#a3a7b0" letter-spacing="1">GIT HISTORY (main)</text>
+
+  <!-- commits -->
+  <g font-size="16">
+    <!-- c1 -->
+    <circle cx="320" cy="260" r="16" fill="#6aa9ff" stroke="#212226" stroke-width="4"/>
+    <rect x="170" y="300" width="300" height="170" rx="10" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="185" y="330" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700" fill="#6aa9ff">a41f3c0</text>
+    <text x="270" y="330" fill="#a3a7b0">May 14</text>
+    <text x="185" y="356" fill="#e8e8ea">Add raw reviews (v1.0)</text>
+    <text x="185" y="380" fill="#a3a7b0">18,204 rows, 36 MB</text>
+    <text x="185" y="418" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#c8cbd2">raw_reviews.jsonl.dvc</text>
+    <text x="185" y="442" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#f0b84a">md5: 0a7c41d9...</text>
+
+    <!-- c2 -->
+    <circle cx="800" cy="260" r="16" fill="#6aa9ff" stroke="#212226" stroke-width="4"/>
+    <rect x="650" y="300" width="300" height="170" rx="10" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="665" y="330" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700" fill="#6aa9ff">b7c2e18</text>
+    <text x="750" y="330" fill="#a3a7b0">Jun 02</text>
+    <text x="665" y="356" fill="#e8e8ea">Drop rating-only reviews (v1.1)</text>
+    <text x="665" y="380" fill="#a3a7b0">16,980 rows, 38 MB</text>
+    <text x="665" y="418" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#c8cbd2">raw_reviews.jsonl.dvc</text>
+    <text x="665" y="442" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#f0b84a">md5: e15f7a93...</text>
+
+    <!-- c3 -->
+    <circle cx="1280" cy="260" r="16" fill="#6aa9ff" stroke="#212226" stroke-width="4"/>
+    <rect x="1130" y="300" width="300" height="170" rx="10" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="1145" y="330" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700" fill="#6aa9ff">e09d5f4</text>
+    <text x="1230" y="330" fill="#a3a7b0">Jul 21</text>
+    <text x="1145" y="356" fill="#e8e8ea">Add Q2 reviews (v1.2)</text>
+    <text x="1145" y="380" fill="#a3a7b0">24,310 rows, 41 MB</text>
+    <text x="1145" y="418" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#c8cbd2">raw_reviews.jsonl.dvc</text>
+    <text x="1145" y="442" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#f0b84a">md5: c708e5d2...</text>
+
+    <!-- other commits in between (code only) -->
+    <circle cx="560" cy="260" r="9" fill="#4a4d55"/>
+    <text x="560" y="235" fill="#6c707a" text-anchor="middle" font-size="14">fix tokenizer</text>
+    <circle cx="1040" cy="260" r="9" fill="#4a4d55"/>
+    <text x="1040" y="235" fill="#6c707a" text-anchor="middle" font-size="14">lr sweep config</text>
+    <text x="1480" y="235" fill="#a3a7b0" text-anchor="end" font-size="14">HEAD</text>
+  </g>
+
+  <!-- remote -->
+  <text x="60" y="540" font-size="16" font-weight="700" fill="#a3a7b0" letter-spacing="1">DVC REMOTE (all versions, side by side)</text>
+  <rect x="120" y="560" width="1360" height="100" rx="12" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16">
+    <rect x="170" y="580" width="300" height="60" rx="8" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="185" y="605" fill="#f0b84a">0a/7c41d9...</text>
+    <text x="185" y="628" fill="#a3a7b0">36 MB</text>
+    <rect x="650" y="580" width="300" height="60" rx="8" fill="#2c2e33" stroke="#5fcf80" stroke-width="3"/>
+    <text x="665" y="605" fill="#f0b84a">e1/5f7a93...</text>
+    <text x="665" y="628" fill="#a3a7b0">38 MB</text>
+    <rect x="1130" y="580" width="300" height="60" rx="8" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="1145" y="605" fill="#f0b84a">c7/08e5d2...</text>
+    <text x="1145" y="628" fill="#a3a7b0">41 MB</text>
+  </g>
+  <!-- pointer lines commit -> blob -->
+  <g stroke="#4a4d55" stroke-width="2" stroke-dasharray="5 6" fill="none">
+    <line x1="320" y1="470" x2="320" y2="580"/>
+    <line x1="1280" y1="470" x2="1280" y2="580"/>
+  </g>
+  <line x1="800" y1="470" x2="800" y2="580" stroke="#5fcf80" stroke-width="3" stroke-dasharray="5 6"/>
+
+  <!-- scenario box -->
+  <rect x="120" y="690" width="1360" height="160" rx="12" fill="#2c2e33" stroke="#5fcf80" stroke-width="2"/>
+  <text x="144" y="724" font-size="20" font-weight="700" fill="#e8e8ea">Scenario: "The June model scored 0.87. Rebuild that exact dataset."</text>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="18">
+    <text x="144" y="762" fill="#6aa9ff">git checkout b7c2e18</text>
+    <text x="400" y="762" fill="#a3a7b0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="17">restores the .dvc pointer with md5 e15f7a93 (no data moves yet)</text>
+    <text x="144" y="796" fill="#5fcf80">dvc pull</text>
+    <text x="400" y="796" fill="#a3a7b0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="17">reads that pointer, fetches exactly the 38 MB blob, writes raw_reviews.jsonl into the workspace</text>
+  </g>
+  <text x="144" y="832" font-size="17" fill="#f0b84a">Two commands, zero guessing. No reviews_final_v3_FINAL2.parquet hunt across four laptops.</text>
+</svg>

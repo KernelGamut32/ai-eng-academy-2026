@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa0ab"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#212226"/>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#e8e8ea">MLflow: What a Run Is, and Where It Lives</text>
+  <text x="60" y="108" font-size="22" fill="#a3a7b0">One experiment, many runs. Small facts go to a database; big files go to an artifact folder. The registry reads the database.</text>
+
+  <!-- LEFT: logical model -->
+  <g transform="translate(60 150)">
+    <rect x="0" y="0" width="760" height="560" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">Logical model (what your code talks about)</text>
+
+    <!-- experiment -->
+    <rect x="24" y="64" width="712" height="56" rx="10" fill="#2b3547" stroke="#6aa9ff" stroke-width="3"/>
+    <text x="40" y="88" font-size="15" font-weight="700" fill="#8fc1ff" letter-spacing="1">EXPERIMENT</text>
+    <text x="40" y="110" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" fill="#e8e8ea">cordwell-support-assistant</text>
+    <text x="720" y="100" font-size="15" fill="#a3a7b0" text-anchor="end">a named folder of related runs</text>
+
+    <!-- runs -->
+    <g font-size="14">
+      <rect x="24" y="150" width="190" height="56" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="36" y="172" font-weight="700" fill="#a3a7b0">RUN  7f3a...</text>
+      <text x="36" y="194" fill="#c8cbd2">lr 2e-5, F1 0.84</text>
+      <rect x="285" y="150" width="190" height="56" rx="8" fill="#253a2c" stroke="#5fcf80" stroke-width="3"/>
+      <text x="297" y="172" font-weight="700" fill="#5fcf80">RUN  c91d...</text>
+      <text x="297" y="194" fill="#e8e8ea">lr 5e-5, F1 0.87</text>
+      <rect x="546" y="150" width="190" height="56" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="558" y="172" font-weight="700" fill="#a3a7b0">RUN  02be...</text>
+      <text x="558" y="194" fill="#c8cbd2">lr 1e-4, F1 0.81</text>
+    </g>
+    <g stroke="#4a4d55" stroke-width="2" fill="none">
+      <line x1="119" y1="120" x2="119" y2="150"/>
+      <line x1="380" y1="120" x2="380" y2="150"/>
+      <line x1="641" y1="120" x2="641" y2="150"/>
+    </g>
+
+    <!-- anatomy of the winning run -->
+    <text x="24" y="246" font-size="17" font-weight="700" fill="#e8e8ea">Inside run c91d (one execution, one timestamp)</text>
+    <g font-size="15">
+      <!-- params -->
+      <rect x="24" y="262" width="226" height="120" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="36" y="286" font-weight="700" fill="#f0b84a">PARAMS  (logged once)</text>
+      <g font-family="ui-monospace, Menlo, Consolas, monospace" fill="#c8cbd2" font-size="14">
+        <text x="36" y="310">learning_rate  5e-5</text>
+        <text x="36" y="332">batch_size     8</text>
+        <text x="36" y="354">random_seed    42</text>
+        <text x="36" y="376">base_model     SmolLM2-360M</text>
+      </g>
+      <!-- metrics -->
+      <rect x="267" y="262" width="226" height="120" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="279" y="286" font-weight="700" fill="#f0b84a">METRICS  (per step)</text>
+      <polyline points="285,358 320,340 355,330 390,324 425,321 460,319" fill="none" stroke="#f06a6a" stroke-width="3"/>
+      <polyline points="285,362 320,348 355,342 390,340 425,341 460,344" fill="none" stroke="#6aa9ff" stroke-width="3"/>
+      <text x="279" y="310" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#f06a6a">train_loss</text>
+      <text x="380" y="310" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#6aa9ff">val_loss</text>
+      <text x="279" y="378" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#a3a7b0">eval_f1 0.87 @ step 4</text>
+      <!-- artifacts -->
+      <rect x="510" y="262" width="226" height="120" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="522" y="286" font-weight="700" fill="#f0b84a">ARTIFACTS  (files)</text>
+      <g font-family="ui-monospace, Menlo, Consolas, monospace" fill="#c8cbd2" font-size="14">
+        <text x="522" y="310">model/            720 MB</text>
+        <text x="522" y="332">training_curve.png</text>
+        <text x="522" y="354">requirements.txt</text>
+        <text x="522" y="376">eval_report.json</text>
+      </g>
+      <!-- tags -->
+      <rect x="24" y="398" width="712" height="78" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="36" y="422" font-weight="700" fill="#f0b84a">TAGS  (searchable key-value, the lineage glue)</text>
+      <g font-family="ui-monospace, Menlo, Consolas, monospace" fill="#c8cbd2" font-size="14">
+        <text x="36" y="448">git_commit   e09d5f4</text>
+        <text x="276" y="448">dvc_data_md5   c708e5d2...</text>
+        <text x="546" y="448">owner   support-ml</text>
+        <text x="36" y="468">dataset_version   v1.2</text>
+        <text x="276" y="468">eval_set   cordwell-eval-v1.2</text>
+      </g>
+    </g>
+    <text x="24" y="512" font-size="16" fill="#a3a7b0">Params: what I set. Metrics: what happened over time. Artifacts: the files.</text>
+    <text x="24" y="536" font-size="16" fill="#a3a7b0">Tags: which code, which data, whose run. Tags are what make a run reproducible.</text>
+  </g>
+
+  <!-- RIGHT: physical stores -->
+  <g transform="translate(860 150)">
+    <rect x="0" y="0" width="680" height="560" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">Physical stores (what is on disk)</text>
+
+    <rect x="24" y="64" width="632" height="200" rx="10" fill="#1a1b1e" stroke="#5fcf80" stroke-width="3"/>
+    <text x="40" y="92" font-size="17" font-weight="700" fill="#5fcf80">Backend store: SQLite database</text>
+    <text x="40" y="116" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16" fill="#e8e8ea">mlflow.set_tracking_uri("sqlite:///mlflow.db")</text>
+    <text x="40" y="146" font-size="15" fill="#c8cbd2">Tables: experiments, runs, params, metrics, tags,</text>
+    <text x="40" y="168" font-size="15" fill="#c8cbd2">registered_models, model_versions, aliases</text>
+    <text x="40" y="200" font-size="15" fill="#a3a7b0">Small rows, many of them. Queried by the UI and by</text>
+    <text x="40" y="222" font-size="15" fill="#a3a7b0">mlflow.search_runs(). The Model Registry lives here.</text>
+    <text x="40" y="250" font-size="15" fill="#f0b84a" font-weight="700">Required for the registry. One file, zero setup.</text>
+
+    <rect x="24" y="284" width="632" height="140" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+    <text x="40" y="312" font-size="17" font-weight="700" fill="#e8e8ea">Artifact store: a folder</text>
+    <text x="40" y="336" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16" fill="#c8cbd2">./mlartifacts/&lt;experiment_id&gt;/&lt;run_id&gt;/artifacts/</text>
+    <text x="40" y="366" font-size="15" fill="#c8cbd2">model/, plots, requirements.txt, reports. Big files.</text>
+    <text x="40" y="388" font-size="15" fill="#a3a7b0">Local folder in the lab; S3 or GCS on a shared server.</text>
+    <text x="40" y="410" font-size="15" fill="#a3a7b0">The database stores only the path to each artifact.</text>
+
+    <rect x="24" y="444" width="632" height="96" rx="10" fill="#2e2425" stroke="#f06a6a" stroke-width="2"/>
+    <text x="40" y="472" font-size="17" font-weight="700" fill="#f06a6a">Not in this module: the bare file store (./mlruns)</text>
+    <text x="40" y="496" font-size="15" fill="#c8cbd2">Fine for a scratch notebook. Cannot serve the registry at all.</text>
+    <text x="40" y="518" font-size="15" fill="#c8cbd2">If a tutorial starts with ./mlruns and then registers a model, it will fail on you.</text>
+  </g>
+
+  <!-- arrow from logical to physical -->
+  <path d="M 820 420 L 860 420" stroke="#9aa0ab" stroke-width="4" fill="none" marker-end="url(#a)"/>
+
+  <rect x="60" y="740" width="1480" height="100" rx="12" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+  <text x="84" y="776" font-size="20" font-weight="700" fill="#e8e8ea">Engineer's mapping: experiment = test suite, run = one CI job, params = env vars, metrics = timing graphs, artifacts = build outputs.</text>
+  <text x="84" y="812" font-size="18" fill="#a3a7b0">Two lines of setup (tracking URI, experiment name) plus a with block. Everything inside the block is attached to one run id forever.</text>
+</svg>

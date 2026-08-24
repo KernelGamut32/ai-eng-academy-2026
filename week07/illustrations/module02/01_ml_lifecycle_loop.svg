@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa0ab"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#212226"/>
+
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#e8e8ea">Model Training Is One Phase in a Cycle</text>
+  <text x="60" y="108" font-size="22" fill="#a3a7b0">Code versioning covers one slice. ML systems add two more artifacts that drift on their own.</text>
+
+  <!-- dashed ring -->
+  <circle cx="800" cy="470" r="280" fill="none" stroke="#3a3c42" stroke-width="2" stroke-dasharray="6 8"/>
+
+  <!-- arcs between nodes (clockwise) -->
+  <g fill="none" stroke="#9aa0ab" stroke-width="4" marker-end="url(#arrow)">
+    <path d="M 923 218 A 280 280 0 0 1 1001 276"/>
+    <path d="M 1077 509 A 280 280 0 0 1 1047 601"/>
+    <path d="M 849 746 A 280 280 0 0 1 751 746"/>
+    <path d="M 553 601 A 280 280 0 0 1 523 509"/>
+    <path d="M 599 276 A 280 280 0 0 1 677 218"/>
+  </g>
+
+  <!-- nodes -->
+  <g>
+    <!-- Data (highlighted) -->
+    <rect x="690" y="145" width="220" height="90" rx="12" fill="#2b3547" stroke="#6aa9ff" stroke-width="3"/>
+    <text x="800" y="182" font-size="26" font-weight="700" fill="#e8e8ea" text-anchor="middle">Data</text>
+    <text x="800" y="212" font-size="18" fill="#b8c4d8" text-anchor="middle">collect, clean, version</text>
+
+    <!-- Experiment (highlighted) -->
+    <rect x="956" y="338" width="220" height="90" rx="12" fill="#2b3547" stroke="#6aa9ff" stroke-width="3"/>
+    <text x="1066" y="375" font-size="26" font-weight="700" fill="#e8e8ea" text-anchor="middle">Experiment</text>
+    <text x="1066" y="405" font-size="18" fill="#b8c4d8" text-anchor="middle">train, tune, track</text>
+
+    <!-- Deploy -->
+    <rect x="855" y="652" width="220" height="90" rx="12" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="965" y="689" font-size="26" font-weight="700" fill="#e8e8ea" text-anchor="middle">Deploy</text>
+    <text x="965" y="719" font-size="18" fill="#a3a7b0" text-anchor="middle">serve, containerize, scale</text>
+
+    <!-- Monitor -->
+    <rect x="525" y="652" width="220" height="90" rx="12" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="635" y="689" font-size="26" font-weight="700" fill="#e8e8ea" text-anchor="middle">Monitor</text>
+    <text x="635" y="719" font-size="18" fill="#a3a7b0" text-anchor="middle">detect drift, alert</text>
+
+    <!-- Retrain -->
+    <rect x="424" y="338" width="220" height="90" rx="12" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="534" y="375" font-size="26" font-weight="700" fill="#e8e8ea" text-anchor="middle">Retrain</text>
+    <text x="534" y="405" font-size="18" fill="#a3a7b0" text-anchor="middle">loop back with new data</text>
+  </g>
+
+  <!-- center: three artifacts -->
+  <rect x="652" y="395" width="296" height="150" rx="14" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+  <text x="800" y="428" font-size="18" font-weight="700" fill="#a3a7b0" text-anchor="middle" letter-spacing="1">EVERY LAP PRODUCES</text>
+  <g font-size="22" fill="#e8e8ea" text-anchor="middle">
+    <text x="705" y="464">code</text><text x="750" y="464">+</text><text x="800" y="464">data</text><text x="850" y="464">+</text><text x="898" y="464">model</text>
+  </g>
+  <g font-size="15" fill="#a3a7b0" text-anchor="middle">
+    <text x="705" y="492">Git</text><text x="800" y="492">DVC</text><text x="898" y="492">DVC + MLflow</text>
+  </g>
+  <text x="800" y="526" font-size="16" fill="#f0b84a" text-anchor="middle">drop one and the lap cannot be replayed</text>
+
+  <!-- legend / right panel -->
+  <g transform="translate(1180 160)">
+    <rect x="0" y="0" width="370" height="300" rx="12" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <rect x="20" y="24" width="22" height="22" rx="5" fill="#2b3547" stroke="#6aa9ff" stroke-width="3"/>
+    <text x="56" y="42" font-size="20" font-weight="700" fill="#e8e8ea">This module</text>
+    <text x="20" y="78" font-size="17" fill="#c8cbd2">Versioning data and checkpoints (DVC),</text>
+    <text x="20" y="102" font-size="17" fill="#c8cbd2">tracking runs and registering models</text>
+    <text x="20" y="126" font-size="17" fill="#c8cbd2">(MLflow), and reproducing a past lap.</text>
+
+    <rect x="20" y="160" width="22" height="22" rx="5" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="56" y="178" font-size="20" font-weight="700" fill="#e8e8ea">Later modules</text>
+    <text x="20" y="214" font-size="17" fill="#c8cbd2">Airflow DAGs drive the retrain loop.</text>
+    <text x="20" y="238" font-size="17" fill="#c8cbd2">FastAPI and Docker handle deploy.</text>
+    <text x="20" y="262" font-size="17" fill="#c8cbd2">Week 9 covers monitoring and drift.</text>
+  </g>
+
+  <!-- bottom: what breaks -->
+  <g transform="translate(60 560)">
+    <rect x="0" y="0" width="330" height="250" rx="12" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="20" y="36" font-size="20" font-weight="700" fill="#e8e8ea">Three assumptions that break</text>
+    <text x="20" y="76" font-size="17" fill="#f06a6a" font-weight="700">1. One artifact</text>
+    <text x="20" y="100" font-size="16" fill="#c8cbd2">Code is one of three things to version.</text>
+    <text x="20" y="140" font-size="17" fill="#f06a6a" font-weight="700">2. Deterministic build</text>
+    <text x="20" y="164" font-size="16" fill="#c8cbd2">Same inputs, different weights (seed, hw).</text>
+    <text x="20" y="204" font-size="17" fill="#f06a6a" font-weight="700">3. Code does not rot</text>
+    <text x="20" y="228" font-size="16" fill="#c8cbd2">Models decay as production data drifts.</text>
+  </g>
+
+  <text x="800" y="860" font-size="20" fill="#a3a7b0" text-anchor="middle">You already version code. ML makes you version data and models too. That is the whole module.</text>
+</svg>

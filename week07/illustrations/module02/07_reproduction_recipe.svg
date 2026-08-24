@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa0ab"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#212226"/>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#e8e8ea">The Reproduction Recipe: One Run Points at Everything Else</text>
+  <text x="60" y="108" font-size="22" fill="#a3a7b0">Four pieces, four owners, one index. Pull any one piece out and the chain breaks.</text>
+
+  <!-- center run card -->
+  <g transform="translate(560 170)">
+    <rect x="0" y="0" width="480" height="300" rx="14" fill="#1a1b1e" stroke="#6aa9ff" stroke-width="3"/>
+    <text x="24" y="36" font-size="15" font-weight="700" fill="#8fc1ff" letter-spacing="1">MLFLOW RUN  c91d4e7a   (the index)</text>
+    <text x="24" y="62" font-size="16" fill="#a3a7b0">experiment: cordwell-support-assistant   eval_f1: 0.87</text>
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16">
+      <text x="24" y="104" fill="#a3a7b0">tag</text>
+      <text x="110" y="104" fill="#c8cbd2">git_commit        = <tspan fill="#f0b84a">e09d5f4</tspan></text>
+      <text x="24" y="134" fill="#a3a7b0">tag</text>
+      <text x="110" y="134" fill="#c8cbd2">dvc_data_md5      = <tspan fill="#5fcf80">c708e5d2...</tspan></text>
+      <text x="24" y="164" fill="#a3a7b0">tag</text>
+      <text x="110" y="164" fill="#c8cbd2">eval_set_md5      = <tspan fill="#5fcf80">91ab03f6...</tspan></text>
+      <text x="24" y="194" fill="#a3a7b0">param</text>
+      <text x="110" y="194" fill="#c8cbd2">random_seed       = <tspan fill="#b88cff">42</tspan></text>
+      <text x="24" y="224" fill="#a3a7b0">param</text>
+      <text x="110" y="224" fill="#c8cbd2">learning_rate     = 5e-5</text>
+      <text x="24" y="254" fill="#a3a7b0">artifact</text>
+      <text x="110" y="254" fill="#c8cbd2">requirements.txt  <tspan fill="#f06a6a">(pinned)</tspan></text>
+      <text x="24" y="284" fill="#a3a7b0">param</text>
+      <text x="110" y="284" fill="#c8cbd2">device            = mps</text>
+    </g>
+  </g>
+
+  <!-- four satellites -->
+  <g font-size="16">
+    <!-- Git (top-left) -->
+    <rect x="80" y="170" width="400" height="130" rx="12" fill="#2c2e33" stroke="#f0b84a" stroke-width="2"/>
+    <text x="100" y="200" font-size="20" font-weight="700" fill="#f0b84a">CODE: Git</text>
+    <text x="100" y="228" fill="#c8cbd2">src/train.py, dvc.yaml, configs, .dvc pointers</text>
+    <text x="100" y="254" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">git checkout e09d5f4</text>
+    <text x="100" y="282" fill="#a3a7b0">Also restores the exact .dvc files for that moment.</text>
+    <line x1="480" y1="235" x2="560" y2="265" stroke="#9aa0ab" stroke-width="3" marker-end="url(#a)"/>
+
+    <!-- DVC (top-right) -->
+    <rect x="1120" y="170" width="400" height="130" rx="12" fill="#2c2e33" stroke="#5fcf80" stroke-width="2"/>
+    <text x="1140" y="200" font-size="20" font-weight="700" fill="#5fcf80">DATA: DVC</text>
+    <text x="1140" y="228" fill="#c8cbd2">training set and eval set, each by hash</text>
+    <text x="1140" y="254" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">dvc pull</text>
+    <text x="1140" y="282" fill="#a3a7b0">Fetches whatever the checked-out pointers name.</text>
+    <line x1="1040" y1="265" x2="1120" y2="235" stroke="#9aa0ab" stroke-width="3" marker-end="url(#a)"/>
+
+    <!-- Env (bottom-left) -->
+    <rect x="80" y="340" width="400" height="130" rx="12" fill="#2c2e33" stroke="#f06a6a" stroke-width="2"/>
+    <text x="100" y="370" font-size="20" font-weight="700" fill="#f06a6a">ENVIRONMENT: pin file</text>
+    <text x="100" y="398" fill="#c8cbd2">requirements.txt (or a container image tag)</text>
+    <text x="100" y="424" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">pip install -r requirements.txt</text>
+    <text x="100" y="452" fill="#a3a7b0">torch 2.13.0, transformers 5.14.1, not "latest".</text>
+    <line x1="480" y1="405" x2="560" y2="375" stroke="#9aa0ab" stroke-width="3" marker-end="url(#a)"/>
+
+    <!-- Seed + config (bottom-right) -->
+    <rect x="1120" y="340" width="400" height="130" rx="12" fill="#2c2e33" stroke="#b88cff" stroke-width="2"/>
+    <text x="1140" y="370" font-size="20" font-weight="700" fill="#b88cff">SEED + HYPERPARAMS: MLflow</text>
+    <text x="1140" y="398" fill="#c8cbd2">Logged as params on the run itself</text>
+    <text x="1140" y="424" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">set_seed(42)  lr=5e-5  bs=8</text>
+    <text x="1140" y="452" fill="#a3a7b0">Read them back from the run; do not retype them.</text>
+    <line x1="1040" y1="375" x2="1120" y2="405" stroke="#9aa0ab" stroke-width="3" marker-end="url(#a)"/>
+  </g>
+
+  <!-- five-step flow -->
+  <text x="60" y="540" font-size="16" font-weight="700" fill="#a3a7b0" letter-spacing="1">REPRODUCING RUN c91d, END TO END</text>
+  <g font-size="15">
+    <g transform="translate(60 560)">
+      <rect width="270" height="130" rx="12" fill="#2c2e33" stroke="#6aa9ff" stroke-width="2"/>
+      <text x="16" y="30" font-size="18" font-weight="700" fill="#e8e8ea">1  Find the run</text>
+      <text x="16" y="58" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">mlflow.search_runs(</text>
+      <text x="16" y="78" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">  filter_string=</text>
+      <text x="16" y="98" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">  "metrics.eval_f1 &gt; 0.86")</text>
+      <text x="16" y="120" fill="#a3a7b0">or sort the UI runs table</text>
+    </g>
+    <g transform="translate(362 560)">
+      <rect width="270" height="130" rx="12" fill="#2c2e33" stroke="#f0b84a" stroke-width="2"/>
+      <text x="16" y="30" font-size="18" font-weight="700" fill="#e8e8ea">2  Check out code</text>
+      <text x="16" y="58" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">git checkout e09d5f4</text>
+      <text x="16" y="86" fill="#a3a7b0">from tag git_commit.</text>
+      <text x="16" y="108" fill="#a3a7b0">Brings the matching .dvc files.</text>
+    </g>
+    <g transform="translate(664 560)">
+      <rect width="270" height="130" rx="12" fill="#2c2e33" stroke="#5fcf80" stroke-width="2"/>
+      <text x="16" y="30" font-size="18" font-weight="700" fill="#e8e8ea">3  Pull data</text>
+      <text x="16" y="58" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">dvc pull</text>
+      <text x="16" y="86" fill="#a3a7b0">Verify: md5 of the pulled file</text>
+      <text x="16" y="108" fill="#a3a7b0">equals tag dvc_data_md5.</text>
+    </g>
+    <g transform="translate(966 560)">
+      <rect width="270" height="130" rx="12" fill="#2c2e33" stroke="#f06a6a" stroke-width="2"/>
+      <text x="16" y="30" font-size="18" font-weight="700" fill="#e8e8ea">4  Recreate env</text>
+      <text x="16" y="58" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">pip install -r \</text>
+      <text x="16" y="78" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">  requirements.txt</text>
+      <text x="16" y="108" fill="#a3a7b0">from the run's artifacts.</text>
+    </g>
+    <g transform="translate(1268 560)">
+      <rect width="272" height="130" rx="12" fill="#2c2e33" stroke="#b88cff" stroke-width="2"/>
+      <text x="16" y="30" font-size="18" font-weight="700" fill="#e8e8ea">5  Rerun train</text>
+      <text x="16" y="58" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">python src/train.py</text>
+      <text x="16" y="86" fill="#a3a7b0">Compare eval_f1 to 0.87.</text>
+      <text x="16" y="108" fill="#f0b84a">On MPS: 0.869 is a pass.</text>
+    </g>
+    <g stroke="#9aa0ab" stroke-width="3" fill="none" marker-end="url(#a)">
+      <line x1="330" y1="625" x2="358" y2="625"/>
+      <line x1="632" y1="625" x2="660" y2="625"/>
+      <line x1="934" y1="625" x2="962" y2="625"/>
+      <line x1="1236" y1="625" x2="1264" y2="625"/>
+    </g>
+  </g>
+
+  <rect x="60" y="740" width="1480" height="100" rx="12" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+  <text x="84" y="776" font-size="20" font-weight="700" fill="#e8e8ea">Drop one piece: no commit = unknown code; no data hash = unknown inputs; no pin = unknown libraries; no seed = unknown init.</text>
+  <text x="84" y="812" font-size="18" fill="#a3a7b0">The whole point of tagging the run is that step 1 hands you steps 2 through 5. No Teams archive, no "ask Priya if she still has it."</text>
+</svg>

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f0b84a"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6aa9ff"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#212226"/>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#e8e8ea">Aliases Are Movable Pointers. Rollback Is Repointing.</text>
+  <text x="60" y="108" font-size="22" fill="#a3a7b0">Serving code asks for a role, never a number. Promotion and rollback are the same one-line call.</text>
+
+  <!-- shared: serving code box -->
+  <rect x="60" y="150" width="1480" height="86" rx="12" fill="#1a1b1e" stroke="#6aa9ff" stroke-width="3"/>
+  <text x="84" y="180" font-size="15" font-weight="700" fill="#8fc1ff" letter-spacing="1">SERVING CODE (never changes during any of this)</text>
+  <text x="84" y="214" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="20" fill="#e8e8ea">model = mlflow.pyfunc.load_model("models:/cordwell-support-assistant<tspan fill="#f0b84a" font-weight="700">@champion</tspan>")</text>
+
+  <!-- BEFORE panel -->
+  <g transform="translate(60 270)">
+    <rect x="0" y="0" width="720" height="440" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">Monday 09:00   v5 promoted</text>
+    <text x="24" y="66" font-size="16" fill="#a3a7b0">Registered model: cordwell-support-assistant</text>
+
+    <!-- alias flags -->
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16" font-weight="700">
+      <rect x="440" y="96" width="150" height="36" rx="18" fill="#3a3420" stroke="#f0b84a" stroke-width="2"/>
+      <text x="515" y="120" fill="#f0b84a" text-anchor="middle">@champion</text>
+      <rect x="270" y="96" width="160" height="36" rx="18" fill="#2b3547" stroke="#6aa9ff" stroke-width="2"/>
+      <text x="350" y="120" fill="#8fc1ff" text-anchor="middle">@challenger</text>
+    </g>
+    <g stroke-width="3" fill="none">
+      <line x1="515" y1="132" x2="598" y2="176" stroke="#f0b84a" marker-end="url(#a)"/>
+      <line x1="350" y1="132" x2="460" y2="176" stroke="#6aa9ff" marker-end="url(#b)"/>
+    </g>
+
+    <!-- versions -->
+    <g font-size="15">
+      <g transform="translate(24 180)">
+        <rect width="120" height="70" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#a3a7b0" text-anchor="middle">v1</text>
+        <text x="60" y="54" fill="#6c707a" text-anchor="middle">F1 0.79</text>
+      </g>
+      <g transform="translate(156 180)">
+        <rect width="120" height="70" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#a3a7b0" text-anchor="middle">v2</text>
+        <text x="60" y="54" fill="#6c707a" text-anchor="middle">F1 0.82</text>
+      </g>
+      <g transform="translate(288 180)">
+        <rect width="120" height="70" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#a3a7b0" text-anchor="middle">v3</text>
+        <text x="60" y="54" fill="#6c707a" text-anchor="middle">F1 0.84</text>
+      </g>
+      <g transform="translate(420 180)">
+        <rect width="120" height="70" rx="10" fill="#2b3547" stroke="#6aa9ff" stroke-width="3"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#e8e8ea" text-anchor="middle">v4</text>
+        <text x="60" y="54" fill="#c8cbd2" text-anchor="middle">F1 0.86</text>
+      </g>
+      <g transform="translate(552 180)">
+        <rect width="120" height="70" rx="10" fill="#3a3420" stroke="#f0b84a" stroke-width="3"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#e8e8ea" text-anchor="middle">v5</text>
+        <text x="60" y="54" fill="#c8cbd2" text-anchor="middle">F1 0.87</text>
+      </g>
+    </g>
+
+    <!-- tags under versions -->
+    <text x="24" y="282" font-size="15" font-weight="700" fill="#a3a7b0">Tags (what we know about each version)</text>
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#c8cbd2">
+      <text x="24" y="308"><tspan fill="#8fc1ff" font-weight="700">v4</tspan>  validation_status=passed  eval_set=cordwell-eval-v1.2  dvc_data_md5=e15f7a93</text>
+      <text x="24" y="332"><tspan fill="#f0b84a" font-weight="700">v5</tspan>  validation_status=passed  eval_set=cordwell-eval-v1.2  dvc_data_md5=c708e5d2</text>
+      <text x="24" y="356" fill="#6c707a">v1 to v3 carry older eval_set and data tags; they stay searchable forever</text>
+    </g>
+
+    <rect x="24" y="370" width="672" height="50" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+    <text x="40" y="401" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#c8cbd2">set_registered_model_alias(name, alias="champion", version=5)</text>
+  </g>
+
+  <!-- AFTER panel -->
+  <g transform="translate(820 270)">
+    <rect x="0" y="0" width="720" height="440" rx="14" fill="#2c2e33" stroke="#f06a6a" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">Tuesday 14:20   error rate climbs, roll back</text>
+    <text x="24" y="66" font-size="16" fill="#a3a7b0">Same registered model. One call. Service reloads on next refresh.</text>
+
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16" font-weight="700">
+      <rect x="308" y="96" width="150" height="36" rx="18" fill="#3a3420" stroke="#f0b84a" stroke-width="2"/>
+      <text x="383" y="120" fill="#f0b84a" text-anchor="middle">@champion</text>
+      <rect x="500" y="96" width="140" height="36" rx="18" fill="#2e2425" stroke="#f06a6a" stroke-width="2"/>
+      <text x="570" y="120" fill="#f06a6a" text-anchor="middle">@suspect</text>
+    </g>
+    <g stroke-width="3" fill="none">
+      <line x1="383" y1="132" x2="466" y2="176" stroke="#f0b84a" marker-end="url(#a)"/>
+      <line x1="570" y1="132" x2="598" y2="176" stroke="#f06a6a" stroke-dasharray="5 5"/>
+    </g>
+
+    <g font-size="15">
+      <g transform="translate(24 180)">
+        <rect width="120" height="70" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#a3a7b0" text-anchor="middle">v1</text>
+        <text x="60" y="54" fill="#6c707a" text-anchor="middle">F1 0.79</text>
+      </g>
+      <g transform="translate(156 180)">
+        <rect width="120" height="70" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#a3a7b0" text-anchor="middle">v2</text>
+        <text x="60" y="54" fill="#6c707a" text-anchor="middle">F1 0.82</text>
+      </g>
+      <g transform="translate(288 180)">
+        <rect width="120" height="70" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#a3a7b0" text-anchor="middle">v3</text>
+        <text x="60" y="54" fill="#6c707a" text-anchor="middle">F1 0.84</text>
+      </g>
+      <g transform="translate(420 180)">
+        <rect width="120" height="70" rx="10" fill="#3a3420" stroke="#f0b84a" stroke-width="3"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#e8e8ea" text-anchor="middle">v4</text>
+        <text x="60" y="54" fill="#c8cbd2" text-anchor="middle">F1 0.86</text>
+      </g>
+      <g transform="translate(552 180)">
+        <rect width="120" height="70" rx="10" fill="#1a1b1e" stroke="#f06a6a" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="60" y="30" font-size="20" font-weight="700" fill="#a3a7b0" text-anchor="middle">v5</text>
+        <text x="60" y="54" fill="#6c707a" text-anchor="middle">still here</text>
+      </g>
+    </g>
+
+    <text x="24" y="282" font-size="15" font-weight="700" fill="#a3a7b0">What did NOT happen</text>
+    <g font-size="15" fill="#c8cbd2">
+      <text x="24" y="308">No redeploy. No image rebuild. No config PR.</text>
+      <text x="24" y="332">v5 was not deleted: it is the audit trail for the incident.</text>
+      <text x="24" y="356">An optional @suspect alias marks it for the postmortem.</text>
+    </g>
+
+    <rect x="24" y="370" width="672" height="50" rx="8" fill="#1a1b1e" stroke="#f0b84a" stroke-width="2"/>
+    <text x="40" y="401" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#e8e8ea">set_registered_model_alias(name, alias="champion", version=<tspan fill="#f0b84a" font-weight="700">4</tspan>)</text>
+  </g>
+
+  <rect x="60" y="740" width="1480" height="100" rx="12" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+  <text x="84" y="776" font-size="20" font-weight="700" fill="#e8e8ea">Aliases carry role (who is champion). Tags carry status (did it pass validation, which data built it). Versions are permanent.</text>
+  <text x="84" y="812" font-size="18" fill="#a3a7b0">Legacy path: transition_model_version_stage("Staging" | "Production") still runs but is deprecated since MLflow 2.9. Recognize it in old tutorials; do not write it.</text>
+</svg>

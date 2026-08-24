@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#212226"/>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#e8e8ea">Where Are You on the Ladder, and What Does the Seed Buy You?</text>
+  <text x="60" y="108" font-size="22" fill="#a3a7b0">Self-locate honestly. On the cohort's Macs, level 4 comes with an asterisk that the seed cannot remove.</text>
+
+  <!-- LEFT: ladder -->
+  <g transform="translate(60 150)">
+    <rect x="0" y="0" width="760" height="560" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">Levels of reproducibility</text>
+    <!-- column headers -->
+    <g font-size="13" font-weight="700" fill="#a3a7b0" text-anchor="middle">
+      <text x="470" y="72">code</text>
+      <text x="530" y="72">data</text>
+      <text x="590" y="72">env</text>
+      <text x="650" y="72">seed</text>
+      <text x="710" y="72">hw</text>
+    </g>
+
+    <!-- rung helper: y, label, sub, checks -->
+    <!-- Level 1 -->
+    <g transform="translate(24 86)">
+      <rect width="712" height="96" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <rect width="60" height="96" rx="10" fill="#2e2425"/>
+      <text x="30" y="58" font-size="28" font-weight="700" fill="#f06a6a" text-anchor="middle">1</text>
+      <text x="76" y="36" font-size="19" font-weight="700" fill="#e8e8ea">Not reproducible</text>
+      <text x="76" y="62" font-size="15" fill="#a3a7b0">One laptop, one notebook, once.</text>
+      <text x="76" y="84" font-size="14" fill="#6c707a">The Cordwell notebook problem.</text>
+      <g font-size="20" text-anchor="middle" fill="#6c707a">
+        <text x="446" y="58">.</text><text x="506" y="58">.</text><text x="566" y="58">.</text><text x="626" y="58">.</text><text x="686" y="58">.</text>
+      </g>
+    </g>
+    <!-- Level 2 -->
+    <g transform="translate(24 194)">
+      <rect width="712" height="96" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <rect width="60" height="96" rx="10" fill="#3a3420"/>
+      <text x="30" y="58" font-size="28" font-weight="700" fill="#f0b84a" text-anchor="middle">2</text>
+      <text x="76" y="36" font-size="19" font-weight="700" fill="#e8e8ea">Partially reproducible</text>
+      <text x="76" y="62" font-size="15" fill="#a3a7b0">Code in Git. Data "on the shared drive."</text>
+      <text x="76" y="84" font-size="14" fill="#6c707a">Same code, different results.</text>
+      <g font-size="20" text-anchor="middle">
+        <text x="446" y="58" fill="#5fcf80">x</text><text x="506" y="58" fill="#6c707a">.</text><text x="566" y="58" fill="#6c707a">.</text><text x="626" y="58" fill="#6c707a">.</text><text x="686" y="58" fill="#6c707a">.</text>
+      </g>
+    </g>
+    <!-- Level 3 -->
+    <g transform="translate(24 302)">
+      <rect width="712" height="96" rx="10" fill="#1a1b1e" stroke="#5fcf80" stroke-width="3"/>
+      <rect width="60" height="96" rx="10" fill="#253a2c"/>
+      <text x="30" y="58" font-size="28" font-weight="700" fill="#5fcf80" text-anchor="middle">3</text>
+      <text x="76" y="36" font-size="19" font-weight="700" fill="#e8e8ea">Mostly reproducible  (cohort target)</text>
+      <text x="76" y="62" font-size="15" fill="#a3a7b0">Git + DVC + pinned env + logged seed.</text>
+      <text x="76" y="84" font-size="14" fill="#6c707a">0.870 lands at 0.869 elsewhere. Pass.</text>
+      <g font-size="20" text-anchor="middle">
+        <text x="446" y="58" fill="#5fcf80">x</text><text x="506" y="58" fill="#5fcf80">x</text><text x="566" y="58" fill="#5fcf80">x</text><text x="626" y="58" fill="#5fcf80">x</text><text x="686" y="58" fill="#6c707a">.</text>
+      </g>
+    </g>
+    <!-- Level 4 -->
+    <g transform="translate(24 410)">
+      <rect width="712" height="96" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <rect width="60" height="96" rx="10" fill="#2b3547"/>
+      <text x="30" y="58" font-size="28" font-weight="700" fill="#6aa9ff" text-anchor="middle">4</text>
+      <text x="76" y="36" font-size="19" font-weight="700" fill="#e8e8ea">Fully reproducible  (bit-for-bit)</text>
+      <text x="76" y="62" font-size="15" fill="#a3a7b0">Level 3 plus same hardware class.</text>
+      <text x="76" y="84" font-size="14" fill="#f0b84a">CPU: yes. Apple MPS: approximate.</text>
+      <g font-size="20" text-anchor="middle">
+        <text x="446" y="58" fill="#5fcf80">x</text><text x="506" y="58" fill="#5fcf80">x</text><text x="566" y="58" fill="#5fcf80">x</text><text x="626" y="58" fill="#5fcf80">x</text><text x="686" y="58" fill="#5fcf80">x</text>
+      </g>
+    </g>
+    <text x="24" y="540" font-size="15" fill="#a3a7b0">Each rung pins one more item. This module takes you from 1 to 3 in an afternoon.</text>
+  </g>
+
+  <!-- RIGHT: seed coverage matrix -->
+  <g transform="translate(860 150)">
+    <rect x="0" y="0" width="680" height="560" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">What set_seed(42) actually covers</text>
+    <text x="24" y="66" font-size="15" fill="#a3a7b0">From the deck's set_seed function. Read each row as "same seed, same run, same output?"</text>
+
+    <!-- header -->
+    <g font-size="14" font-weight="700" fill="#a3a7b0">
+      <text x="24" y="104">RNG / backend</text>
+      <text x="330" y="104">seeded?</text>
+      <text x="440" y="104">bit-for-bit?</text>
+      <text x="560" y="104">why</text>
+    </g>
+    <line x1="24" y1="114" x2="656" y2="114" stroke="#4a4d55" stroke-width="2"/>
+
+    <g font-size="15">
+      <!-- row 1 -->
+      <text x="24" y="146" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">random  (Python)</text>
+      <text x="330" y="146" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="440" y="146" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="560" y="146" fill="#a3a7b0" font-size="13">pure software</text>
+      <!-- row 2 -->
+      <text x="24" y="186" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">np.random</text>
+      <text x="330" y="186" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="440" y="186" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="560" y="186" fill="#a3a7b0" font-size="13">pure software</text>
+      <!-- row 3 -->
+      <text x="24" y="226" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">torch  on CPU</text>
+      <text x="330" y="226" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="440" y="226" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="560" y="226" fill="#a3a7b0" font-size="13">deterministic kernels</text>
+      <!-- row 4 -->
+      <rect x="12" y="246" width="644" height="54" rx="8" fill="#3a3420" stroke="#f0b84a" stroke-width="2"/>
+      <text x="24" y="270" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea" font-weight="700">torch  on MPS  (you)</text>
+      <text x="330" y="270" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="440" y="270" fill="#f0b84a" font-weight="700">no</text>
+      <text x="560" y="266" fill="#c8cbd2" font-size="13">some ops not</text>
+      <text x="560" y="284" fill="#c8cbd2" font-size="13">deterministic</text>
+      <text x="24" y="292" fill="#a3a7b0" font-size="13">manual_seed covers the MPS RNG; the kernels do not promise order</text>
+      <!-- row 5 -->
+      <text x="24" y="332" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#e8e8ea">torch  on CUDA</text>
+      <text x="330" y="332" fill="#5fcf80" font-weight="700">yes</text>
+      <text x="440" y="332" fill="#5fcf80" font-weight="700">yes*</text>
+      <text x="560" y="328" fill="#a3a7b0" font-size="13">*guarded cudnn</text>
+      <text x="560" y="346" fill="#a3a7b0" font-size="13">flags; not your hw</text>
+    </g>
+
+    <!-- two-run comparison -->
+    <rect x="24" y="372" width="632" height="160" rx="10" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+    <text x="40" y="400" font-size="16" font-weight="700" fill="#e8e8ea">Same commit, same data hash, same seed, two Macs</text>
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15">
+      <text x="40" y="430" fill="#a3a7b0">run A  (M3, mps)</text>
+      <text x="260" y="430" fill="#c8cbd2">eval_f1 = 0.8702   val_loss = 0.4131</text>
+      <text x="40" y="456" fill="#a3a7b0">run B  (M2, mps)</text>
+      <text x="260" y="456" fill="#c8cbd2">eval_f1 = 0.8694   val_loss = 0.4138</text>
+      <text x="40" y="482" fill="#a3a7b0">run C  (M3, cpu)</text>
+      <text x="260" y="482" fill="#c8cbd2">eval_f1 = 0.8702   val_loss = 0.4131  (x2, identical)</text>
+    </g>
+    <text x="40" y="516" font-size="14" fill="#f0b84a">Illustrative numbers. The pattern is the lesson: MPS lands nearby, CPU lands exactly.</text>
+
+    <text x="24" y="552" font-size="15" fill="#a3a7b0">Say "reproducible to within tolerance" on MPS. Say "bit-for-bit" only for a CPU run.</text>
+  </g>
+
+  <rect x="60" y="740" width="1480" height="100" rx="12" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+  <text x="84" y="776" font-size="20" font-weight="700" fill="#e8e8ea">Log the seed anyway. It removes the largest source of variance and makes the remaining gap a hardware question, not a mystery.</text>
+  <text x="84" y="812" font-size="18" fill="#a3a7b0">Skip torch.use_deterministic_algorithms(True) on MPS in the lab: it can raise on unsupported ops or slow training badly. Guard CUDA-only flags behind is_available().</text>
+</svg>

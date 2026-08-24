@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6aa9ff"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5fcf80"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#212226"/>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#e8e8ea">Git Tracks the Pointer. DVC Tracks the Bytes.</text>
+  <text x="60" y="108" font-size="22" fill="#a3a7b0">One 256 MB checkpoint, three places it can live, one 32-character hash that ties them together.</text>
+
+  <!-- LEFT: Git repo -->
+  <g transform="translate(60 160)">
+    <rect x="0" y="0" width="400" height="540" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">Git repository</text>
+    <text x="24" y="66" font-size="16" fill="#a3a7b0">GitHub, GitLab, or any remote. Small text only.</text>
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" fill="#c8cbd2">
+      <text x="24" y="110">src/train.py</text>
+      <text x="24" y="138">configs/train_config.yaml</text>
+      <text x="24" y="166">dvc.yaml</text>
+      <text x="24" y="194">.dvc/config        # where the remote is</text>
+      <text x="24" y="222" fill="#6aa9ff">models/support_finetune.safetensors.dvc</text>
+    </g>
+    <!-- .dvc file content -->
+    <rect x="24" y="246" width="352" height="150" rx="8" fill="#1a1b1e" stroke="#6aa9ff" stroke-width="2"/>
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="16" fill="#8fc1ff">
+      <text x="40" y="276">outs:</text>
+      <text x="40" y="302">- md5: <tspan fill="#f0b84a" font-weight="700">3d1e6f2b</tspan>9c4a7d80...e6f7</text>
+      <text x="40" y="328">  size: 268435456</text>
+      <text x="40" y="354">  hash: md5</text>
+      <text x="40" y="380">  path: support_finetune.safetensors</text>
+    </g>
+    <text x="24" y="430" font-size="16" fill="#a3a7b0">Five lines of YAML. About 150 bytes.</text>
+    <text x="24" y="456" font-size="16" fill="#a3a7b0">Diffs cleanly. Reviews in a PR. Commits like code.</text>
+    <text x="24" y="500" font-size="17" font-weight="700" fill="#5fcf80">Repo size impact: ~0</text>
+    <text x="24" y="524" font-size="16" fill="#a3a7b0">The .gitignore DVC writes keeps the real file out.</text>
+  </g>
+
+  <!-- MIDDLE: workspace -->
+  <g transform="translate(600 160)">
+    <rect x="0" y="0" width="400" height="540" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">Your workspace</text>
+    <text x="24" y="66" font-size="16" fill="#a3a7b0">The laptop. What your training code actually opens.</text>
+    <rect x="24" y="96" width="352" height="90" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+    <text x="40" y="128" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" fill="#e8e8ea">models/support_finetune.safetensors</text>
+    <text x="40" y="160" font-size="17" fill="#f0b84a">256 MB of weights</text>
+    <text x="24" y="226" font-size="17" font-weight="700" fill="#e8e8ea">Local cache (.dvc/cache, gitignored)</text>
+    <rect x="24" y="242" width="352" height="110" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#c8cbd2">
+      <text x="40" y="272">.dvc/cache/files/md5/</text>
+      <text x="40" y="298">  <tspan fill="#f0b84a" font-weight="700">3d</tspan>/<tspan fill="#f0b84a" font-weight="700">1e6f2b</tspan>9c4a7d80...e6f7</text>
+      <text x="40" y="330" fill="#a3a7b0">  (the same bytes, filed by hash)</text>
+    </g>
+    <text x="24" y="392" font-size="16" fill="#a3a7b0">dvc add computes the MD5, moves the bytes into</text>
+    <text x="24" y="416" font-size="16" fill="#a3a7b0">the cache, links them back into the workspace,</text>
+    <text x="24" y="440" font-size="16" fill="#a3a7b0">and writes the .dvc pointer for Git.</text>
+    <text x="24" y="500" font-size="17" font-weight="700" fill="#e8e8ea">Holds exactly one version at a time.</text>
+    <text x="24" y="524" font-size="16" fill="#a3a7b0">Whichever the checked-out .dvc file points to.</text>
+  </g>
+
+  <!-- RIGHT: DVC remote -->
+  <g transform="translate(1140 160)">
+    <rect x="0" y="0" width="400" height="540" rx="14" fill="#2c2e33" stroke="#4a4d55" stroke-width="2"/>
+    <text x="24" y="40" font-size="22" font-weight="700" fill="#e8e8ea">DVC remote</text>
+    <text x="24" y="66" font-size="16" fill="#a3a7b0">S3, GCS, Azure, SSH, or a plain local folder (the lab).</text>
+    <text x="24" y="104" font-size="17" font-weight="700" fill="#e8e8ea">Content-addressed blob store</text>
+    <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15">
+      <rect x="24" y="120" width="352" height="54" rx="8" fill="#1a1b1e" stroke="#5fcf80" stroke-width="2"/>
+      <text x="40" y="143" fill="#c8cbd2">files/md5/<tspan fill="#f0b84a" font-weight="700">3d/1e6f2b</tspan>9c4a...e6f7</text>
+      <text x="40" y="165" fill="#a3a7b0">256 MB   checkpoint, sweep run 07</text>
+
+      <rect x="24" y="186" width="352" height="54" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="40" y="209" fill="#c8cbd2">files/md5/9b/44c0a1...12ef</text>
+      <text x="40" y="231" fill="#a3a7b0">256 MB   checkpoint, sweep run 03</text>
+
+      <rect x="24" y="252" width="352" height="54" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="40" y="275" fill="#c8cbd2">files/md5/c7/08e5d2...a930</text>
+      <text x="40" y="297" fill="#a3a7b0">41 MB    raw_reviews.jsonl, v1.2</text>
+
+      <rect x="24" y="318" width="352" height="54" rx="8" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+      <text x="40" y="341" fill="#c8cbd2">files/md5/e1/5f7a93...77b4</text>
+      <text x="40" y="363" fill="#a3a7b0">38 MB    raw_reviews.jsonl, v1.1</text>
+    </g>
+    <text x="24" y="410" font-size="16" fill="#a3a7b0">Every version ever pushed, side by side.</text>
+    <text x="24" y="434" font-size="16" fill="#a3a7b0">No file names, no history walk. Just hashes.</text>
+    <text x="24" y="458" font-size="16" fill="#a3a7b0">Same bytes pushed twice cost nothing extra.</text>
+    <text x="24" y="500" font-size="17" font-weight="700" fill="#5fcf80">Holds every version. Serves one.</text>
+    <text x="24" y="524" font-size="16" fill="#a3a7b0">dvc pull reads the pointer, fetches that hash.</text>
+  </g>
+
+  <!-- command arrows -->
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" font-weight="700">
+    <path d="M 595 300 L 475 300" stroke="#6aa9ff" stroke-width="4" fill="none" marker-end="url(#a)"/>
+    <text x="530" y="284" fill="#6aa9ff" text-anchor="middle">git commit</text>
+    <text x="530" y="326" font-size="14" font-weight="400" fill="#a3a7b0" text-anchor="middle">the pointer</text>
+
+    <path d="M 1005 300 L 1125 300" stroke="#5fcf80" stroke-width="4" fill="none" marker-end="url(#g)"/>
+    <text x="1070" y="284" fill="#5fcf80" text-anchor="middle">dvc push</text>
+    <text x="1070" y="326" font-size="14" font-weight="400" fill="#a3a7b0" text-anchor="middle">the bytes</text>
+
+    <path d="M 1125 410 L 1005 410" stroke="#5fcf80" stroke-width="4" fill="none" marker-end="url(#g)"/>
+    <text x="1070" y="394" fill="#5fcf80" text-anchor="middle">dvc pull</text>
+    <text x="1070" y="436" font-size="14" font-weight="400" fill="#a3a7b0" text-anchor="middle">by hash</text>
+
+    <path d="M 475 410 L 595 410" stroke="#6aa9ff" stroke-width="4" fill="none" marker-end="url(#a)"/>
+    <text x="530" y="394" fill="#6aa9ff" text-anchor="middle">git checkout</text>
+    <text x="530" y="436" font-size="14" font-weight="400" fill="#a3a7b0" text-anchor="middle">the pointer</text>
+  </g>
+
+  <!-- bottom strip -->
+  <rect x="60" y="730" width="1480" height="110" rx="12" fill="#1a1b1e" stroke="#4a4d55" stroke-width="2"/>
+  <text x="84" y="768" font-size="20" font-weight="700" fill="#e8e8ea">The loop: <tspan font-family="ui-monospace, Menlo, Consolas, monospace" fill="#5fcf80">dvc add</tspan> (cache + pointer)   <tspan font-family="ui-monospace, Menlo, Consolas, monospace" fill="#6aa9ff">git commit</tspan> (pointer)   <tspan font-family="ui-monospace, Menlo, Consolas, monospace" fill="#5fcf80">dvc push</tspan> (bytes)   <tspan font-family="ui-monospace, Menlo, Consolas, monospace" fill="#5fcf80">dvc pull</tspan> (bytes, elsewhere)</text>
+  <text x="84" y="806" font-size="18" fill="#a3a7b0">A teammate who clones the repo gets the pointer instantly and the 256 MB only when they ask for it. The hash is the contract between the two systems.</text>
+</svg>
