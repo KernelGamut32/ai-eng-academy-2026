@@ -1,0 +1,99 @@
+# Cordwell RAG refresh lab: Pinecone Local + MLflow + Airflow.
+#
+# Start:  docker compose up -d --build   (first run builds the Airflow image)
+# Check:  docker compose ps              (three services "running";
+#                                         airflow takes ~30s to come up)
+# Stop:   docker compose down            (-v also wipes MLflow/Airflow state)
+#
+# Ports (instructor pre-flight: confirm all are free before class):
+#   5080  Pinecone Local control plane (data-plane index ports 5081+)
+#   5001  MLflow UI (host side; container listens on 5000, kept off host
+#         5000 because macOS AirPlay Receiver squats on it)
+#   8081  Airflow UI (host side; container listens on 8080, kept off host
+#         8080 to avoid the gateway port used elsewhere in Week 7)
+#
+# Which DAG folder Airflow sees is driven by CAPSTONE_TARGET in .env
+# (starter by default), mirroring how the pytest suite selects a target.
+
+services:
+  pinecone-local:
+    image: ghcr.io/pinecone-io/pinecone-local:latest
+    # platform: linux/amd64   # uncomment if arm64 pull fails on Apple Silicon;
+    #                         # instructor: verify image architecture before class
+    environment:
+      PORT: "5080"
+      # Emulator advertises this host for index data planes (5081+). It must
+      # be the in-network alias so containers (Airflow) reach the data plane;
+      # "localhost" only works for a client on the emulator's own host.
+      PINECONE_HOST: http://pinecone.local
+    ports:
+      - "5080-5090:5080-5090"
+    networks:
+      default:
+        aliases:
+          - pinecone.local   # the SDK validates dotted hostnames; this alias
+                             # lets in-network containers reach the emulator
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.15.1
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --artifacts-destination /mlflow/artifacts
+      --host 0.0.0.0
+      --port 5000
+      --allowed-hosts mlflow,mlflow:5000,localhost,127.0.0.1
+    ports:
+      - "5001:5000"
+    volumes:
+      - mlflow_data:/mlflow
+
+  airflow:
+    build:
+      context: ./docker-airflow
+      dockerfile: airflow.Dockerfile
+    # standalone runs api-server + scheduler + dag-processor + triggerer
+    # in one container over SQLite: exactly enough Airflow for a lab, and
+    # exactly what you would NOT run in production (see the ops guide).
+    command: airflow standalone
+    depends_on:
+      - pinecone-local
+      - mlflow
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      # Lab-only: every request is an admin, so the UI opens without
+      # hunting for the generated password. Never in production.
+      AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: "True"
+      # The DAG's task functions read the same config module as the CLI;
+      # in-network service names replace localhost here.
+      PINECONE_HOST: http://pinecone.local:5080
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      LAB_BACKEND: offline
+      EMBEDDING_BACKEND: hash
+      CORPUS_DIR: /opt/airflow/cordwell/corpus
+      DATA_DIR: /opt/airflow/cordwell/data
+      EVAL_SET_PATH: /opt/airflow/cordwell/data/eval/eval_set.jsonl
+      ARTIFACTS_DIR: /opt/airflow/cordwell/artifacts
+      TRULENS_DB_URL: sqlite:////opt/airflow/cordwell/artifacts/trulens_refresh.sqlite
+      # Airflow 3's task-SDK runs each task under a non-recording parent OTel
+      # span. TruLens' default ParentBased sampler would inherit that and drop
+      # every instrumented span, so the eval sweep records no feedbacks. Force
+      # root sampling so TruLens spans are always recorded.
+      OTEL_TRACES_SAMPLER: always_on
+    ports:
+      - "8081:8080"
+    volumes:
+      # DAGs and package source follow the selected target.
+      - ./${CAPSTONE_TARGET:-starter}/airflow/dags:/opt/airflow/dags
+      - ./${CAPSTONE_TARGET:-starter}/src:/opt/airflow/cordwell_src
+      # Shared project data, read/written by scheduled runs. artifacts/
+      # is where refresh reports and champion.json land, visible on the
+      # host immediately.
+      - ./corpus:/opt/airflow/cordwell/corpus:ro
+      - ./data:/opt/airflow/cordwell/data:ro
+      - ./artifacts:/opt/airflow/cordwell/artifacts
+      - airflow_state:/opt/airflow
+
+volumes:
+  mlflow_data:
+  airflow_state:
