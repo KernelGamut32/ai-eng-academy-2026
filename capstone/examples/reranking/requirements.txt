@@ -1,0 +1,14 @@
+# RAG Reranking Demo. Pins verified against PyPI on 2026-09-02.
+# All pins are compatible with the cohort stack (torch 2.13.0, transformers 5.14.1, numpy 2.4.1).
+# Install into the existing cohort venv; nothing here forces a downgrade.
+
+sentence-transformers==6.0.1      # declares transformers>=5.0,<6.0 and torch>=2.2; provides SentenceTransformer, CrossEncoder, util.semantic_search
+openai>=2.45.0,<3.0.0             # only used when LAB_BACKEND=lmstudio or ollama; range matches langchain-openai 1.3.5's own pin so the cohort venv stays consistent
+
+# Already in the cohort stack, listed so a fresh venv also works:
+torch==2.13.0
+transformers==5.14.1
+numpy==2.4.1
+
+# CURRENCY FLAG: openai 3.x is out (3.7.0 on build day) but langchain-openai 1.3.5 pins <3.0.0.
+# Keep the 2.x range until the cohort bumps langchain-openai; the chat.completions call is identical in both.
